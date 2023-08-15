@@ -1,10 +1,13 @@
-import React from 'react';
+import CarouselBox from '@/components/main/carousel/CarouselBox';
+import * as S from '@/components/main/Styles.js';
 
 const Main = () => {
   return (
-    <div>
-      메인입니다.
-    </div>
+    <S.MainPageWrapper>
+      <S.MainContainer>
+        <CarouselBox />
+      </S.MainContainer>
+    </S.MainPageWrapper>
   );
 };
 
