@@ -1,10 +1,9 @@
 import { Fragment } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import './App.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Main from './pages/Main';
-import Detail from './pages/Detail';
 import MainHeader from './layouts/MainHeader';
+import Detail from './pages/Detail';
+import Main from './pages/Main';
 
 function App() {
   const router = createBrowserRouter([
