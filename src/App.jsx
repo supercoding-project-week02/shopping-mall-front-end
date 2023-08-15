@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import MainHeader from './layouts/MainHeader';
 import Detail from './pages/Detail';
+import Join from './pages/Join';
 import Main from './pages/Main';
 
 function App() {
@@ -16,6 +17,10 @@ function App() {
       // path: "/detail/:id"
       path: '/detail',
       element: <Detail />,
+    },
+    {
+      path: '/join',
+      element: <Join />,
     },
   ]);
   return (
