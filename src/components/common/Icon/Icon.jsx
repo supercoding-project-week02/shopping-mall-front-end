@@ -17,6 +17,7 @@ export const Icon = ({
   ...rest
 }) => {
   const SVGIcon = icon[name];
+
   const IconStyles = css`
     &,
     path {
@@ -36,7 +37,11 @@ export const Icon = ({
 
 // 타입스크립트 안되어서 자동 완성을 위한 해당 기능 추가
 Icon.propTypes = {
-  name: PropTypes.arrayOf(icon.ICON_NAME).isRequired,
+  name: PropTypes.oneOf([
+    'IconBasket', //
+    'IconSearch',
+    'IconUser',
+  ]).isRequired,
   size: PropTypes.number,
   width: PropTypes.string,
   height: PropTypes.string,
