@@ -1,9 +1,10 @@
+import DHeaders from '@/components/DHeader';
 import React from 'react';
 
 const Detail = () => {
   return (
     <div>
-      디테일 페이지 입니다.
+      <DHeaders />
     </div>
   );
 };
