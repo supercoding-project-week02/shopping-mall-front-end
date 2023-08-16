@@ -1,16 +1,16 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
+import * as S from './Carousel.Styles.jsx';
 import CarouselCard from './CarouselCard';
 import Images from './CarouselData';
-import * as S from './CarouselStyles.jsx';
 
 const CarouselBox = () => {
   const settings = {
     arrow: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 11,
+    slidesToShow: 9,
     slidesToScroll: 1,
   };
 

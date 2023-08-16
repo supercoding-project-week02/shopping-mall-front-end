@@ -5,7 +5,7 @@ import * as S from './Header.Styles.jsx';
 const HeaderLogo = () => {
   return (
     <Link to="/">
-      <S.HeaderLogoBox>로고</S.HeaderLogoBox>;
+      <S.HeaderLogoBox>로고</S.HeaderLogoBox>
     </Link>
   );
 };
