@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import MainHeader from './layouts/MainHeader';
-import Cart from './pages/Cart';
 import Detail from './pages/Detail';
 import Main from './pages/Main';
 
@@ -17,10 +16,6 @@ function App() {
       // path: "/detail/:id"
       path: '/detail',
       element: <Detail />,
-    },
-    {
-      path: '/cart',
-      element: <Cart />,
     }
   ]);
   return (
