@@ -35,7 +35,21 @@ const Cart = () => {
                         <DeleteButton>{icon()}</DeleteButton>
                     </ProductDiv>
                     <Td2>
-
+                        <CountDiv class="option_btn_tools" style="float: none;">
+                
+                            <MinusA href="javascript:;" /* onclick="SITE_SHOP_CART.changeCartDecrease('mobile')" */>
+                            <InnerI class="btl bt-minus" aria-hidden="true"></InnerI>
+                            <Span class="sr-only">minus</Span>
+                            </MinusA>				
+                            
+                            <CountInput type="text" title="number" value="1" class="form-control _order_count_mobile" /* onchange="SITE_SHOP_CART.changeCartOrderCount('mobile', $(this).val())" */ />
+                            
+                            <PlusA href="javascript:;" onclick="SITE_SHOP_CART.changeCartIncrease('mobile')" >
+                            <InnerI class="btl bt-plus"></InnerI>
+                            <Span class="sr-only">plus</Span>
+                            </PlusA>	
+                                /* 0815 작업 중 막힌 포인트 : svg 넣기, 수량 조절 넣기(ing) */
+                        </CountDiv>
                     </Td2>
                     <Td3>21,900원</Td3>
                     <Td4>3,000원</Td4>
