@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { Icon } from '@/components/common/Icon/Icon.jsx';
 import * as S from './Styles.js';
 
 const MainHeader = () => {
@@ -16,7 +17,7 @@ const MainHeader = () => {
   return (
     <S.HeaderWrapper>
       <S.HeaderContainer>
-        <S.HeaderLogoBox>로고</S.HeaderLogoBox>
+        <S.HeaderLogoBox onClick={() => (window.location.href = '/')}>로고</S.HeaderLogoBox>
         {isLogin && (
           <S.HeaderRightBox>
             {isSearchBar && (
@@ -25,10 +26,32 @@ const MainHeader = () => {
               </S.SearchBarBox>
             )}
             <S.HeaderBtnsBox>
-              <S.SearchBtnBox onClick={searchBarHandler}>검색</S.SearchBtnBox>
-              <S.MyInfoBtnBox>마페</S.MyInfoBtnBox>
-              <S.CartBtnBox>장바</S.CartBtnBox>
-              {!isCustomer && <S.ProductAddBtnBox>추가</S.ProductAddBtnBox>}
+              <S.SearchBtnBox onClick={searchBarHandler}>
+                <Icon name="IconSearch" width="20px" />
+              </S.SearchBtnBox>
+              <S.MyInfoBtnBox>
+                <Icon
+                  name="IconUser"
+                  width="25px"
+                  onClick={() => (window.location.href = '/mypage')}
+                />
+              </S.MyInfoBtnBox>
+              <S.CartBtnBox>
+                <Icon
+                  name="IconBasket"
+                  width="25px"
+                  onClick={() => (window.location.href = '/cart')}
+                />
+              </S.CartBtnBox>
+              {!isCustomer && (
+                <S.ProductAddBtnBox>
+                  <Icon
+                    name="IconWrite"
+                    width="25px"
+                    onClick={() => (window.location.href = '/write')}
+                  />
+                </S.ProductAddBtnBox>
+              )}
             </S.HeaderBtnsBox>
           </S.HeaderRightBox>
         )}

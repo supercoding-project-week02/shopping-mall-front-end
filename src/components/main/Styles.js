@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 export const MainPageWrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  margin-top: 5rem;
+  margin-top: 4rem;
   background-color: #fafafa;
 `;
 

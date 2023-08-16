@@ -29,6 +29,7 @@ export const HeaderLogoBox = styled.div`
   height: 4rem;
   background-color: grey;
   margin: 1rem;
+  cursor: pointer;
 `;
 
 export const HeaderRightBox = styled.div`
@@ -46,26 +47,25 @@ export const HeaderBtnsBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: grey;
   margin: 1rem;
 `;
 
 export const ProductAddBtnBox = styled.div`
-  background-color: blue;
-  margin-right: 1rem;
+  margin-right: 0.7rem;
+  cursor: pointer;
 `;
 
 export const CartBtnBox = styled.div`
-  background-color: red;
-  margin-right: 1rem;
+  margin-right: 0.7rem;
+  cursor: pointer;
 `;
 
 export const MyInfoBtnBox = styled.div`
-  background-color: green;
-  margin-right: 1rem;
+  margin-right: 0.7rem;
+  cursor: pointer;
 `;
 
 export const SearchBtnBox = styled.div`
-  background-color: yellow;
-  margin-right: 1rem;
+  margin-right: 0.7rem;
+  cursor: pointer;
 `;
