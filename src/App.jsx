@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
+import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Detail from './pages/Detail';
 import Main from './pages/main/Main';
@@ -17,6 +18,10 @@ function App() {
         {
           path: 'detail',
           element: <Detail />,
+        },
+        {
+          path: 'mypage',
+          element: <MyPage />,
         },
       ],
     },
