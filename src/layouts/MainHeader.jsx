@@ -1,60 +1,19 @@
-import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
-import { Icon } from '@/components/common/Icon/Icon.jsx';
+import HeaderLogo from './HeaderLogo.jsx';
+import HeaderRightBox from './HeaderRightBox.jsx';
 import * as S from './Styles.js';
 
 const MainHeader = () => {
-  let isLogin = true;
-  let isCustomer = false;
+  let location = useLocation();
 
-  const [isSearchBar, setIsSearchBar] = useState(false);
-
-  const searchBarHandler = () => {
-    if (!isSearchBar) setIsSearchBar(true);
-    else setIsSearchBar(false);
-  };
+  const isLoginOrJoin = location.pathname === 'login' || location.pathname === 'join';
 
   return (
     <S.HeaderWrapper>
       <S.HeaderContainer>
-        <S.HeaderLogoBox onClick={() => (window.location.href = '/')}>로고</S.HeaderLogoBox>
-        {isLogin && (
-          <S.HeaderRightBox>
-            {isSearchBar && (
-              <S.SearchBarBox>
-                <input type="text"></input>
-              </S.SearchBarBox>
-            )}
-            <S.HeaderBtnsBox>
-              <S.SearchBtnBox onClick={searchBarHandler}>
-                <Icon name="IconSearch" width="20px" />
-              </S.SearchBtnBox>
-              <S.MyInfoBtnBox>
-                <Icon
-                  name="IconUser"
-                  width="25px"
-                  onClick={() => (window.location.href = '/mypage')}
-                />
-              </S.MyInfoBtnBox>
-              <S.CartBtnBox>
-                <Icon
-                  name="IconBasket"
-                  width="25px"
-                  onClick={() => (window.location.href = '/cart')}
-                />
-              </S.CartBtnBox>
-              {!isCustomer && (
-                <S.ProductAddBtnBox>
-                  <Icon
-                    name="IconWrite"
-                    width="25px"
-                    onClick={() => (window.location.href = '/write')}
-                  />
-                </S.ProductAddBtnBox>
-              )}
-            </S.HeaderBtnsBox>
-          </S.HeaderRightBox>
-        )}
+        <HeaderLogo />
+        {isLoginOrJoin ? null : <HeaderRightBox />}
       </S.HeaderContainer>
     </S.HeaderWrapper>
   );

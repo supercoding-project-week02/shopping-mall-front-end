@@ -4,13 +4,14 @@ export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
   position: fixed;
-  background-color: #faf9f6;
   top: 0;
   left: 0;
   width: 100%;
   max-width: 100vw;
   z-index: 99;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.03);
+  background-color: #faf9f6;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
 `;
 
 export const HeaderContainer = styled.div`
@@ -26,7 +27,7 @@ export const HeaderLogoBox = styled.div`
   justify-content: center;
   align-items: center;
   width: 10rem;
-  height: 4rem;
+  height: 3rem;
   background-color: grey;
   margin: 1rem;
   cursor: pointer;
