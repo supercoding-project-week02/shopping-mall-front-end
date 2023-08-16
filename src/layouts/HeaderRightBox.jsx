@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Icon } from '@/components/common/Icon/Icon.jsx';
-import * as S from './Styles.js';
+import * as S from './Header.Styles.jsx';
 
 const HeaderRightBox = () => {
   let isCustomer = false;

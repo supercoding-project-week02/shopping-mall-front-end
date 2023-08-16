@@ -30,6 +30,7 @@ export const Icon = ({
       ${color ? `stroke: ${color} !important;` : ''}
       ${fill ? `fill: ${color} !important;` : ''}
     }
+    cursor: pointer;
   `;
 
   return <SVGIcon {...rest} css={IconStyles} style={style} />;
@@ -43,6 +44,8 @@ Icon.propTypes = {
     'IconUser',
     'IconProfile',
     'IconWrite',
+    'IconPencil',
+    'IconCheck',
   ]).isRequired,
   size: PropTypes.number,
   width: PropTypes.string,

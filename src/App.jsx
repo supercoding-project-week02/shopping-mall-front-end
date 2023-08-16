@@ -1,5 +1,6 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 
+import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Detail from './pages/Detail';
 import Join from './pages/Join';
@@ -22,6 +23,10 @@ function App() {
         {
           path: 'join',
           element: <Join />,
+        },
+        {
+          path: 'mypage',
+          element: <MyPage />,
         },
       ],
     },

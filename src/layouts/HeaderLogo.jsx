@@ -1,7 +1,13 @@
-import * as S from './Styles.js';
+import { Link } from 'react-router-dom';
+
+import * as S from './Header.Styles.jsx';
 
 const HeaderLogo = () => {
-  return <S.HeaderLogoBox onClick={() => (window.location.href = '/')}>로고</S.HeaderLogoBox>;
+  return (
+    <Link to="/">
+      <S.HeaderLogoBox>로고</S.HeaderLogoBox>;
+    </Link>
+  );
 };
 
 export default HeaderLogo;
