@@ -2,8 +2,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 import CarouselCard from './CarouselCard';
-import Images from './Data';
-import * as S from './/Styles.js';
+import Images from './CarouselData';
+import * as S from './CarouselStyles.jsx';
 
 const CarouselBox = () => {
   const settings = {

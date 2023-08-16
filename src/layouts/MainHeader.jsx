@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 
 import HeaderLogo from './HeaderLogo.jsx';
 import HeaderRightBox from './HeaderRightBox.jsx';
-import * as S from './Styles.js';
+import * as S from './Header.Styles.jsx';
 
 const MainHeader = () => {
   let location = useLocation();

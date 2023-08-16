@@ -1,5 +1,5 @@
-import CarouselBox from '@/components/main/carousel/CarouselBox';
-import * as S from '@/components/main/Styles.js';
+import CarouselBox from '@/components/main/GenreCarousel/CarouselBox';
+import * as S from '@/pages/main/MainStyles.jsx';
 
 const Main = () => {
   return (
