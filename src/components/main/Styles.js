@@ -5,8 +5,7 @@ export const MainPageWrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: 100vh;
-  margin-top: 4rem;
-  background-color: #fafafa;
+  margin-top: 7rem;
 `;
 
 export const MainContainer = styled.div`
@@ -14,15 +13,3 @@ export const MainContainer = styled.div`
   justify-content: center;
   width: 80%;
 `;
-
-export const GenreCarouselWrapper = styled.div`
-  width: 100%;
-`;
-
-export const GenreCarouselBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const CarouselCard = styled.div``;
