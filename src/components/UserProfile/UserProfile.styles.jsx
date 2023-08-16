@@ -7,14 +7,15 @@ export const UserProfileWrapper = styled.div`
   padding: 2rem;
   gap: 100px;
   border-radius: 0.5rem;
-  border: 1px solid red;
+  border: 1px solid #595959;
   width: 50%;
   height: 300px;
 `;
 
-export const Avatar = styled.image`
+export const Avatar = styled.img`
   border-radius: 100%;
-  border: 1px solid black;
+  border: 1px solid #bfbfbf;
+  background-color: ${theme.color.gray};
   width: 5rem;
   height: 5rem;
 `;
@@ -22,12 +23,6 @@ export const Avatar = styled.image`
 export const UserInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const UserInfoItem = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
 `;
 
 export const Line = styled.hr`
