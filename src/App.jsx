@@ -36,7 +36,9 @@ const Root = () => {
   return (
     <>
       <MainHeader />
-      <Outlet />
+      <div style={{ marginTop: '7rem' }}>
+        <Outlet />
+      </div>
     </>
   );
 };
