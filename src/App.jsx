@@ -4,8 +4,8 @@ import './App.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Main from './pages/Main';
 import Detail from './pages/Detail';
-import MainHeader from './layouts/MainHeader';
-import Cart from './pages/Cart';
+// import MainHeader from './layouts/MainHeader';
+import Cart from './pages/cart/Cart';
 
 function App() {
   const router = createBrowserRouter([
@@ -26,7 +26,7 @@ function App() {
   ]);
   return (
     <Fragment>
-      <MainHeader />
+      {/* <MainHeader /> */}
       <RouterProvider router={router} />
     </Fragment>
   );
