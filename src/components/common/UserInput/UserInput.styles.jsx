@@ -2,18 +2,7 @@ import styled from '@emotion/styled';
 
 import { theme } from '@/styles/theme';
 
-const Input = ({ check = false }) => {
-  return (
-    <InputDiv>
-      <input type="text" />
-      {check ? <button>중복확인</button> : null}
-    </InputDiv>
-  );
-};
-
-export default Input;
-
-const InputDiv = styled.div`
+export const InputDiv = styled.div`
   margin-top: 7px;
   display: flex;
   align-items: center;

@@ -6,3 +6,4 @@ export { ReactComponent as IconBasket } from './iconBasket.svg';
 export { ReactComponent as IconSearch } from './iconSearch.svg';
 export { ReactComponent as IconUser } from './iconUser.svg';
 export { ReactComponent as IconProfile } from './iconProfile.svg';
+export { ReactComponent as IconWrite } from './iconWrite.svg';

@@ -4,7 +4,9 @@
 */
 
 html,
-body,
+body {
+  background-color: #fafafa;
+}
 div,
 span,
 applet,

@@ -1,5 +1,11 @@
+import * as S from '@/components/main/Styles.js';
+
 const Main = () => {
-  return <div>메인입니다.</div>;
+  return (
+    <S.MainPageWrapper>
+      <S.MainContainer>ddddd</S.MainContainer>
+    </S.MainPageWrapper>
+  );
 };
 
 export default Main;
