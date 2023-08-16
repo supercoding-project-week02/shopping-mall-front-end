@@ -1,4 +1,4 @@
-import * as S from './CarouselStyles.jsx';
+import * as S from './Carousel.Styles.jsx';
 
 const CarouselCard = (props) => {
   return (
