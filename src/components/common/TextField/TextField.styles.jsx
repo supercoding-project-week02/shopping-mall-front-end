@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 
 export const TextFieldsWrapper = styled.div`
-  //height: 100%;
-  //height: 50px;
   padding: 4px 0;
 `;
 
