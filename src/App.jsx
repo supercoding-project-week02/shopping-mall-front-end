@@ -32,3 +32,7 @@ function App() {
 }
 
 export default App;
+
+const Root = () => {
+  return <></>;
+};

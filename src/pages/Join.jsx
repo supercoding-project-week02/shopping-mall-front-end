@@ -59,4 +59,5 @@ const AddProfile = styled.span`
 const Label = styled.label`
   align-self: flex-start;
   margin-top: 45px;
+  font-weight: 600;
 `;
