@@ -2,6 +2,8 @@ import Slider from 'react-slick';
 import styled from '@emotion/styled';
 
 export const GenreCarouselWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
 `;
 
@@ -14,7 +16,7 @@ export const GenreCarouselBox = styled.div`
 export const StyledSlider = styled(Slider)`
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 60%;
 
   .slick-track {
     width: auto !important;
@@ -28,7 +30,6 @@ export const StyledSlider = styled(Slider)`
   }
   .slick-prev,
   .slick-next {
-    background-color: #efebeb;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -36,16 +37,11 @@ export const StyledSlider = styled(Slider)`
   }
 
   .slick-prev {
-    left: -40px;
+    margin-right: 2rem;
   }
 
   .slick-next {
-    right: -40px;
-  }
-
-  .slick-prev:hover,
-  .slick-next:hover {
-    background-color: #cbc8c8;
+    margin-left: 2rem;
   }
 
   .slick-prev:before,
