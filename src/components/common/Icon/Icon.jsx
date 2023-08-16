@@ -44,6 +44,7 @@ Icon.propTypes = {
     'IconUser',
     'IconWrite',
     'IconPencil',
+    'IconCheck',
   ]).isRequired,
   size: PropTypes.number,
   width: PropTypes.string,
