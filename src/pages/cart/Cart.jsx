@@ -36,20 +36,20 @@ const Cart = () => {
                         <S.ProductNameDiv>스쿠반 다용도 폴딩 바스켓</S.ProductNameDiv>
                         {/* <DeleteButton>{icon()}</DeleteButton> */}
                     </S.ProductDiv>
-                    <S.Td2>
-                        <S.CountDiv>
-                
-                            <S.MinusButton>
-                            <S.Span>-</S.Span>
-                            </S.MinusButton>				
-                            
-                            <S.CountInput type="text" title="number" value="1" />
-                            
-                            <S.PlusButton>
-                            <S.Span>+</S.Span>
-                            </S.PlusButton>	
+                    <S.Td2> 
+                        <S.CounterOuterDiv>
+                            <S.CountDiv>
+                                <S.MinusButton>
+                                <S.Span>-</S.Span>
+                                </S.MinusButton>				
                                 
-                        </S.CountDiv>
+                                <S.CountInput type="text" title="number" value="1" />
+                                
+                                <S.PlusButton>
+                                <S.Span>+</S.Span>
+                                </S.PlusButton>	
+                            </S.CountDiv>
+                        </S.CounterOuterDiv>
                     </S.Td2>
                     <S.Td3>21,900원</S.Td3>
                     <S.Td4>3,000원</S.Td4>
