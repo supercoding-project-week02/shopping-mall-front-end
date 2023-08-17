@@ -1,5 +1,8 @@
+import Button from '@/components/common/Button/Button';
 import { Icon } from '@/components/common/Icon/Icon';
 import UserInput from '@/components/common/UserInput/UserInput';
+import RadioInput from '@/components/RadioInput/RadioInput';
+import { theme } from '@/styles/theme';
 import * as S from './Join.styles';
 
 const Join = () => {
@@ -17,16 +20,10 @@ const Join = () => {
         <S.Label>연락처</S.Label>
         <UserInput placeholder="연락처" type="text" />
         <S.RadioBox>
-          <span>
-            <input type="radio" id="buyer" name="user" value="buyer" defaultChecked />
-            <label htmlFor="buyer">구매자</label>
-          </span>
-          <span>
-            <input type="radio" id="seller" name="user" value="seller" />
-            <label htmlFor="seller">판매자</label>
-          </span>
+          <RadioInput id="buyer" name="user" value="buyer" defaultChecked="true" label="구매자" />
+          <RadioInput id="seller" name="user" value="seller" label="판매자" />
         </S.RadioBox>
-        <button>가입하기</button>
+        <Button bgColor={theme.color.black} fontColor="white" borderRadius="10px" text="가입하기" />
       </S.Form>
     </S.Container>
   );
