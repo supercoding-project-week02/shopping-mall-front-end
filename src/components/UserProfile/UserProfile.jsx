@@ -1,5 +1,6 @@
 import { useModal } from '@ebay/nice-modal-react';
 
+import { Icon } from '@/components/common/Icon/Icon.jsx';
 import TextField from '@/components/common/TextField/TextField.jsx';
 import ChargePayMoneyModal from '@/components/modals/ChargePayMoenyModal/ChargePayMoenyModal.jsx';
 import ShippingAddressModal from '@/components/modals/ShippingAddressModal/ShippingAddressModal.jsx';
@@ -16,7 +17,9 @@ const UserProfile = () => {
 
   return (
     <S.UserProfileWrapper>
-      <S.Avatar src="" alt="avatar" />
+      {/* TODO: 추후에 이미지 추가 기능은 해당 부분으로 변경 */}
+      {/*<S.Avatar src="" alt="avatar" />*/}
+      <Icon name="IconProfile" size={100} />
       <S.UserInfoWrapper>
         <TextField inputType="email" label="이메일" value={user.email} />
         <S.Line />
