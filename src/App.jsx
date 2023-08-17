@@ -3,8 +3,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Detail from './pages/Detail';
-import Join from './pages/Join';
-import Main from './pages/Main';
+import Join from './pages/Join/Join';
+import Main from './pages/Main/Main';
 
 function App() {
   const router = createBrowserRouter([

@@ -1,10 +1,10 @@
 import { InputDiv } from './UserInput.styles';
 
-const UserInput = ({ check = false }) => {
+const UserInput = ({ button, type, placeholder }) => {
   return (
     <InputDiv>
-      <input type="text" />
-      {check ? <button>중복확인</button> : null}
+      <input type={type} placeholder={placeholder} />
+      {button && button}
     </InputDiv>
   );
 };

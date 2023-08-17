@@ -6,6 +6,7 @@ export const InputDiv = styled.div`
   margin-top: 7px;
   display: flex;
   align-items: center;
+  gap: 5px;
   box-sizing: border-box;
   padding: 5px 19px;
   width: 100%;
@@ -13,8 +14,7 @@ export const InputDiv = styled.div`
   border: 1px solid ${theme.color.gray};
   background-color: white;
   > input {
-    width: 70%;
-    height: 50%;
+    flex: 1;
     border: none;
   }
   > button {
