@@ -42,6 +42,7 @@ Icon.propTypes = {
     'IconBasket', //
     'IconSearch',
     'IconUser',
+    'IconProfile',
     'IconWrite',
     'IconPencil',
     'IconCheck',
