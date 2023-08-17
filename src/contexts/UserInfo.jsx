@@ -25,12 +25,17 @@ export const UserInfoProvider = ({ children }) => {
     handleChangeUser('payMoney', user.payMoney + Number(amount));
   };
 
+  const handleChangeAddress = (address) => {
+    handleChangeUser('address', address);
+  };
+
   return (
     <UserInfoContext.Provider
       value={{
         user,
         onChangeUser: handleChangeUser,
         onChargePayMoney: handleChargePayMoney,
+        onChangeAddress: handleChangeAddress,
       }}
     >
       {children}
