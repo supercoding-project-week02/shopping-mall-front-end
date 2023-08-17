@@ -1,30 +1,22 @@
 import { useModal } from '@ebay/nice-modal-react';
 
 import TextField from '@/components/common/TextField/TextField.jsx';
-import PayMoneyModal from '@/components/modals/PayMoneyMoal.jsx';
+import ChargePayMoneyModal from '@/components/modals/ChargePayMoenyModal/ChargePayMoenyModal.jsx';
 import ShippingAddressModal from '@/components/modals/ShippingAddressModal.jsx';
 import { useUserInfo } from '@/contexts/UserInfo.jsx';
 import * as S from './UserProfile.styles.jsx';
 
 const UserProfile = () => {
   const { user, onChangeUser } = useUserInfo();
-  const payMoneyModal = useModal(PayMoneyModal);
-  const shippingAddressModal = useModal(ShippingAddressModal);
+  const chargePayMoneyModal = useModal(ChargePayMoneyModal);
+  // const shippingAddressModal = useModal(ShippingAddressModal);
 
-  const ChargeButton = (
-    <S.Button
-      onClick={() => {
-        payMoneyModal.show();
-      }}
-    >
-      충전
-    </S.Button>
-  );
+  const ChargeButton = <S.Button onClick={chargePayMoneyModal.show}>충전</S.Button>;
   const AddressButton = (
     <S.Button
-      onClick={() => {
-        shippingAddressModal.show();
-      }}
+    // onClick={() => {
+    //   shippingAddressModal.show();
+    // }}
     >
       배송지 변경
     </S.Button>
