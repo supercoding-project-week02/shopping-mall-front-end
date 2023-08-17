@@ -8,3 +8,4 @@ export { ReactComponent as IconUser } from './iconUser.svg';
 export { ReactComponent as IconWrite } from './iconWrite.svg';
 export { ReactComponent as IconPencil } from './iconPencil.svg';
 export { ReactComponent as IconCheck } from './iconCheck.svg';
+export { ReactComponent as IconX } from './iconX.svg';
