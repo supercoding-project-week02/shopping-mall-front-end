@@ -5,10 +5,10 @@ const Button = ({
   fontColor,
   width = '100%',
   height = '40px',
-  onClick,
   border = 'none',
   borderRadius,
   text,
+  ...rest
 }) => {
   return (
     <StyledButton
@@ -16,9 +16,9 @@ const Button = ({
       fontColor={fontColor}
       width={width}
       height={height}
-      onClick={onClick}
       border={border}
       borderRadius={borderRadius}
+      {...rest}
     >
       {text}
     </StyledButton>

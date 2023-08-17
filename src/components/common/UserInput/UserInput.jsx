@@ -1,6 +1,15 @@
 import { InputDiv } from './UserInput.styles';
 
-const UserInput = ({ button, type, placeholder, onFocus, onBlur, value, required = false }) => {
+const UserInput = ({
+  button,
+  type,
+  placeholder,
+  onFocus,
+  onBlur,
+  value,
+  required = false,
+  ...rest
+}) => {
   return (
     <InputDiv>
       <input
@@ -10,6 +19,7 @@ const UserInput = ({ button, type, placeholder, onFocus, onBlur, value, required
         onBlur={onBlur}
         value={value}
         required={required}
+        {...rest}
       />
       {button && button}
     </InputDiv>
