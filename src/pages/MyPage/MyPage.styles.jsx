@@ -6,6 +6,7 @@ export const MyPageWrapper = styled.div`
   justify-content: center;
   gap: 2rem;
   margin-top: 10rem;
+  margin-bottom: 10rem;
 `;
 
 export const MenusWrapper = styled.aside`
@@ -43,4 +44,14 @@ export const Table = styled(_Table)`
   & thead .ant-table-cell {
     background-color: #ffb002 !important;
   }
+
+  .ant-table-cell {
+    //text-align: center;
+  }
+`;
+
+export const ProductInfoWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  //flex-direction: column;
 `;
