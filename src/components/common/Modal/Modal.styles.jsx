@@ -38,17 +38,19 @@ export const ModalContainer = styled.div`
   transform: translateY(-50%);
   margin: 0 auto;
   padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 // ModalHeader
 export const ModalHeader = styled.div`
   height: 30px;
+  max-height: 50px;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 
-export const ModalHeaderCloseButton = styled.button`
-  margin-left: auto;
-  border: none;
-  background-color: transparent;
-`;
+// ModalContent
+export const ModalContent = styled.div``;
