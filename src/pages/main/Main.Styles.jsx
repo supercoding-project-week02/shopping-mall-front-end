@@ -8,7 +8,5 @@ export const MainPageWrapper = styled.div`
 `;
 
 export const MainContainer = styled.div`
-  display: flex;
-  justify-content: center;
   width: 80%;
 `;
