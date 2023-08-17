@@ -4,6 +4,7 @@ import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Detail from './pages/Detail';
 import Main from './pages/main/Main';
+import Payment from './pages/payment/Payment';
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,10 @@ function App() {
           path: 'mypage',
           element: <MyPage />,
         },
+        {
+          path: 'payment',
+          element: <Payment />,
+        }
       ],
     },
     // {
