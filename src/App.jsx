@@ -5,6 +5,7 @@ import MainHeader from './layouts/MainHeader';
 import Detail from './pages/Detail';
 import Join from './pages/Join/Join';
 import Main from './pages/Main/Main';
+import Cart from './pages/cart/Cart';
 
 function App() {
   const router = createBrowserRouter([
@@ -28,6 +29,10 @@ function App() {
           path: 'mypage',
           element: <MyPage />,
         },
+        {
+          path: 'cart',
+          element: <Cart />,
+        }
       ],
     },
   ]);
