@@ -6,6 +6,11 @@ import * as icon from '@/assets';
 
 const DEFAULT_SIZE = 24;
 
+/**
+ * @desc 범용적으로 사요할 수 있는 Icon 입니다
+ * @example
+ * <Icon name="IconTest" size={50} onClick={() => alert('아이콘 클릭')} />
+ */
 export const Icon = ({
   name,
   size = DEFAULT_SIZE,
@@ -46,6 +51,7 @@ Icon.propTypes = {
     'IconWrite',
     'IconPencil',
     'IconCheck',
+    'IconX',
   ]).isRequired,
   size: PropTypes.number,
   width: PropTypes.string,
