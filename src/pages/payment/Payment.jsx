@@ -97,7 +97,24 @@ const Payment = () => {
                         </S.OrderPriceTotalDiv>
                     </S.SuperPayBox>
 
-                    <S.AgreeBox></S.AgreeBox>
+                    <S.AgreeBox>
+                        <S.AllAgree>
+                            <S.AllAgreeInput type="checkbox"></S.AllAgreeInput>
+                            <S.AllAgreeDiv>전체 동의</S.AllAgreeDiv>
+                        </S.AllAgree>
+
+                        <S.SubAgree>
+                            <S.SubIndicateDiv>
+                                <S.BoxLineDiv></S.BoxLineDiv>
+                            </S.SubIndicateDiv>
+                            <S.SubAgreeInput type="checkbox"></S.SubAgreeInput>
+                            <S.SubAgreeDiv>구매조건 확인 및 결제진행에 동의</S.SubAgreeDiv>
+                        </S.SubAgree>
+
+                        <S.PaySubmitTextDiv>
+                            <S.PaySubmitA>결제하기</S.PaySubmitA>
+                        </S.PaySubmitTextDiv>
+                    </S.AgreeBox>
 
                 </S.FixedDiv>
         </S.WrapperDiv>

@@ -16,7 +16,7 @@ export const WrapperDiv = styled.div`
     max-width: 1050px;
     width: 100%;
     margin: 0 auto;
-    padding-left: 65px;
+    padding-left: 16px;
     box-sizing: border-box;
     gap: 20px;
 `;
@@ -43,7 +43,7 @@ export const ShipInfoBox = styled.div`
 
 export const FixedDiv = styled.div`
     position: fixed;
-    width: 300px;
+    width: 400px;
     height: 120%;
     margin-left: 620px;
 `;
@@ -62,7 +62,8 @@ export const SuperPayBox = styled.div`
 
 export const AgreeBox = styled.div`
     background-color: #FFE5E5;
-    height: 20%;
+    height: 10%;
+    margin-bottom: 20px;
 `;
 
 export const OrderInfo = styled.div`
@@ -351,12 +352,101 @@ export const SuperPayTotalTextDiv = styled.div`
 
 export const AllAgree = styled.div`
     width: 300px;
-    height: 100px;
+    height: 50px;
+    display: flex;
+    text-align: center;
 `;
-export const AllAgreeInput = styled.input``;
-export const AllAgreeDiv = styled.div``;
 
+export const AllAgreeInput = styled.input`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    margin: 25px 5px 10px 20px;
+`;
 
+export const AllAgreeDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px;
+    height: 50px;
+    font-size: 15px;
+`;
+
+export const SubAgree = styled.div`
+    width: 400px;
+    height: 50px;
+    display: flex;
+    text-align: center;
+`;
+
+export const SubIndicateDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+`;
+
+export const BoxLineDiv = styled.div`
+    margin: 10px 0px 0px 20px;
+    width: 12px;
+    height: 12px;
+    border: 1px solid gray;
+    border-top: none;
+    border-right: none;
+`;
+
+export const SubAgreeInput = styled.input`
+    width: 20px;
+    height: 20px;
+    margin: 25px 5px 10px 10px;
+`;
+
+export const SubAgreeDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 5px;
+    height: 50px;
+    font-size: 15px;
+    width: 240px;
+    text-align: left;
+`;
+
+export const PaySubmitBox = styled.div`
+    background-color: #FFE5E5;
+    height: 10%;
+`;
+
+export const PaySubmitTextDiv = styled.div`
+    margin-top: 25px;
+    width: 100%;
+    height: 60px;
+    background-color: black;
+`;
+
+export const PaySubmitA = styled.a`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 0;
+    padding: 20px 0;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    &:hover {
+       background-color: #ffb002;
+       color: white;
+       border: none;
+       height: 60px;
+       margin: 0;
+       padding: 0;
+       color: black;
+`;
 
 
 // export const = styled.div``;
