@@ -41,6 +41,8 @@ Icon.propTypes = {
     'IconBasket', //
     'IconSearch',
     'IconUser',
+    'EmptyHeart',
+    'FullHeart',
   ]).isRequired,
   size: PropTypes.number,
   width: PropTypes.string,

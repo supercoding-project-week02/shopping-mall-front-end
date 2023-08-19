@@ -1,10 +1,12 @@
-import DHeaders from '@/components/DHeader';
+import DetailHeaders from '@/components/detail/DetailHeader';
+import DetailInfo from '@/components/detail/DetailInfo';
 import React from 'react';
 
 const Detail = () => {
   return (
     <div>
-      <DHeaders />
+      <DetailHeaders />
+      <DetailInfo />
     </div>
   );
 };

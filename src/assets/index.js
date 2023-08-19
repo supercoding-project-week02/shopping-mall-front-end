@@ -5,3 +5,5 @@
 export { ReactComponent as IconBasket } from './iconBasket.svg';
 export { ReactComponent as IconSearch } from './iconSearch.svg';
 export { ReactComponent as IconUser } from './iconUser.svg';
+export { ReactComponent as EmptyHeart } from './emptyHeart.svg';
+export { ReactComponent as FullHeart } from './fullHeart.svg';
