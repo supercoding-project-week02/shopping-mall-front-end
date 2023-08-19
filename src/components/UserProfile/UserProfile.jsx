@@ -1,33 +1,25 @@
-import { useState } from 'react';
+import { useModal } from '@ebay/nice-modal-react';
 
+import { Icon } from '@/components/common/Icon/Icon.jsx';
 import TextField from '@/components/common/TextField/TextField.jsx';
+import ChargePayMoneyModal from '@/components/modals/ChargePayMoenyModal/ChargePayMoenyModal.jsx';
+import ShippingAddressModal from '@/components/modals/ShippingAddressModal/ShippingAddressModal.jsx';
+import { useUserInfo } from '@/contexts/UserInfo.jsx';
 import * as S from './UserProfile.styles.jsx';
 
-const USER = {
-  email: 'helloworld@gmail.com',
-  password: '1234',
-  name: 'Tester',
-  phoneNumber: '010-1234-5678',
-  payMoney: 20000,
-  address: '서울시 마포구',
-};
-
 const UserProfile = () => {
-  const [user, setUser] = useState(USER);
+  const { user, onChangeUser } = useUserInfo();
+  const chargePayMoneyModal = useModal(ChargePayMoneyModal);
+  const shippingAddressModal = useModal(ShippingAddressModal);
 
-  const ChargeButton = <S.Button>충전</S.Button>;
-  const AddressButton = <S.Button>배송지 변경</S.Button>;
-
-  const handleChangeUser = (name, value) => {
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
+  const ChargeButton = <S.Button onClick={chargePayMoneyModal.show}>충전</S.Button>;
+  const AddressButton = <S.Button onClick={shippingAddressModal.show}>배송지 변경</S.Button>;
 
   return (
     <S.UserProfileWrapper>
-      <S.Avatar src="" alt="avatar" />
+      {/* TODO: 추후에 이미지 추가 기능은 해당 부분으로 변경 */}
+      {/*<S.Avatar src="" alt="avatar" />*/}
+      <Icon name="IconProfile" size={100} />
       <S.UserInfoWrapper>
         <TextField inputType="email" label="이메일" value={user.email} />
         <S.Line />
@@ -37,26 +29,24 @@ const UserProfile = () => {
           label="비밀번호"
           value={user.password}
           editable
-          onSubmit={handleChangeUser}
+          onSubmit={onChangeUser}
         />
         <S.Line />
-        <TextField
-          label="이름"
-          name="name"
-          value={user.name}
-          editable
-          onSubmit={handleChangeUser}
-        />
+        <TextField label="이름" name="name" value={user.name} editable onSubmit={onChangeUser} />
         <S.Line />
         <TextField
           label="전화번호"
           name="phoneNumber"
           value={user.phoneNumber}
           editable
-          onSubmit={handleChangeUser}
+          onSubmit={onChangeUser}
         />
         <S.Line />
-        <TextField label="페이머니" value={user.payMoney} rightSlot={ChargeButton} />
+        <TextField
+          label="페이머니"
+          value={user.payMoney.toLocaleString('ko-KR')}
+          rightSlot={ChargeButton}
+        />
         <S.Line />
         <TextField label="배송지" value={user.address} rightSlot={AddressButton} />
         <S.Line />
