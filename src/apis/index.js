@@ -1,3 +1,6 @@
+export * from './payment.js';
+export * from './product.js';
+
 import axios from 'axios';
 
 // TODO: .env 로 빼야하나?
