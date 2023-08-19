@@ -1,4 +1,3 @@
-import { shoppingBasketData } from '@/mocks/shoppingBasketData.js';
 import { purchaseData } from './purchaseData.js';
 import { salesData } from './salesData.js';
 
@@ -24,6 +23,11 @@ export const mockColumns = {
       title: '판매 마감 날짜',
       dataIndex: '판매마감날짜',
       key: '판매마감날짜',
+    },
+    {
+      title: '',
+      dataIndex: '삭제',
+      key: '삭제',
     },
   ],
   구매목록: [
