@@ -2,10 +2,14 @@ import * as S from './ItemListGrid.Styles.jsx';
 
 const GridCard = (props) => {
   const item = props.item;
+
+  const onClickHandler = (event) => {
+    console.log(event.target.id);
+  };
   return (
     <S.GridCard>
       <S.GridImgBox>
-        <S.GridImg src={item.mainImageUrl} />
+        <S.GridImg src={item.mainImageUrl} id={item.productIdx} onClick={onClickHandler} />
       </S.GridImgBox>
       <S.GridTextBox>
         <S.GridNameBox>{item.companyName}</S.GridNameBox>

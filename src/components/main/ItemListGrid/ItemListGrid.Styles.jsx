@@ -27,7 +27,9 @@ export const GridContainer = styled.div`
 
 export const GridCard = styled.div``;
 
-export const GridImgBox = styled.div``;
+export const GridImgBox = styled.div`
+  cursor: pointer;
+`;
 
 export const GridImg = styled.img`
   border-radius: 0.5rem;
