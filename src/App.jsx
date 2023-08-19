@@ -5,6 +5,7 @@ import MainHeader from './layouts/MainHeader';
 import Cart from './pages/cart/Cart';
 import Detail from './pages/Detail';
 import Join from './pages/Join/Join';
+import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import Write from './pages/Write/Write';
 
@@ -43,6 +44,10 @@ function App() {
               element: <Write />,
             },
           ],
+        },
+        {
+          path: 'login',
+          element: <Login />,
         },
       ],
     },
