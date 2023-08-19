@@ -1,9 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import Select from '@/components/write/Select/Select';
 import WriteInput from '@/components/write/WriteInput/WriteInput';
 import * as S from './Write.styles';
-import { writeData } from './writeData';
+import {
+  difficultyLevelType,
+  genreType,
+  playerCountType,
+  playTimeType,
+  writeData,
+} from './writeData';
 
 const Write = () => {
   const [isLoding, setIsLoding] = useState(true);
@@ -41,6 +48,31 @@ const Write = () => {
             type="date"
           />
         </S.WriteInputsBox>
+        <Select
+          array={genreType}
+          genres="true"
+          label="장르"
+          name="genre"
+          value={data ? genreType.indexOf(data.genre) + 1 : ''}
+        />
+        <Select
+          array={playerCountType}
+          label="인원"
+          name="playerCount"
+          value={data ? data.playerCount : ''}
+        />
+        <Select
+          array={difficultyLevelType}
+          label="난이도"
+          name="difficultyLevel"
+          value={data ? data.difficultyLevel : ''}
+        />
+        <Select
+          array={playTimeType}
+          label="플레이타임"
+          name="playTime"
+          value={data ? data.playTime : ''}
+        />
       </S.WriteForm>
     </S.WriteContainer>
   );
