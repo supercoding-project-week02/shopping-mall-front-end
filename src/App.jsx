@@ -4,11 +4,8 @@ import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Cart from './pages/cart/Cart';
 import Detail from './pages/Detail';
-<<<<<<< HEAD
-=======
 import Join from './pages/Join/Join';
 import Login from './pages/Login/Login';
->>>>>>> dev
 import Main from './pages/Main/Main';
 
 function App() {
