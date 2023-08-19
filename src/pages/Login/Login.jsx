@@ -1,21 +1,58 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { login } from '@/apis/user.js';
 import UserInput from '@/components/common/UserInput/UserInput';
+import { useInputs } from '@/hooks/useInputs.js';
 import HeaderLogo from '@/layouts/HeaderLogo';
 import { theme } from '@/styles/theme';
 import * as S from './Login.styles';
 
 const Login = () => {
+  // TODO: 실제 서비스할 때는 제거! (매번 입력하기 싫어서 입력)
+  const { value: loginForm, onChange } = useInputs({
+    email: 'admin@gmail.com',
+    password: 'admin1234',
+  });
+
   const linkToKakaoLogin = (e) => {
     e.preventDefault();
     console.log('kakao로그인');
   };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (loginForm.email.trim() === '' || loginForm.password.trim() === '') return;
+
+    login({
+      email: loginForm.email,
+      password: loginForm.password,
+    }).then((result) => {
+      console.log('login result', result);
+      // TODO: 로그인 성공 후 localstorage 에 값가져오기 및 전역 상태로 상태 추가
+    });
+  };
+
   return (
     <S.LoginContainer>
-      <S.LoginForm>
+      <S.LoginForm onSubmit={handleLogin}>
         <HeaderLogo />
-        <UserInput type="email" required placeholder="이메일" />
-        <UserInput type="password" required placeholder="비밀번호" />
+        <UserInput
+          type="email"
+          required
+          placeholder="이메일"
+          name="email"
+          value={loginForm.email}
+          onChange={onChange}
+        />
+        <UserInput
+          type="password"
+          required
+          placeholder="passowrd"
+          name="password"
+          value={loginForm.password}
+          onChange={onChange}
+        />
         <S.LoginButton
           bgColor={theme.color.black}
           fontColor="white"
