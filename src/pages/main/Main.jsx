@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import CarouselBox from '@/components/main/GenreCarousel/CarouselBox';
@@ -8,13 +8,17 @@ import { fetchItems } from '@/redux/action/mainActions';
 
 const Main = ({ fetchItems }) => {
   const [selectData, setSelectData] = useState({
-    page: null,
-    size: null,
-    sort: '',
+    page: 0,
+    size: 12,
+    sort: 'createdAt',
     searchKeyword: '',
-    genre: null,
+    genre: 0,
     category: [],
   });
+
+  useEffect(() => {
+    fetchItems(selectData);
+  }, [selectData]);
 
   const [categoryArray, setCategoryArray] = useState([]);
 
@@ -31,11 +35,7 @@ const Main = ({ fetchItems }) => {
 
   const sortHandler = () => {};
 
-  const searchHandler = () => {
-    const reqData = selectData;
-
-    fetchItems(reqData);
-  };
+  const searchHandler = () => {};
   console.log(selectData);
 
   return (

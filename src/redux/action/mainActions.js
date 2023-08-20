@@ -13,7 +13,7 @@ export const fetchItems = (reqData) => {
     dispatch(fetchItemsRequest());
 
     axios
-      .get('/api/v1/product', { params: reqData })
+      .get('http://52.79.168.48:8080/api/v1/product', { params: reqData })
       .then((res) => {
         if (res.data.status === '200') {
           const items = res.data.data;

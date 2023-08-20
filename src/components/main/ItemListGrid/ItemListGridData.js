@@ -23,7 +23,7 @@ const dummy = [
     genre: '퍼즐',
   },
   {
-    mainImageUrl: rummi,
+    mainImageUrl: '',
     productIdx: 3,
     title: '루미큐브 (Rummikub)',
     companyName: '김희진컴퍼니',
