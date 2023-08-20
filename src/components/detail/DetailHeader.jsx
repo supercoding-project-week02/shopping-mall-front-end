@@ -31,8 +31,8 @@ const contentdata = [
   },
 ];
 
-const dataTitle = contentdata.map((t) => <div key={t.id}>{t.title}</div>);
-const dataValue = contentdata.map((v) => <div key={v.id}>{v.value}</div>);
+const dataTitle = contentdata.map((t, index) => <div key={index}>{t.title}</div>);
+const dataValue = contentdata.map((v, index) => <div key={index}>{v.value}</div>);
 
 const DetailHeaders = () => {
   const [image, setImage] = useState('EmptyHeart');

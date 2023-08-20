@@ -63,6 +63,40 @@ export const ShowAllButton = styled.button`
 
 export const ReviewPage = styled.div``;
 
+export const ReviewHeader = styled.div`
+  width: 1160px;
+
+  h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+`;
+
+export const ReviewBtn = styled.button`
+  background-color: ${theme.color.black};
+  color: white;
+  font-size: 12px;
+  font-weight: bolder;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 0 13px 0;
+
+  &:hover {
+    background-color: ${theme.color.yellow};
+    color: ${theme.color.black};
+    transition: 0.3s ease-in-out;
+  }
+`;
+
+export const ReviewBoard = styled.div`
+  width: 1160px;
+  border-top: 1px solid ${theme.color.black};
+  margin-bottom: 20px;
+`;
+
 export const QandAPage = styled.div`
   margin-bottom: 200px;
 `;
@@ -76,35 +110,18 @@ export const QandAHeader = styled.div`
   }
   p {
     font-size: 13px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     color: #878687;
   }
 `;
 
-export const QandAButton = styled.button`
-  background-color: ${theme.color.black};
-  color: white;
-  font-size: 12px;
-  font-weight: bolder;
-  width: 100px;
-  height: 40px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px 0 13px 0;
-
-  &:hover {
-    background-color: ${theme.color.yellow};
-    color: ${theme.color.black};
-    transition: 0.3s ease-in-out;
-  }
-`;
+export const QandABtn = styled(ReviewBtn)``;
 
 export const QandAContent = styled.div`
   width: 1160px;
 `;
 
-export const QandABoard = styled.span`
+export const QandABoardTitle = styled.span`
   width: 1160px;
   height: 40px;
   display: flex;
@@ -129,10 +146,4 @@ export const QandATitle = styled.div`
   width: 700px;
   height: 40px;
 `;
-export const QandADate = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 230px;
-  height: 40px;
-`;
+export const QandADate = styled(UserName)``;
