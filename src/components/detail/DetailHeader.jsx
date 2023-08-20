@@ -3,11 +3,11 @@ import CounterBox from '@/components/common/counterbox/CounterBox.jsx';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { useState } from 'react';
 
-const contentdata = [
+const contentData = [
   {
     id: 1,
     title: '판매가',
-    value: '19,000원',
+    value: 19000,
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const contentdata = [
   {
     id: 3,
     title: '난이도',
-    value: '하',
+    value: '초급',
   },
   {
     id: 4,
@@ -27,12 +27,16 @@ const contentdata = [
   {
     id: 5,
     title: '재고 수량',
-    value: '15',
+    value: 7,
   },
 ];
 
-const dataTitle = contentdata.map((t) => <div key={t.id}>{t.title}</div>);
-const dataValue = contentdata.map((v) => <div key={v.id}>{v.value}</div>);
+const formatPrice = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};
+
+const dataTitle = contentData.slice(1).map((t) => <div key={t.id}>{t.title}</div>);
+const dataValue = contentData.slice(1).map((v) => <div key={v.id}>{v.value}</div>);
 
 const DetailHeaders = () => {
   const [image, setImage] = useState('EmptyHeart');
@@ -58,13 +62,15 @@ const DetailHeaders = () => {
         </S.Title>
         <S.ContentWrapper>
           <S.ContentTitle>
+            <div>{contentData[0].title}</div>
             <div>{dataTitle}</div>
           </S.ContentTitle>
           <S.ContentValue>
+            <div>{formatPrice(contentData[0].value)}원</div>
             <div>{dataValue}</div>
           </S.ContentValue>
         </S.ContentWrapper>
-        <CounterBox />
+        <CounterBox productPrice={contentData[0].value} productStock={contentData[4].value} />
         <S.ButtonWrapper>
           <S.PlusCartButton>장바구니</S.PlusCartButton>
           <S.ClickHeartButton onClick={changeHeartHandler}>
