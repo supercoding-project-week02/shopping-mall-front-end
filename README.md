@@ -10,10 +10,13 @@
 
 ## 🚀 네이밍 규칙
 
-- 폴더명: 소문자만 사용 (ex) => hooks
 - 함수명, 변수명: camelCase
 - 컴포넌트, 생성자 함수, Class: PascalCase
 - className: snake_case
+- 컴포넌트 한개가 포함된 폴더의 경우 : PascalCase(ex. Main, Detail )
+- 컴포넌트를 모아놓은 폴더의 경우 : 소문자 (ex. main, common)
+- 스타일 파일명 : 컴포넌트명.styles.jsx ( ex. Main.styles.jsx )
+- 다른 파트에서도 사용될 것 같은 컴포넌트는 common 폴더에서 관리( ex. Button, Input )
 
 ## 🚀 코드
 
