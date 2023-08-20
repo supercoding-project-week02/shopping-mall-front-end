@@ -28,9 +28,12 @@ export const HeaderLogoBox = styled.div`
   align-items: center;
   width: 10rem;
   height: 3rem;
-  background-color: grey;
   margin: 1rem;
   cursor: pointer;
+`;
+
+export const mainLogo = styled.img`
+  width: 100%;
 `;
 
 export const HeaderRightBox = styled.div`
