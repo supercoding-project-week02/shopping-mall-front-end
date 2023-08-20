@@ -16,8 +16,10 @@ export const WriteTextContainer = styled(TextContainer)`
 `;
 
 export const WriteTextLabel = styled(TextLabel)`
-  width: 70px;
+  width: auto;
   text-align: center;
+  font-size: medium;
+  font-weight: 700;
 `;
 
 export const WriteInputBox = styled(Input)`
