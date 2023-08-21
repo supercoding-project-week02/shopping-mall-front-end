@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+// Payment.jsx
 export const PageTitle = styled.div`
     padding: 50px;
     text-align: center;
@@ -38,7 +39,7 @@ export const ShipInfoBox = styled.div`
     position: relative;
     background-color: #FFE5E5;
     width: 600px;
-    height: 22%;
+    height: 25%;
 `;
 
 export const FixedDiv = styled.div`
@@ -242,7 +243,7 @@ export const ShipMemo = styled.div`
 export const ShipMemoSelectBox = styled.select`
     width: 550px;
     height: 40px;
-    margin: 10px 25px;
+    margin: 10px 25px 40px;
     padding: 10px;
     border: 1px solid gray;
     font-size: 15px;
@@ -449,5 +450,171 @@ export const PaySubmitA = styled.a`
 `;
 
 
-// export const = styled.div``;
-// export const = styled.div``;
+// PaymentShipMove.jsx
+export const Button = styled.a`
+    position: absolute;
+    border: none;
+    right: 871px;
+    top: 776px;
+    z-index: 999;
+    width: 68px;
+    height: 39px;
+    opacity: 0;
+`;
+
+// PaymentShipChgClick.jsx
+export const BodyDiv = styled.div`
+    position: relative;
+    background-color: #FFE5E5;
+    width: 600px;
+`;
+
+export const Ul = styled.div`
+    display: flex;
+    width: 550px;
+    margin: 10px 25px;
+    border-bottom: 1px solid gray;
+`;
+
+export const Li = styled.li`
+    width: 120px;
+    height: 35px;
+    border: 1px solid gray;
+    border-bottom: none;
+    text-align: center;
+    padding-top: 19px;
+`;
+
+export const ContentDiv = styled.div``;
+
+
+export const TopOuterDiv = styled.div`
+    display: flex;
+    width: 550px;
+    height: 40px;
+    margin: 20px 25px 0;
+    padding: 0;
+    font-size: 15px;
+`;
+export const TopCheckBox = styled.input`
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+`;
+export const InfoEqualDiv = styled.div`
+    font-size: 16px;
+    margin-left: 5px;
+    margin-top: 5px;
+`;
+
+export const NamePhoneOuterDiv = styled.div`
+    display: flex;
+    width: 550px;
+    margin: 0 25px;
+    padding: 0;
+`;
+
+export const NameInput = styled.input`
+    width: 270px;
+    height: 35px;
+    margin: 0 20px 10px 0;
+    font-size: 17px;
+    padding: 5px 10px;
+`;
+
+export const PhoneInput = styled.input`
+    width: 270px;
+    height: 35px;
+    margin: 0;
+    font-size: 17px;
+    padding: 5px 10px;
+`;
+
+export const ZipCodeFindOuterDiv = styled.div`
+    display: flex;
+    width: 550px;
+    margin: 0 25px;
+`;
+
+export const ZipCodeInput = styled.input`
+    width: 140px;
+    height: 35px;
+    margin-right: 15px;
+    font-size: 17px;
+    padding: 5px 10px;
+`;
+
+export const AdrsFindButton = styled.button`
+    width: 130px;
+    height: 40px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 5px 10px;
+`;
+
+export const AdrsInput = styled.input`
+    width: 530px;
+    margin: 10px 25px;
+    height: 35px;
+    font-size: 17px;
+    padding: 5px 10px;
+`;
+
+export const DetailAdrsInput = styled.input`
+    width: 530px;
+    margin: 10px 25px;
+    height: 35px;
+    font-size: 17px;
+    padding: 5px 10px;
+`;
+
+export const BottomOuterDiv = styled.div`
+    display: flex;
+    width: 550px;
+    margin: 10px 25px 15px;
+`;
+
+export const BottomCheckBox = styled.input`
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+`;
+
+export const AddAdrsListDiv = styled.div`
+    font-size: 16px;
+    margin-left: 5px;
+    margin-top: 5px;
+`;
+
+export const BottomSecondOuterDiv = styled.div`
+    display: flex;
+    width: 550px;
+    margin: 10px 25px 35px;
+`;
+
+export const SetFixedAdrsDiv = styled.div`
+    font-size: 16px;
+    margin-left: 5px;
+    margin-top: 5px;
+`;
+
+export const TabInnerAdrsModifyA = styled.a`
+    text-align: center;
+    position: absolute;
+    right: 22px;
+    top: 70px;
+    width: 40px;
+    height: 20px;
+    padding: 13px 15px 8px 15px;
+    font-weight: bold;
+    transition: .3s;
+    cursor: pointer;
+    }
+`;
+
+export const Outer = styled.div`
+    margin: 30px 30px;
+`;
