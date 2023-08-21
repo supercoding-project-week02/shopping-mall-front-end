@@ -454,12 +454,14 @@ export const PaySubmitA = styled.a`
 export const Button = styled.a`
     position: absolute;
     border: none;
+    border-radius: 50%;
+    color: yellow:
     right: 871px;
     top: 776px;
     z-index: 999;
-    width: 68px;
+    width: 39px;
     height: 39px;
-    opacity: 0;
+    opacity: 1;
 `;
 
 // PaymentShipChgClick.jsx
