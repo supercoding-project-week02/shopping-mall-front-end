@@ -1,7 +1,8 @@
 import * as S from './DetailHeader.styles';
-import CounterBox from '@/components/common/counterbox/CounterBox.jsx';
+import CounterBox from '@/components/common/CounterBox/CounterBox.jsx';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { useState } from 'react';
+import CartModal from '../common/CartModal/CartModal';
 
 const contentData = [
   {
@@ -40,6 +41,13 @@ const dataValue = contentData.slice(1).map((v) => <div key={v.id}>{v.value}</div
 
 const DetailHeaders = () => {
   const [image, setImage] = useState('EmptyHeart');
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const modalIsOpen = () => {
+    setIsOpen(true);
+  };
+
   const changeHeartHandler = () => {
     setImage(image === 'EmptyHeart' ? 'FullHeart' : 'EmptyHeart');
   };
@@ -72,7 +80,8 @@ const DetailHeaders = () => {
         </S.ContentWrapper>
         <CounterBox productPrice={contentData[0].value} productStock={contentData[4].value} />
         <S.ButtonWrapper>
-          <S.PlusCartButton>장바구니</S.PlusCartButton>
+          <S.PlusCartButton onClick={modalIsOpen}>장바구니</S.PlusCartButton>
+          <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />
           <S.ClickHeartButton onClick={changeHeartHandler}>
             찜하기
             <Icon name={image} size={20} />
