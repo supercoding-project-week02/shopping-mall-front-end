@@ -11,6 +11,8 @@ const CarouselCard = (props) => {
     setGenreFilter((prevItemList) => ({
       ...prevItemList,
       genre: clickedGenre,
+      searchKeyword: '',
+      sort: 'createdAt,desc',
     }));
   };
 

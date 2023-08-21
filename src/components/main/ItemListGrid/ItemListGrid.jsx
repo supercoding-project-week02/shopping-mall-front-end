@@ -31,7 +31,7 @@ const ItemListGrid = () => {
       } finally {
         setLoading(false);
       }
-    }, 500);
+    }, 0);
     debouncedFetchData();
     console.log(request);
   }, [request]);

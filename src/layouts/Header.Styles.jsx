@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

@@ -24,7 +24,9 @@ const HeaderRightBox = () => {
       setSearchFilter((prevItemList) => ({
         ...prevItemList,
         searchKeyword: searchKeyword,
+        sort: 'createdAt,desc',
       }));
+      setIsSearchBar(false);
     }
   };
 
