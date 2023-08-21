@@ -28,9 +28,12 @@ export const HeaderLogoBox = styled.div`
   align-items: center;
   width: 10rem;
   height: 3rem;
-  background-color: grey;
   margin: 1rem;
   cursor: pointer;
+`;
+
+export const mainLogo = styled.img`
+  width: 100%;
 `;
 
 export const HeaderRightBox = styled.div`
@@ -69,4 +72,10 @@ export const MyInfoBtnBox = styled.div`
 export const SearchBtnBox = styled.div`
   margin-right: 0.7rem;
   cursor: pointer;
+`;
+
+export const SearchBar = styled.input`
+  border: none;
+  background-color: #fafafa;
+  border-bottom: 1px solid grey;
 `;
