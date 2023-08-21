@@ -24,7 +24,6 @@ const FilterToggleBtn = (props) => {
       }));
       setIsOn(true);
     }
-    console.log(categoryFilter);
   };
 
   return (

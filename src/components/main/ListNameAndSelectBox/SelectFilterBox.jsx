@@ -1,9 +1,22 @@
+import { useRecoilState } from 'recoil';
+
+import { itemListState } from '@/recoil/atoms/itemListState';
 import * as S from './ListNameAndSelectBox.Styles';
 
 const SelectFilterBox = () => {
+  const [sortFilter, setSortFilter] = useRecoilState(itemListState);
+
+  const sortHandler = (event) => {
+    const clickedSort = event.target.value;
+    setSortFilter((prevItemList) => ({
+      ...prevItemList,
+      sort: clickedSort,
+    }));
+  };
+
   return (
     <S.SelectFilterBox>
-      <S.SelectFilter>
+      <S.SelectFilter onChange={sortHandler}>
         <option key="createdAt" value="createdAt,desc">
           최신순
         </option>
