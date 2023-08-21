@@ -65,7 +65,7 @@ export const ReviewPage = styled.div``;
 
 export const ReviewHeader = styled.div`
   width: 1160px;
-
+  border-bottom: 1px solid ${theme.color.black};
   h2 {
     font-size: 20px;
     margin-bottom: 15px;
@@ -103,6 +103,7 @@ export const QandAPage = styled.div`
 
 export const QandAHeader = styled.div`
   width: 1160px;
+  border-bottom: 1px solid ${theme.color.black};
 
   h2 {
     font-size: 20px;
@@ -130,20 +131,3 @@ export const QandABoardTitle = styled.span`
   font-size: 12px;
   padding: 3px 0 3px 0;
 `;
-
-export const UserName = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 230px;
-  height: 40px;
-`;
-
-export const QandATitle = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 700px;
-  height: 40px;
-`;
-export const QandADate = styled(UserName)``;

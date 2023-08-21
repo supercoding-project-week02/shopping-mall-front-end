@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import * as S from './DetailInfo.styles';
+import DetailReviewPage from './DetailReviewPage';
+import DetailQandAPage from './DetailQandAPage';
 
 export default function DetailInfo() {
   const [showAll, setShowAll] = useState(false);
@@ -30,7 +32,7 @@ export default function DetailInfo() {
           <h2>구매평</h2>
           <S.ReviewBtn>구매평 작성</S.ReviewBtn>
         </S.ReviewHeader>
-        <S.ReviewBoard>리뷰내용</S.ReviewBoard>
+        <DetailReviewPage />
       </S.ReviewPage>
       <S.QandAPage>
         <S.QandAHeader>
@@ -39,11 +41,7 @@ export default function DetailInfo() {
           <S.QandABtn>상품문의</S.QandABtn>
         </S.QandAHeader>
         <S.QandAContent>
-          <S.QandABoardTitle>
-            <S.UserName>작성자</S.UserName>
-            <S.QandATitle>제목</S.QandATitle>
-            <S.QandADate>등록일</S.QandADate>
-          </S.QandABoardTitle>
+          <DetailQandAPage />
         </S.QandAContent>
       </S.QandAPage>
     </S.InfoContainer>
