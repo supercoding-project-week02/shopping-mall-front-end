@@ -25,6 +25,7 @@ const HeaderRightBox = () => {
         ...prevItemList,
         searchKeyword: searchKeyword,
       }));
+      setIsSearchBar(false);
     }
   };
 
