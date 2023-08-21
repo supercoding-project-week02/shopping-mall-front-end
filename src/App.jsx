@@ -7,6 +7,7 @@ import Detail from './pages/Detail';
 import Join from './pages/Join/Join';
 import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
+import Write from './pages/Write/Write';
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +34,16 @@ function App() {
         {
           path: 'cart',
           element: <Cart />,
+        },
+        {
+          path: 'write',
+          element: <Write />,
+          children: [
+            {
+              path: ':productId',
+              element: <Write />,
+            },
+          ],
         },
         {
           path: 'login',
