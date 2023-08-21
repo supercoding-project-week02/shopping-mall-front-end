@@ -73,3 +73,9 @@ export const SearchBtnBox = styled.div`
   margin-right: 0.7rem;
   cursor: pointer;
 `;
+
+export const SearchBar = styled.input`
+  border: none;
+  background-color: #fafafa;
+  border-bottom: 1px solid grey;
+`;

@@ -5,7 +5,7 @@ import * as S from './Carousel.Styles.jsx';
 import CarouselCard from './CarouselCard';
 import Images from './CarouselData';
 
-const CarouselBox = (props) => {
+const CarouselBox = () => {
   const settings = {
     arrow: true,
     infinite: false,
@@ -18,13 +18,7 @@ const CarouselBox = (props) => {
     <S.GenreCarouselWrapper>
       <S.StyledSlider {...settings}>
         {Images.map((obj, index) => (
-          <CarouselCard
-            key={index}
-            idx={index}
-            text={obj.text}
-            image={obj.image}
-            genreHandler={props.genreHandler}
-          />
+          <CarouselCard key={index} idx={index} text={obj.text} image={obj.image} />
         ))}
       </S.StyledSlider>
     </S.GenreCarouselWrapper>

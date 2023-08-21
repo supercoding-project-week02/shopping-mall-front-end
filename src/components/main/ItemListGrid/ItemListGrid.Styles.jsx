@@ -50,3 +50,5 @@ export const GridPriceBox = styled.div`
   color: #ffb002;
   font-weight: bold;
 `;
+
+export const NoItemGrid = styled.div``;
