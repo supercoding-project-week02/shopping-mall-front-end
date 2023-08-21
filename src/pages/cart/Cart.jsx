@@ -1,25 +1,9 @@
 import React from 'react';
 import * as S from './Cart.Styles';
-import { Icon } from '@/components/common/Icon/Icon';
+// import { Icon } from '@/components/common/Icon/Icon';
 
-// import { ReactComponent as DeleteButton } from "/../assets/cart/delete.svg";
-
-// 저 왔습니다!!
 const Cart = () => {
 
-    const icon = () => {
-        <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke-width="1.5" 
-            stroke="currentColor" 
-            class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-    }
-
-    // 
     return (
         <S.OuterDiv>
             <S.TopDiv>
@@ -28,7 +12,7 @@ const Cart = () => {
             </S.TopDiv>
             <S.ItemTable>
                 <S.Thead>
-                    <S.Td1>상품 정보 <Icon name="IconTest" size={50} onClick={() => alert('아이콘 클릭')}  /></S.Td1>
+                    <S.Td1>상품 정보</S.Td1>
                     <S.Td2>수량</S.Td2>
                     <S.Td3>주문금액</S.Td3>
                     <S.Td4>배송 정보</S.Td4>
@@ -97,3 +81,5 @@ const Cart = () => {
 };
 
 export default Cart;
+
+// <Icon name="IconTest" size={50} onClick={() => alert('아이콘 클릭')}  />
