@@ -1,5 +1,7 @@
 // TODO: API 나오면 해당 부분 제거 할 수도 있음
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+import { getUserPayMoney } from '@/apis/user.js';
 
 export const UserInfoContext = createContext(null);
 
@@ -8,11 +10,17 @@ const USER = {
   password: '1234',
   name: 'Tester',
   phoneNumber: '010-1234-5678',
-  payMoney: 20000,
+  payMoney: 0,
   address: '서울시 마포구',
 };
 export const UserInfoProvider = ({ children }) => {
   const [user, setUser] = useState(USER);
+
+  useEffect(() => {
+    getUserPayMoney().then((data) => {
+      setUser((prev) => ({ ...prev, payMoney: data.data.leftMoney }));
+    });
+  }, []);
 
   const handleChangeUser = (name, value) => {
     setUser({
