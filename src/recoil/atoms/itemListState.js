@@ -5,9 +5,9 @@ export const itemListState = atom({
   default: {
     page: 0,
     size: 15,
-    sort: 'createdAt',
+    sort: 'createdAt,desc',
     searchKeyword: '',
-    genre: 0,
-    category: [],
+    genre: '전체',
+    category: '',
   },
 });

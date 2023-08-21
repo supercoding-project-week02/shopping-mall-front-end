@@ -18,11 +18,14 @@ export const GridContainer = styled.div`
 
 export const GridCard = styled.div``;
 
-export const GridImgBox = styled.div``;
+export const GridImgBox = styled.div`
+  cursor: pointer;
+`;
 
 export const GridImg = styled.img`
   border-radius: 0.5rem;
   width: 20rem;
+  height: 20rem;
   color: #fafafa;
 `;
 
@@ -47,4 +50,8 @@ export const GridPriceBox = styled.div`
   font-size: 0.9rem;
   color: #ffb002;
   font-weight: bold;
+`;
+
+export const NoItemGrid = styled.div`
+  margin-top: 6rem;
 `;

@@ -10,5 +10,6 @@ export { ReactComponent as IconWrite } from './iconWrite.svg';
 export { ReactComponent as IconPencil } from './iconPencil.svg';
 export { ReactComponent as IconCheck } from './iconCheck.svg';
 export { ReactComponent as IconX } from './iconX.svg';
+export { ReactComponent as mainLogo } from './superBoardingLogo.svg';
 export { ReactComponent as EmptyHeart } from './emptyHeart.svg';
 export { ReactComponent as FullHeart } from './fullHeart.svg';
