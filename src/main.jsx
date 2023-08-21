@@ -13,11 +13,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
      우선 임시로 state 기반으로 동작하는거 확인용 - 지우
      */}
     <RecoilRoot>
-      <NiceModal.Provider>
-        <UserInfoProvider>
+      <UserInfoProvider>
+        <NiceModal.Provider>
           <App />
-        </UserInfoProvider>
-      </NiceModal.Provider>
+        </NiceModal.Provider>
+      </UserInfoProvider>
     </RecoilRoot>
   </React.StrictMode>,
 );
