@@ -18,7 +18,10 @@ export const UserInfoProvider = ({ children }) => {
 
   useEffect(() => {
     getUserPayMoney().then((data) => {
-      setUser((prev) => ({ ...prev, payMoney: data.data.leftMoney }));
+      if (data.status === 200) {
+        // GYU-TODO: 임시 구현으로 추후 삭제 예정, 다른 걸로 대체
+        setUser((prev) => ({ ...prev, payMoney: data.data.leftMoney || 0 }));
+      }
     });
   }, []);
 
