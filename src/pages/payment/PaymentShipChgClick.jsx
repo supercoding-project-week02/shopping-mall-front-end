@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as S from '@/pages/payment/Payment.Styles';
+import DaumPost from "./DaumPost";
 
 const PaymentShipChgClick = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -56,7 +57,8 @@ const PaymentShipChgClick = () => {
                     </S.NamePhoneOuterDiv>
                     <S.ZipCodeFindOuterDiv>
                         <S.ZipCodeInput type="text" placeholder="우편번호" />
-                        <S.AdrsFindButton>주소찾기</S.AdrsFindButton>
+                        <DaumPost />
+                        {/* <S.AdrsFindButton>주소찾기</S.AdrsFindButton> */}
                     </S.ZipCodeFindOuterDiv>
                     <S.AdrsInput type="text" placeholder="주소" />
                     <S.DetailAdrsInput type="text" placeholder="상세주소" />
