@@ -10,15 +10,6 @@ export const ItemListWrapper = styled.div`
 
 export const ItemListBox = styled.div``;
 
-export const GridListLengthBox = styled.div`
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
-`;
-
-export const GridListLength = styled.span`
-  color: #ffb002;
-`;
-
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);

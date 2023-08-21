@@ -1,55 +1,24 @@
-import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { RecoilRoot } from 'recoil';
 
+import FilterOption from '@/components/main/FilterOption/FilterOption';
 import CarouselBox from '@/components/main/GenreCarousel/CarouselBox';
 import ItemListGrid from '@/components/main/ItemListGrid/ItemListGrid';
-import * as S from '@/pages/Main/Main.Styles.jsx';
-import { fetchItems } from '@/redux/action/mainActions';
+import ListNameAndSelectBox from '@/components/main/ListNameAndSelectBox/ListNameAndSelectBox';
+import * as S from '@/pages/main/Main.Styles.jsx';
 
-const Main = ({ fetchItems }) => {
-  const [selectData, setSelectData] = useState({
-    page: 0,
-    size: 12,
-    sort: 'createdAt',
-    searchKeyword: '',
-    genre: 0,
-    category: [],
-  });
-
-  useEffect(() => {
-    fetchItems(selectData);
-  }, [selectData]);
-
-  const [categoryArray, setCategoryArray] = useState([]);
-
-  const categoryArrayHandler = () => {};
-
-  const genreHandler = (event) => {
-    setSelectData((prevData) => ({
-      ...prevData,
-      genre: event.target.id,
-    }));
-  };
-
-  const categoryHandler = () => {};
-
-  const sortHandler = () => {};
-
-  const searchHandler = () => {};
-  console.log(selectData);
-
+const Main = () => {
   return (
-    <S.MainPageWrapper>
-      <S.MainContainer>
-        <CarouselBox genreHandler={genreHandler} />
-        <ItemListGrid />
-      </S.MainContainer>
-    </S.MainPageWrapper>
+    <RecoilRoot>
+      <S.MainPageWrapper>
+        <S.MainContainer>
+          <CarouselBox />
+          <FilterOption />
+          <ListNameAndSelectBox />
+          <ItemListGrid />
+        </S.MainContainer>
+      </S.MainPageWrapper>
+    </RecoilRoot>
   );
 };
 
-const mapDispatchToProps = {
-  fetchItems,
-};
-
-export default connect(null, mapDispatchToProps)(Main);
+export default Main;

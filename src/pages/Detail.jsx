@@ -1,5 +1,15 @@
+import React from 'react';
+
+import DetailHeaders from '@/components/detail/DetailHeader';
+import DetailInfo from '@/components/detail/DetailInfo';
+
 const Detail = () => {
-  return <div>디테일 페이지 입니다.</div>;
+  return (
+    <div>
+      <DetailHeaders />
+      <DetailInfo />
+    </div>
+  );
 };
 
 export default Detail;
