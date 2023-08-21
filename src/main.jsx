@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 import NiceModal from '@ebay/nice-modal-react';
 
+import { UserInfoProvider } from '@/contexts/UserInfo.jsx';
 import App from './App.jsx';
 import './index.css';
 
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
      */}
     <RecoilRoot>
       <NiceModal.Provider>
-        <App />
+        <UserInfoProvider>
+          <App />
+        </UserInfoProvider>
       </NiceModal.Provider>
     </RecoilRoot>
   </React.StrictMode>,
