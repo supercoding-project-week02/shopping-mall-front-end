@@ -18,7 +18,7 @@ const CarouselBox = () => {
     <S.GenreCarouselWrapper>
       <S.StyledSlider {...settings}>
         {Images.map((obj, index) => (
-          <CarouselCard key={index} idx={index} text={obj.text} image={obj.image} />
+          <CarouselCard key={index} text={obj.text} image={obj.image} />
         ))}
       </S.StyledSlider>
     </S.GenreCarouselWrapper>

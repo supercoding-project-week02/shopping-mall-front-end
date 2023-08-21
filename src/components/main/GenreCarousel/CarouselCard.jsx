@@ -7,7 +7,7 @@ const CarouselCard = (props) => {
   const [genreFilter, setGenreFilter] = useRecoilState(itemListState);
 
   const genreHandler = (event) => {
-    const clickedGenre = Number(event.target.id);
+    const clickedGenre = event.target.id;
     setGenreFilter((prevItemList) => ({
       ...prevItemList,
       genre: clickedGenre,
@@ -17,7 +17,7 @@ const CarouselCard = (props) => {
   return (
     <S.CardDiv>
       <S.CardImgDiv>
-        <S.CardImg src={props.image} alt="대체 이미지" id={props.idx} onClick={genreHandler} />
+        <S.CardImg src={props.image} alt="대체 이미지" id={props.text} onClick={genreHandler} />
       </S.CardImgDiv>
       <S.CardText>{props.text}</S.CardText>
     </S.CardDiv>
