@@ -27,5 +27,5 @@ export const SelectFilterBox = styled.div`
 export const SelectFilter = styled.select`
   background-color: #fafafa;
   border: none;
-  max-width: 4rem;
+  width: 4rem;
 `;
