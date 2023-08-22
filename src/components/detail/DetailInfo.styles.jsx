@@ -99,6 +99,7 @@ export const ReviewBoard = styled.div`
 `;
 
 export const QandAPage = styled.div`
+  margin-top: 50px;
   margin-bottom: 200px;
 `;
 
