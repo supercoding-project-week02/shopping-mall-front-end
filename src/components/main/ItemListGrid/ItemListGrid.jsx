@@ -22,7 +22,7 @@ const ItemListGrid = () => {
           params: request,
         });
         if (res.data.status === 200) {
-          setItemList(res.data.data);
+          setItemList(res.data.data.contents);
           if (res.data.data.length === 0) setIsItem(false);
           else if (res.data.data.length > 0) setIsItem(true);
         } else window.alert(res.data.message);

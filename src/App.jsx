@@ -4,9 +4,10 @@ import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Cart from './pages/cart/Cart';
 import Detail from './pages/Detail';
+import Main from './pages/main/Main';
+import Payment from './pages/payment/Payment';
 import Join from './pages/Join/Join';
 import Login from './pages/Login/Login';
-import Main from './pages/Main/Main';
 import Write from './pages/Write/Write';
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
         {
           path: 'mypage',
           element: <MyPage />,
+        },
+        {
+          path: 'payment',
+          element: <Payment />,
         },
         {
           path: 'cart',
