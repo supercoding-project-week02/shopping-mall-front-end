@@ -5,15 +5,6 @@ import { getUserInfo, getUserPayMoney } from '@/apis/user.js';
 
 export const UserInfoContext = createContext(null);
 
-const USER = {
-  // email: 'helloworld@gmail.com',
-  // imageUrl: null,
-  // name: 'admin',
-  // payMoney: 22000,
-  // phone: '010-1234-5678',
-  // profileIdx: 60,
-  // role: 'SELLER',
-};
 export const UserInfoProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
@@ -37,9 +28,9 @@ export const UserInfoProvider = ({ children }) => {
     });
   };
 
-  const handleChargePayMoney = (amount) => {
-    handleChangeUser('payMoney', user.payMoney + Number(amount));
-  };
+  // const handleChargePayMoney = (amount) => {
+  //   handleChangeUser('payMoney', user.payMoney + Number(amount));
+  // };
 
   const handleChangeAddress = (address) => {
     handleChangeUser('address', address);
@@ -50,7 +41,7 @@ export const UserInfoProvider = ({ children }) => {
       value={{
         user,
         onChangeUser: handleChangeUser,
-        onChargePayMoney: handleChargePayMoney,
+        // onChargePayMoney: handleChargePayMoney,
         onChangeAddress: handleChangeAddress,
       }}
     >

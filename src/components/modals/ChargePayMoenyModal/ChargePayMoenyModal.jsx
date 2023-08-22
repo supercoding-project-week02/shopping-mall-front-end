@@ -1,22 +1,36 @@
 import NiceModal, { useModal } from '@ebay/nice-modal-react';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import { chargePayMoney } from '@/apis/user.js';
 import Modal from '@/components/common/Modal/Modal.jsx';
 import ModalContent from '@/components/common/Modal/ModalContent.jsx';
 import ModalHeader from '@/components/common/Modal/ModalHeader.jsx';
 import { useUserInfo } from '@/contexts/UserInfo.jsx';
 import { useInput } from '@/hooks/useInput.js';
+import { QUERY_KEYS } from '@/queries/queryKeys.js';
 import * as S from './ChargePayMoenyModal.styles.jsx';
 
 const ChargePayMoenyModal = () => {
   const modal = useModal();
-  const { user, onChargePayMoney } = useUserInfo();
+  const { mutate: chargeMoeny } = useMutation((payload) => chargePayMoney(payload));
+  const queryClient = useQueryClient();
+
+  const { user } = useUserInfo();
   const { value, onChange, onReset } = useInput('');
 
   const handleCharge = () => {
     if (value.trim() === '') return;
 
-    // TODO: 충전하기 로직 수행
-    onChargePayMoney(value);
+    chargeMoeny(
+      {
+        rechargeMoney: value,
+      },
+      {
+        onSuccess: async () => {
+          await queryClient.invalidateQueries([QUERY_KEYS.profile]);
+        },
+      },
+    );
     modal.hide();
     onReset();
   };
