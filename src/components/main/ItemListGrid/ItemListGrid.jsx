@@ -27,15 +27,9 @@ const ItemListGrid = () => {
         });
         const newData = res.data.data.contents;
         if (res.data.status === 200) {
-<<<<<<< HEAD
-          setItemList(res.data.data.contents);
-          if (res.data.data.length === 0) setIsItem(false);
-          else if (res.data.data.length > 0) setIsItem(true);
-=======
           setItemList(newData);
           if (newData.length === 0) setIsItem(false);
           else setIsItem(true);
->>>>>>> feature/infiniteScroll
         } else window.alert(res.data.message);
       } catch (error) {
         console.log(error);

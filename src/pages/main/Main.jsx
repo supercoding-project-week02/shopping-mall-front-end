@@ -3,7 +3,6 @@ import { RecoilRoot } from 'recoil';
 import FilterOption from '@/components/main/FilterOption/FilterOption';
 import CarouselBox from '@/components/main/GenreCarousel/CarouselBox';
 import ItemListGrid from '@/components/main/ItemListGrid/ItemListGrid';
-import ListNameAndSelectBox from '@/components/main/ListNameAndSelectBox/ListNameAndSelectBox.jsx';
 import * as S from '@/pages/main/Main.Styles.jsx';
 
 const Main = () => {
@@ -13,7 +12,6 @@ const Main = () => {
         <S.MainContainer>
           <CarouselBox />
           <FilterOption />
-          <ListNameAndSelectBox />
           <ItemListGrid />
         </S.MainContainer>
       </S.MainPageWrapper>
