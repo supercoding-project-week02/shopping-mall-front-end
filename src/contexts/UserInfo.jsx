@@ -1,5 +1,7 @@
 // TODO: API 나오면 해당 부분 제거 할 수도 있음
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+
+import { getUserPayMoney } from '@/apis/user.js';
 
 export const UserInfoContext = createContext(null);
 
@@ -8,11 +10,20 @@ const USER = {
   password: '1234',
   name: 'Tester',
   phoneNumber: '010-1234-5678',
-  payMoney: 20000,
+  payMoney: 0,
   address: '서울시 마포구',
 };
 export const UserInfoProvider = ({ children }) => {
   const [user, setUser] = useState(USER);
+
+  useEffect(() => {
+    getUserPayMoney().then((data) => {
+      if (data.status === 200) {
+        // GYU-TODO: 임시 구현으로 추후 삭제 예정, 다른 걸로 대체
+        setUser((prev) => ({ ...prev, payMoney: data.data.leftMoney || 0 }));
+      }
+    });
+  }, []);
 
   const handleChangeUser = (name, value) => {
     setUser({
