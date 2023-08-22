@@ -26,6 +26,7 @@ const UserProfile = () => {
 
   if (isError) return <div>에러가 발생했습니다.</div>;
   const user = data.data;
+
   return (
     <S.UserProfileWrapper>
       {/* TODO: 추후에 이미지 추가 기능은 해당 부분으로 변경 */}
@@ -58,11 +59,16 @@ const UserProfile = () => {
           rightSlot={ChargeButton}
         />
         <S.Line />
-        <TextField label="배송지" value={user.address} rightSlot={AddressButton} />
+        <TextField label="배송지" value={getAddress(user.address)} rightSlot={AddressButton} />
         <S.Line />
       </S.UserInfoWrapper>
     </S.UserProfileWrapper>
   );
 };
+
+function getAddress(address) {
+  if (!address) return '';
+  return `${address.address} ${address.addressDetail} (${address.zipCode})`;
+}
 
 export default UserProfile;
