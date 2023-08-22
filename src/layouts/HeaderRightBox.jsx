@@ -4,11 +4,14 @@ import { useRecoilState } from 'recoil';
 
 import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { itemListState } from '@/recoil/atoms/itemListState.js';
+import { customerState, loginState } from '@/recoil/atoms/userState.js';
 import * as S from './Header.Styles.jsx';
 
 const HeaderRightBox = () => {
-  let isCustomer = false;
-  let isLogin = true;
+  // recoil의 상태 정보 불러오기
+  // const getUser = useRecoilValue(userState);
+  const [isLogin, setIsLogin] = useRecoilState(loginState);
+  const [isCustomer, setIsCustomer] = useRecoilState(customerState);
 
   const [isSearchBar, setIsSearchBar] = useState(false);
   const [searchFilter, setSearchFilter] = useRecoilState(itemListState);

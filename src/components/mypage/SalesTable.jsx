@@ -1,12 +1,23 @@
+import { useEffect, useState } from 'react';
+
+import { getSalesHistory } from '@/apis/index.js';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
-import { mockColumns, mockDatas } from '@/mocks/mockData.js';
+import { mockColumns } from '@/mocks/mockData.js';
 import * as S from './Mypage.styles.jsx';
 
 const salesColumns = mockColumns['판매목록'];
-const data = mockDatas['판매목록'] || [];
+// GYU-TODO: 삭제 예정
+// const data = mockDatas['판매목록'] || [];
 
 const SalesTable = () => {
-  const history = data.map((product, index) => ({
+  const [salesHistory, setSalesHistory] = useState([]);
+
+  // GYU-TODO: 삭제 예정, 패턴 변경 / 로그인 후 제대로 요청되는지 확인 용
+  useEffect(() => {
+    getSalesHistory().then((data) => setSalesHistory(data.data));
+  }, []);
+
+  const history = salesHistory.map((product, index) => ({
     key: index,
     id: product.tradeId,
     상품정보: (

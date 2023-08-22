@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 import NiceModal from '@ebay/nice-modal-react';
 
+import { UserInfoProvider } from '@/contexts/UserInfo.jsx';
 import App from './App.jsx';
 import './index.css';
 
@@ -12,9 +13,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
      우선 임시로 state 기반으로 동작하는거 확인용 - 지우
      */}
     <RecoilRoot>
-      <NiceModal.Provider>
-        <App />
-      </NiceModal.Provider>
+      <UserInfoProvider>
+        <NiceModal.Provider>
+          <App />
+        </NiceModal.Provider>
+      </UserInfoProvider>
     </RecoilRoot>
   </React.StrictMode>,
 );
