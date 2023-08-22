@@ -12,7 +12,7 @@ import * as S from './ChargePayMoenyModal.styles.jsx';
 
 const ChargePayMoenyModal = () => {
   const modal = useModal();
-  const { mutate: chargeMoeny } = useMutation((payload) => chargePayMoney(payload));
+  const { mutate: chargeMoney } = useMutation((payload) => chargePayMoney(payload));
   const queryClient = useQueryClient();
 
   const { user } = useUserInfo();
@@ -21,7 +21,7 @@ const ChargePayMoenyModal = () => {
   const handleCharge = () => {
     if (value.trim() === '') return;
 
-    chargeMoeny(
+    chargeMoney(
       {
         rechargeMoney: value,
       },
@@ -41,7 +41,7 @@ const ChargePayMoenyModal = () => {
       <ModalHeader onClose={modal.hide} />
       <ModalContent>
         <S.PayMoneyModalContent>
-          <span>현재 금액 : {user.payMoney.toLocaleString('ko-KR')}</span>
+          {/*<span>현재 금액 : {user.payMoney.toLocaleString('ko-KR')}</span>*/}
           <S.ChargeAmountInput
             type="number"
             placeholder="충전할 금액을 입력해주세요"

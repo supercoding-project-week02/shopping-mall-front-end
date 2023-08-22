@@ -19,3 +19,8 @@ export const chargePayMoney = async (payload) => {
   const response = await client.post('/user/recharge', payload);
   return response.data;
 };
+
+export const changeAddress = async (payload) => {
+  const response = await client.post('/user/address', payload);
+  return response.data;
+};
