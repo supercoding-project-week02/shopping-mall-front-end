@@ -13,10 +13,9 @@ const sellerMenus = ['판매목록', '문의'];
 const customerMenus = ['구매목록', '장바구니', '문의'];
 const MyPage = () => {
   // 판매목록, 구매목록, 장바구니, 찜목록, 리뷰, 문의
-  const [activeMenu, setActiveMenu] = useState('판매목록');
-
   const isCustomer = useRecoilValue(customerState);
   const menus = isCustomer ? customerMenus : sellerMenus;
+  const [activeMenu, setActiveMenu] = useState(menus[0]);
 
   return (
     <S.MyPageWrapper>

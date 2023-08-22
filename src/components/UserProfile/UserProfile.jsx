@@ -1,5 +1,7 @@
 import { useModal } from '@ebay/nice-modal-react';
+import { useQuery } from '@tanstack/react-query';
 
+import { getUserInfo } from '@/apis/user.js';
 import IconProfile from '@/assets/iconProfile.svg';
 import TextField from '@/components/common/TextField/TextField.jsx';
 import ChargePayMoneyModal from '@/components/modals/ChargePayMoenyModal/ChargePayMoenyModal.jsx';
@@ -8,18 +10,22 @@ import { useUserInfo } from '@/contexts/UserInfo.jsx';
 import * as S from './UserProfile.styles.jsx';
 
 const UserProfile = () => {
-  const { user, onChangeUser } = useUserInfo();
+  const { onChangeUser } = useUserInfo();
+
+  const { data, isError } = useQuery(['profile'], getUserInfo);
   const chargePayMoneyModal = useModal(ChargePayMoneyModal);
   const shippingAddressModal = useModal(ShippingAddressModal);
 
   const ChargeButton = <S.Button onClick={chargePayMoneyModal.show}>충전</S.Button>;
   const AddressButton = <S.Button onClick={shippingAddressModal.show}>배송지 변경</S.Button>;
 
-  if (!user) {
+  if (!data) {
     // 데이터가 올바르게 오지 않는 경우 처리 필요
     return null;
   }
 
+  if (isError) return <div>에러가 발생했습니다.</div>;
+  const user = data.data;
   return (
     <S.UserProfileWrapper>
       {/* TODO: 추후에 이미지 추가 기능은 해당 부분으로 변경 */}
