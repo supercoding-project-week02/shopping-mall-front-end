@@ -8,6 +8,6 @@ export const itemListState = atom({
     sort: 'createdAt,desc',
     searchKeyword: '',
     genre: '전체',
-    category: '',
+    category: [],
   },
 });

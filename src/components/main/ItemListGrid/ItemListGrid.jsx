@@ -1,5 +1,6 @@
 import axios from 'axios';
 import debounce from 'lodash.debounce';
+import qs from 'qs';
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
@@ -20,18 +21,22 @@ const ItemListGrid = () => {
         setLoading(true);
         const res = await axios.get('http://52.79.168.48:8080/api/v1/product/', {
           params: request,
+          paramsSerializer: (params) => {
+            return qs.stringify(params, { arrayFormat: 'comma' });
+          },
         });
+        const newData = res.data.data.contents;
         if (res.data.status === 200) {
-          setItemList(res.data.data.contents);
-          if (res.data.data.length === 0) setIsItem(false);
-          else if (res.data.data.length > 0) setIsItem(true);
+          setItemList(newData);
+          if (newData.length === 0) setIsItem(false);
+          else setIsItem(true);
         } else window.alert(res.data.message);
       } catch (error) {
         console.log(error);
       } finally {
         setLoading(false);
       }
-    }, 500);
+    }, 0);
     debouncedFetchData();
     console.log(request);
   }, [request]);

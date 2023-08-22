@@ -66,7 +66,7 @@ const Root = () => {
   return (
     <>
       <MainHeader />
-      <main style={{ marginTop: '7rem' }}>
+      <main>
         <Outlet />
       </main>
     </>
