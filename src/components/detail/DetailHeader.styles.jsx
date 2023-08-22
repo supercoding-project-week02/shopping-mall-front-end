@@ -58,6 +58,10 @@ export const ContentTitle = styled.div`
   }
 `;
 
+export const SaleTitle = styled.div`
+  padding-left: 3px;
+`;
+
 export const ContentValue = styled.div`
   div {
     margin-bottom: 20px;
