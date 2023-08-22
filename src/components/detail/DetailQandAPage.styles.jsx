@@ -4,7 +4,6 @@ import { theme } from '@/styles/theme';
 export const QContainer = styled.span`
   width: 1160px;
   height: 50px;
-  border-bottom: 1px solid ${theme.color.gray};
   padding-top: 3px;
 `;
 
@@ -13,6 +12,7 @@ export const QTitleHeader = styled.span`
   height: 50px;
   display: flex;
   cursor: pointer;
+  border-bottom: 1px solid ${theme.color.gray};
 `;
 
 export const QNumber = styled.div`
@@ -44,29 +44,61 @@ export const QDate = styled.div`
   align-items: center;
 `;
 
-export const QTitleContent = styled.span`
-  display: flex;
-  justify-content: space-evenly;
+export const QandA = styled.span`
   width: 1160px;
   height: 80px;
 `;
 
-export const QContentContainer = styled.span`
-  width: 1160px;
-  height: 80px;
+export const QContentWrapper = styled.span`
   display: flex;
+  justify-content: space-evenly;
+  padding-right: 25px;
+`;
+
+export const QContent = styled.span`
+  width: 1160px;
+  height: 60px;
+  display: flex;
+  align-items: center;
   h2 {
-    padding-left: 95px;
-    padding-right: 5px;
+    padding: 0 5px 5px 95px;
     font-size: 20px;
     font-weight: bolder;
     color: ${theme.color.yellow};
   }
 `;
 
-export const QContent = styled.div`
-  width: 730px;
-  justify-content: start;
+export const Q = styled.div`
+  display: flex;
   align-items: center;
+  font-size: 14px;
+`;
+
+export const IconWrapper = styled.div`
   padding-top: 10px;
+  padding-right: 10px;
+`;
+
+export const AContentWrapper = styled.span`
+  display: flex;
+`;
+
+export const AContent = styled.div`
+  width: 1160px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: ${theme.color.gray};
+  h2 {
+    padding: 0 5px 5px 110px;
+    font-size: 20px;
+    font-weight: bolder;
+    color: ${theme.color.yellow};
+  }
+`;
+
+export const A = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 14px;
 `;

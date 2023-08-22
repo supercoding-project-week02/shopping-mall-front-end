@@ -54,6 +54,8 @@ Icon.propTypes = {
     'IconPencil',
     'IconCheck',
     'IconX',
+    'mainLogo',
+    'IconChat',
   ]).isRequired,
   size: PropTypes.number,
   width: PropTypes.string,

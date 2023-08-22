@@ -3,10 +3,11 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Cart from './pages/cart/Cart';
-import Detail from './pages/Detail';
+import Detail from './pages/Detail/Detail';
 import Join from './pages/Join/Join';
 import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
+import Write from './pages/Write/Write';
 
 function App() {
   const router = createBrowserRouter([
@@ -33,6 +34,16 @@ function App() {
         {
           path: 'cart',
           element: <Cart />,
+        },
+        {
+          path: 'write',
+          element: <Write />,
+          children: [
+            {
+              path: ':productId',
+              element: <Write />,
+            },
+          ],
         },
         {
           path: 'login',

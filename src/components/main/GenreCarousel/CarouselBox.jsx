@@ -10,7 +10,7 @@ const CarouselBox = () => {
     arrow: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 9,
+    slidesToShow: 7,
     slidesToScroll: 1,
   };
 

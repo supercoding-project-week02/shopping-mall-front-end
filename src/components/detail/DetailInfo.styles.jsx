@@ -15,8 +15,9 @@ export const InfoBar = styled.span`
   align-items: center;
   top: 0px;
   z-index: 100;
-  width: 1161px;
+  width: 100%;
   height: 42px;
+  background-color: #f4f4f4;
 `;
 export const DetailInfomationBar = styled.div`
   border: none;
@@ -37,9 +38,7 @@ export const ImgContainer = styled.div`
   overflow: hidden;
   margin-top: 20px;
   width: 800px;
-  height: ${(props) => {
-    props.showAll ? '100%' : '100px';
-  }};
+  height: ${(props) => (props.showAll ? 'auto' : '500px')};
 `;
 
 export const Img = styled.img``;
@@ -48,6 +47,8 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fafafa;
+  margin: 10px 0;
 `;
 
 export const ShowAllButton = styled.button`
