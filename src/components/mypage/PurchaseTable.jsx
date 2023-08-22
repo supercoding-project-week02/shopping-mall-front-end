@@ -4,7 +4,7 @@ import { getPurchaseHistory } from '@/apis/index.js';
 import * as S from '@/pages/MyPage/MyPage.styles.jsx';
 
 const PurchaseTable = () => {
-  const { data, isLoading, isError } = useQuery(['purcahse'], getPurchaseHistory);
+  const { data, isError } = useQuery(['purcahse'], getPurchaseHistory);
 
   if (!data) return null;
   if (isError) return <div>에러가 발생했습니다.</div>;
