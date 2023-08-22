@@ -9,3 +9,8 @@ export const getUserPayMoney = async () => {
   const response = await client.get('/user/recharge');
   return response.data;
 };
+
+export const getUserInfo = async () => {
+  const response = await client.get('/user/info');
+  return response.data;
+};

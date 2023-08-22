@@ -1,6 +1,6 @@
 import { useModal } from '@ebay/nice-modal-react';
 
-import { Icon } from '@/components/common/Icon/Icon.jsx';
+import IconProfile from '@/assets/iconProfile.svg';
 import TextField from '@/components/common/TextField/TextField.jsx';
 import ChargePayMoneyModal from '@/components/modals/ChargePayMoenyModal/ChargePayMoenyModal.jsx';
 import ShippingAddressModal from '@/components/modals/ShippingAddressModal/ShippingAddressModal.jsx';
@@ -15,29 +15,33 @@ const UserProfile = () => {
   const ChargeButton = <S.Button onClick={chargePayMoneyModal.show}>충전</S.Button>;
   const AddressButton = <S.Button onClick={shippingAddressModal.show}>배송지 변경</S.Button>;
 
+  if (!user) {
+    // 데이터가 올바르게 오지 않는 경우 처리 필요
+    return null;
+  }
+
   return (
     <S.UserProfileWrapper>
       {/* TODO: 추후에 이미지 추가 기능은 해당 부분으로 변경 */}
-      {/*<S.Avatar src="" alt="avatar" />*/}
-      <Icon name="IconProfile" size={100} />
+      <S.Avatar src={user.imageUrl || IconProfile} alt="avatar" />
       <S.UserInfoWrapper>
         <TextField inputType="email" label="이메일" value={user.email} />
         <S.Line />
-        <TextField
-          inputType="password"
-          name="password"
-          label="비밀번호"
-          value={user.password}
-          editable
-          onSubmit={onChangeUser}
-        />
-        <S.Line />
+        {/*<TextField*/}
+        {/*  inputType="password"*/}
+        {/*  name="password"*/}
+        {/*  label="비밀번호"*/}
+        {/*  value={user.password}*/}
+        {/*  editable*/}
+        {/*  onSubmit={onChangeUser}*/}
+        {/*/>*/}
+        {/*<S.Line />*/}
         <TextField label="이름" name="name" value={user.name} editable onSubmit={onChangeUser} />
         <S.Line />
         <TextField
           label="전화번호"
-          name="phoneNumber"
-          value={user.phoneNumber}
+          name="phone"
+          value={user.phone}
           editable
           onSubmit={onChangeUser}
         />
