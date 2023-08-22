@@ -1,21 +1,26 @@
 import { Link, useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 
 import { login } from '@/apis/user.js';
 import UserInput from '@/components/common/UserInput/UserInput';
 import { localstorageKey } from '@/constant/index.js';
 import { useInputs } from '@/hooks/useInputs.js';
 import HeaderLogo from '@/layouts/HeaderLogo';
+import { userState } from '@/recoil/atoms/userState';
 import { theme } from '@/styles/theme';
 import { saveItem } from '@/utils/localstorage.js';
 import * as S from './Login.styles';
 
 const Login = () => {
   const navigate = useNavigate();
+  // recoil 선언
+  const setUser = useSetRecoilState(userState);
 
   // TODO: 실제 서비스할 때는 제거! (매번 입력하기 싫어서 입력)
+  // 초기값 빈 string으로 변경했습니다. -> 동영
   const { value: loginForm, onChange } = useInputs({
-    email: 'admin@gmail.com',
-    password: 'admin1234',
+    email: '',
+    password: '',
   });
 
   const linkToKakaoLogin = (e) => {
@@ -32,10 +37,19 @@ const Login = () => {
       password: loginForm.password,
     }).then((result) => {
       // TODO: 로그인 성공 후 localstorage 에 값가져오기 및 전역 상태로 상태 추가
+      console.log(result);
       if (result.status === 200) {
+        // recoil 사용
+        setUser({
+          email: result.data.email,
+          role: result.data.role,
+          profileUrl: result.data.profileUrl,
+        });
         saveItem(localstorageKey.auth, result.data.token);
         // TODO: user 를 전역 상태로 관리하면 해당 부분 삭제
-        saveItem(localstorageKey.user, result.data);
+        // user 전역 상태 관리 추가로 주석처리했습니다. 확인 후 삭제 예정 -> 동영
+        // saveItem(localstorageKey.user, result.data);
+
         navigate('/');
       }
     });
@@ -56,7 +70,7 @@ const Login = () => {
         <UserInput
           type="password"
           required
-          placeholder="passowrd"
+          placeholder="password"
           name="password"
           value={loginForm.password}
           onChange={onChange}

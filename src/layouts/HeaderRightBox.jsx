@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { itemListState } from '@/recoil/atoms/itemListState.js';
+import { userState } from '@/recoil/atoms/userState.js';
 import * as S from './Header.Styles.jsx';
 
 const HeaderRightBox = () => {
-  let isCustomer = false;
-  let isLogin = true;
+  // 상태관리 추가를 위해 주석처리했습니다. 확인 후 삭제예정
+  // let isCustomer = false;
+  // let isLogin = true;
+
+  // recoil의 상태 정보 불러오기
+  const getUser = useRecoilValue(userState);
 
   const [isSearchBar, setIsSearchBar] = useState(false);
   const [searchFilter, setSearchFilter] = useRecoilState(itemListState);
+  // 로그인 유무 확인 상태관리 추가
+  const [isLogin, setIsLogin] = useState(false);
+  const [isCustomer, setIsCustomer] = useState(false);
+
+  useEffect(() => {
+    getUser.email !== '' ? setIsLogin(true) : setIsLogin(false);
+    getUser.role === 'CONSUMER' ? setIsCustomer(true) : setIsCustomer(false);
+  }, [getUser.email, getUser.role]);
 
   const searchBarHandler = () => {
     if (!isSearchBar) setIsSearchBar(true);
