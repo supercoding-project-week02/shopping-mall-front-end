@@ -1,9 +1,9 @@
 import { Container } from './RadioInput.styles';
 
-const RadioInput = ({ id, name, value, defaultChecked, label }) => {
+const RadioInput = ({ id, name, value, label, ...rest }) => {
   return (
     <Container>
-      <input type="radio" id={id} name={name} value={value} defaultChecked={defaultChecked} />
+      <input type="radio" id={id} name={name} value={value} {...rest} />
       <label htmlFor={id}>{label}</label>
     </Container>
   );

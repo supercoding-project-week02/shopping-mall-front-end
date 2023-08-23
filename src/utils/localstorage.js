@@ -8,3 +8,7 @@ export function getItem(key) {
     return JSON.parse(data);
   }
 }
+
+export function removeItem(key) {
+  localStorage.removeItem(key);
+}
