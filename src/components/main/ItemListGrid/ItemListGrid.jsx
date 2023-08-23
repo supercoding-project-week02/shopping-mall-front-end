@@ -62,7 +62,7 @@ const ItemListGrid = () => {
 
   // INFINITE SCROLL
   const observerCallback = (entries) => {
-    if (!isItem) return;
+    if (stop) return;
     if (entries[0].isIntersecting) {
       setRequest((prevItemList) => ({
         ...prevItemList,
@@ -89,7 +89,7 @@ const ItemListGrid = () => {
         observerRef.current.disconnect();
       }
     };
-  }, []);
+  }, [stop]);
 
   const observerTriggerRef = useRef();
 
