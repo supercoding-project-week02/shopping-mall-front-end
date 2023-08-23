@@ -2,7 +2,7 @@ import * as S from './DetailHeader.styles';
 import CounterBox from '@/components/common/CounterBox/CounterBox.jsx';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { useState } from 'react';
-import CartModal from '../common/CartModal/CartModal';
+import CartModal from '@/components/detailModal/CartModal/CartModal';
 
 const contentData = [
   {
