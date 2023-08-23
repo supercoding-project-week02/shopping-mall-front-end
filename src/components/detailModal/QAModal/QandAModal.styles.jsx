@@ -13,7 +13,7 @@ export const QandAModalBackground = styled.div`
 
 export const QandAModal = styled.div`
   width: 800px;
-  height: 300px;
+  height: 350px;
   display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   position: fixed;
   top: 50%;
@@ -30,11 +30,15 @@ export const IconContainer = styled.div`
 `;
 
 export const QandAModalTitle = styled.div`
+  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 13px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+`;
+
+export const InputTitleContainer = styled.div`
   input {
     border: 1px solid ${theme.color.gray};
     width: 750px;
@@ -45,12 +49,21 @@ export const QandAModalTitle = styled.div`
       border: 2px solid ${theme.color.yellow};
     }
   }
+  p {
+    height: 35px;
+    color: red;
+    padding-top: 5px;
+  }
 `;
 
 export const QandAModalContent = styled.div`
+  height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+export const InputContentContainer = styled.div`
   input {
     border: 1px solid ${theme.color.gray};
     width: 750px;
@@ -60,6 +73,10 @@ export const QandAModalContent = styled.div`
       outline: none;
       border: 2px solid ${theme.color.yellow};
     }
+  }
+  p {
+    color: red;
+    padding-top: 5px;
   }
 `;
 
