@@ -5,7 +5,7 @@ import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { mockColumns } from '@/mocks/mockData.js';
 import * as S from './Mypage.styles.jsx';
 
-const salesColumns = mockColumns['판매목록'];
+// const salesColumns = mockColumns['판매목록'];
 // GYU-TODO: 삭제 예정
 // const data = mockDatas['판매목록'] || [];
 
@@ -38,6 +38,7 @@ const SalesTable = () => {
       />
     ),
     판매마감날짜: product.soldAt.split('T')[0],
+    수정하기: <button onClick={() => alert('수정하기')}>수정하기</button>,
     삭제: <Icon name="IconX" size={10} onClick={() => alert('삭제')} />,
   }));
 
@@ -49,5 +50,38 @@ const SalesTable = () => {
     />
   );
 };
+
+const salesColumns = [
+  {
+    title: 'id',
+    dataIndex: 'id',
+    key: 'id',
+  },
+  {
+    title: '상품정보',
+    dataIndex: '상품정보',
+    key: '상품정보',
+  },
+  {
+    title: '재고수',
+    dataIndex: '재고수',
+    key: '재고수',
+  },
+  {
+    title: '판매 마감 날짜',
+    dataIndex: '판매마감날짜',
+    key: '판매마감날짜',
+  },
+  {
+    title: '수정하기',
+    dataIndex: '수정하기',
+    key: '수정하기',
+  },
+  {
+    title: '',
+    dataIndex: '삭제',
+    key: '삭제',
+  },
+];
 
 export default SalesTable;

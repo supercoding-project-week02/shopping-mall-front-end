@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
+import { addProduct } from '@/apis';
 import Button from '@/components/common/Button/Button';
 import ImgInput from '@/components/write/PreviewImgItem/ImgInput';
 import Select from '@/components/write/Select/Select';
 import WriteInput from '@/components/write/WriteInput/WriteInput';
-import { useInputs } from '@/hooks/useInputs';
 import { theme } from '@/styles/theme';
 import * as S from './Write.styles';
 import {
@@ -18,6 +18,7 @@ import {
 
 const Write = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isLoding, setIsLoding] = useState(true);
   const [writeForm, setWriteForm] = useState({
     title: '',
@@ -29,7 +30,7 @@ const Write = () => {
     difficultyLevel: '초급',
     amount: 1,
   });
-  const [imgList, setImgList] = useState(['', '', '', '', '']);
+  const [imgList, setImgList] = useState([null, null, null, null, null]);
   const [mainImg, setMainImg] = useState('');
 
   // 글쓰기페이지와 수정페이지가 폼이 동일하다고 판단하여
@@ -46,6 +47,15 @@ const Write = () => {
     [writeForm],
   );
 
+  const handleImgListChange = useCallback(
+    (index, value) => {
+      let copyImgList = [...imgList];
+      copyImgList[index] = value;
+      setImgList(copyImgList);
+    },
+    [imgList],
+  );
+
   useEffect(() => {
     // productId가 있을 경우 로직
     if (productId) {
@@ -59,12 +69,87 @@ const Write = () => {
     setIsLoding(false);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(writeForm);
+    // const payload = {
+    //   title: writeForm.title,
+    //   price: writeForm.price,
+    //   closingAt: writeForm.closingAt.split('-').join('.'),
+    //   genre: genreType.indexOf(writeForm.genre) + 1,
+    //   playTime: writeForm.playTime,
+    //   playerCount: writeForm.playerCount,
+    //   difficultyLevel: writeForm.difficultyLevel,
+    //   amount: writeForm.amount,
+    //   mainImageFile: mainImg,
+    //   imageFiles: imgList.filter((item) => item),
+    // };
+    // console.log(payload);
+    // const response = await axios.post(
+    //   'http://52.79.168.48:8080/api/v1/product',
+    //   {
+    //     title: writeForm.title,
+    //     price: writeForm.price,
+    //     closingAt: writeForm.closingAt.split('-').join('.'),
+    //     genre: genreType.indexOf(writeForm.genre) + 1,
+    //     playTime: writeForm.playTime,
+    //     playerCount: writeForm.playerCount,
+    //     difficultyLevel: writeForm.difficultyLevel,
+    //     amount: writeForm.amount,
+    //     mainImageFile: mainImg,
+    //     imageFiles: imgList,
+    //   },
+    //   {
+    //     headers: {
+
+    //       'Content-Type': `multipart/form-data`,
+    //     },
+    //   },
+    // );
+
+    // console.log(response);
+    // if (response.data.status === 200) {
+    //   alert('상품이 등록되었습니다.');
+    //   navigate('/');
+    // }
+    // const data = {
+    //   title: writeForm.title,
+    //   price: writeForm.price,
+    //   closingAt: writeForm.closingAt.split('-').join('.'),
+    //   genre: genreType.indexOf(writeForm.genre) + 1,
+    //   playTime: writeForm.playTime,
+    //   playerCount: writeForm.playerCount,
+    //   difficultyLevel: writeForm.difficultyLevel,
+    //   amount: writeForm.amount,
+    //   mainImageFile: mainImg,
+    // };
+
+    const formData = new FormData();
+
+    imgList.forEach((file) => {
+      file && formData.append('imageFiles', file);
+    });
+    formData.append('amount', writeForm.amount);
+    formData.append('closingAt', writeForm.closingAt.split('-').join('.'));
+    formData.append('difficultyLevel', writeForm.difficultyLevel);
+    formData.append('genre', genreType.indexOf(writeForm.genre) + 1);
+    formData.append('playTime', writeForm.playTime);
+    formData.append('playerCount', writeForm.playerCount);
+    formData.append('price', writeForm.price);
+    formData.append('title', writeForm.title);
+    formData.append('mainImageFile', mainImg);
+
+    addProduct(formData).then((result) => {
+      console.log(result);
+      if (result.status === 200) {
+        alert('상품이 등록되었습니다.');
+        navigate('/');
+      }
+    });
   };
 
-  console.log(writeForm);
+  console.log(genreType.indexOf(writeForm.genre) + 1);
+  console.log('mainImg=>', mainImg);
+  console.log('imgList=>', imgList);
 
   return isLoding ? (
     <h1>로딩중입니다.</h1>
@@ -140,12 +225,21 @@ const Write = () => {
         </S.SelectBox>
         <S.ImgTitle>썸네일 이미지</S.ImgTitle>
         <S.MainImgBox>
-          <ImgInput name="mainImageUrl" value={mainImg} />
+          <ImgInput name="mainImageUrl" value={mainImg} setImgValue={setMainImg} />
         </S.MainImgBox>
         <S.ImgTitle>상세 이미지</S.ImgTitle>
         <S.ImgInputBox>
           {imgList.map((item, index) => {
-            return <ImgInput key={index} name={'img' + index} value={item} />;
+            return (
+              <ImgInput
+                key={index}
+                index={index}
+                name={'img' + index}
+                value={item}
+                many="true"
+                setImgValue={handleImgListChange}
+              />
+            );
           })}
         </S.ImgInputBox>
         <Button
