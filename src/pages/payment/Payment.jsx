@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as S from '@/pages/payment/Payment.Styles';
 import PaymentShipMove from './PaymentShipMove';
+import HasPaidModal from './HasPaidModal';
 
 const Payment = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const modalIsOpen = () => {
+    setIsOpen(true);
+  };
+
   return (
     <>
       <S.PageTitle>결제하기</S.PageTitle>
@@ -96,7 +103,8 @@ const Payment = () => {
             </S.SubAgree>
 
             <S.PaySubmitTextDiv>
-              <S.PaySubmitA>결제하기</S.PaySubmitA>
+              <S.PaySubmitA onClick={modalIsOpen}>결제하기</S.PaySubmitA>
+              <HasPaidModal isOpen={isOpen} setIsOpen={setIsOpen} />
             </S.PaySubmitTextDiv>
           </S.AgreeBox>
         </S.FixedDiv>
