@@ -4,3 +4,13 @@ import { client } from './index.js';
 export const getProducts = () => {
   return client.get('/products');
 };
+
+export const addProduct = async (payload) => {
+  const response = await client.post('/product/', payload, {
+    headers: {
+      Accept: `*/*`,
+      'Content-Type': `multipart/form-data`,
+    },
+  });
+  return response.data;
+};
