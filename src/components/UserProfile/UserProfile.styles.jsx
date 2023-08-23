@@ -8,7 +8,7 @@ export const UserProfileWrapper = styled.div`
   gap: 5rem;
   border-radius: 0.5rem;
   border: 1px solid #595959;
-  height: 300px;
+  max-height: 300px;
   background-color: white;
 `;
 

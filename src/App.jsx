@@ -3,7 +3,7 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import MyPage from '@/pages/MyPage/MyPage.jsx';
 import MainHeader from './layouts/MainHeader';
 import Cart from './pages/cart/Cart';
-import Detail from './pages/Detail';
+import Detail from './pages/Detail/Detail';
 import Join from './pages/Join/Join';
 import Login from './pages/Login/Login';
 import Main from './pages/main/Main';

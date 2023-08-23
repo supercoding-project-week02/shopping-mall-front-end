@@ -10,9 +10,9 @@ const CarouselCard = (props) => {
     const clickedGenre = event.target.id;
     setGenreFilter((prevItemList) => ({
       ...prevItemList,
+      page: 0,
       genre: clickedGenre,
       searchKeyword: '',
-      sort: 'createdAt,desc',
     }));
   };
 
