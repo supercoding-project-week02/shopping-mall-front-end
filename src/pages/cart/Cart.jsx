@@ -15,7 +15,6 @@ const Cart = () => {
                     <S.Td1>상품 정보</S.Td1>
                     <S.Td2>수량</S.Td2>
                     <S.Td3>주문금액</S.Td3>
-                    <S.Td4>배송 정보</S.Td4>
                 </S.Thead>
                 <S.Tr>
                     <S.ProductDiv>
@@ -39,7 +38,6 @@ const Cart = () => {
                         </S.CounterOuterDiv>
                     </S.Td2>
                     <S.Td3>21,900원</S.Td3>
-                    <S.Td4>3,000원</S.Td4>
                 </S.Tr>
             </S.ItemTable>
             <S.CounterTable>
@@ -52,16 +50,12 @@ const Cart = () => {
                         </div>
                         </S.Price>
                         <S.DeliveryOuter>
-                        <S.Plus>+</S.Plus>
-                        <S.Delivery>
-                            <S.Number>3,000원</S.Number>
-                            <S.Exp>배송비</S.Exp>
-                        </S.Delivery>
+                        {/* <S.Plus>+</S.Plus> */}
                         </S.DeliveryOuter>
                         <S.TotalPrice>
                         <S.Equal>=</S.Equal>
                         <div>
-                            <S.NumberSum>24,900원</S.NumberSum>
+                            <S.NumberSum>21,900원</S.NumberSum>
                             <S.Exp>총 주문금액</S.Exp>
                         </div>
                         </S.TotalPrice>
