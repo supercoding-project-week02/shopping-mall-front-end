@@ -23,11 +23,9 @@ const HeaderRightBox = () => {
 
   const searchHandler = (event) => {
     if (event.key === 'Enter') {
-      const searchKeyword = event.target.value;
       setSearchFilter((prevItemList) => ({
         ...prevItemList,
-        searchKeyword: searchKeyword,
-        sort: 'createdAt,desc',
+        searchKeyword: event.target.value,
       }));
       setIsSearchBar(false);
     }

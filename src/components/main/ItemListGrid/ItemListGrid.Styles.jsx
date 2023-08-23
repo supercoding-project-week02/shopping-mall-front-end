@@ -56,7 +56,9 @@ export const GridPriceBox = styled.div`
 `;
 
 export const NoItemGrid = styled.div`
-  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StarContainer = styled.div`
