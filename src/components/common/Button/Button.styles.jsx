@@ -7,4 +7,5 @@ export const StyledButton = styled.button`
   border: ${(props) => props.border};
   border-radius: ${(props) => props.borderRadius};
   color: ${(props) => props.fontColor};
+  cursor: pointer;
 `;

@@ -10,15 +10,6 @@ export const ItemListWrapper = styled.div`
 
 export const ItemListBox = styled.div``;
 
-export const GridListLengthBox = styled.div`
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
-`;
-
-export const GridListLength = styled.span`
-  color: #ffb002;
-`;
-
 export const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -27,11 +18,14 @@ export const GridContainer = styled.div`
 
 export const GridCard = styled.div``;
 
-export const GridImgBox = styled.div``;
+export const GridImgBox = styled.div`
+  cursor: pointer;
+`;
 
 export const GridImg = styled.img`
   border-radius: 0.5rem;
   width: 20rem;
+  height: 20rem;
   color: #fafafa;
 `;
 
@@ -42,6 +36,7 @@ export const GridNameBox = styled.div`
   font-size: 0.7rem;
   color: #9a9a9a;
   font-weight: bold;
+  margin-left: 0.2rem;
 `;
 
 export const GridTitleBox = styled.div`
@@ -49,6 +44,7 @@ export const GridTitleBox = styled.div`
   font-size: 0.8rem;
   color: #555560;
   font-weight: bold;
+  margin-left: 0.2rem;
 `;
 
 export const GridPriceBox = styled.div`
@@ -56,4 +52,19 @@ export const GridPriceBox = styled.div`
   font-size: 0.9rem;
   color: #ffb002;
   font-weight: bold;
+  margin-left: 0.2rem;
+`;
+
+export const NoItemGrid = styled.div`
+  margin-top: 6rem;
+`;
+
+export const StarContainer = styled.div`
+  padding-top: 0.3rem;
+  display: inline-block;
+`;
+
+export const Star = styled.span`
+  font-size: 16px;
+  color: ${(props) => (props.filled ? '#FFD700' : '#ccc')};
 `;

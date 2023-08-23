@@ -1,28 +1,23 @@
+import ValidTest from '@/components/ValidTest/ValidTest';
 import { InputDiv } from './UserInput.styles';
 
-const UserInput = ({
-  button,
-  type,
-  placeholder,
-  onFocus,
-  onBlur,
-  value,
-  required = false,
-  ...rest
-}) => {
+const UserInput = ({ button, name, value, password, validTest, isValid, ...rest }) => {
   return (
-    <InputDiv>
-      <input
-        type={type}
-        placeholder={placeholder}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        value={value}
-        required={required}
-        {...rest}
-      />
-      {button && button}
-    </InputDiv>
+    <>
+      <InputDiv>
+        <input name={name} value={value} {...rest} />
+        {button && button}
+      </InputDiv>
+      {validTest && (
+        <ValidTest
+          name={name}
+          value={value}
+          password={password}
+          validTest={validTest}
+          isValid={isValid}
+        />
+      )}
+    </>
   );
 };
 

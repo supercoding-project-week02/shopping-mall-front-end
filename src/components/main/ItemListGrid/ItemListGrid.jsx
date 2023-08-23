@@ -1,20 +1,63 @@
+import axios from 'axios';
+import debounce from 'lodash.debounce';
+import qs from 'qs';
+import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+
+import { itemListState } from '@/recoil/atoms/itemListState.js';
 import GridCard from './GridCard.jsx';
-import GridListLengthBox from './GridListLengthBox.jsx';
 import * as S from './ItemListGrid.Styles.jsx';
-import dummy from './ItemListGridData.js';
+import ListNameAndSelectBox from '../ListNameAndSelectBox/ListNameAndSelectBox.jsx';
 
 const ItemListGrid = () => {
+  const [request, setRequest] = useRecoilState(itemListState);
+  const [itemList, setItemList] = useState([]);
+  const [isItem, setIsItem] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const debouncedFetchData = debounce(async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get('http://52.79.168.48:8080/api/v1/product/', {
+          params: request,
+          paramsSerializer: (params) => {
+            return qs.stringify(params, { arrayFormat: 'comma' });
+          },
+        });
+        const newData = res.data.data.contents;
+        if (res.data.status === 200) {
+          setItemList(newData);
+          if (newData.length === 0) setIsItem(false);
+          else setIsItem(true);
+        } else window.alert(res.data.message);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }, 0);
+    debouncedFetchData();
+    console.log(request);
+  }, [request]);
+
   return (
-    <S.ItemListWrapper>
-      <S.ItemListBox>
-        <GridListLengthBox length={dummy.length} />
-        <S.GridContainer>
-          {dummy.map((item) => (
-            <GridCard key={item.productIdx} item={item} />
-          ))}
-        </S.GridContainer>
-      </S.ItemListBox>
-    </S.ItemListWrapper>
+    <>
+      <ListNameAndSelectBox length={itemList.length} genre={request.genre} />
+      <S.ItemListWrapper>
+        <S.ItemListBox>
+          {isItem ? (
+            <S.GridContainer>
+              {itemList.map((itemList, index) => (
+                <GridCard key={index} id={itemList.productIdx} item={itemList} />
+              ))}
+            </S.GridContainer>
+          ) : (
+            <S.NoItemGrid>아이템이 없습니다.</S.NoItemGrid>
+          )}
+        </S.ItemListBox>
+      </S.ItemListWrapper>
+    </>
   );
 };
 

@@ -4,7 +4,16 @@ import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { useInput } from '@/hooks/useInput.js';
 import * as S from './TextField.styles.jsx';
 
-const TextField = ({ label, name, value, rightSlot, editable, inputType = 'text', onSubmit }) => {
+const TextField = ({
+  label,
+  name,
+  value,
+  rightSlot,
+  editable,
+  inputType = 'text',
+  onSubmit,
+  ...rest
+}) => {
   const [viewMode, setViewMode] = useState(true);
   const { value: v, onChange } = useInput(value);
 
@@ -17,9 +26,9 @@ const TextField = ({ label, name, value, rightSlot, editable, inputType = 'text'
   };
 
   return (
-    <S.TextFieldsWrapper>
+    <S.TextFieldsWrapper {...rest}>
       <S.TextContainer>
-        <S.TextLabel>{label}</S.TextLabel>
+        {label && <S.TextLabel>{label}</S.TextLabel>}
         {viewMode ? (
           <>
             <S.Value>{value}</S.Value>

@@ -5,11 +5,11 @@ import { theme } from '@/styles/theme.js';
 export const UserProfileWrapper = styled.div`
   display: flex;
   padding: 2rem;
-  gap: 100px;
+  gap: 5rem;
   border-radius: 0.5rem;
   border: 1px solid #595959;
-  width: 50%;
-  height: 300px;
+  max-height: 300px;
+  background-color: white;
 `;
 
 export const Avatar = styled.img`
