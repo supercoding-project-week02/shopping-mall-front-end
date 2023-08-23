@@ -1,6 +1,7 @@
 import { Icon } from '@/components/common/Icon/Icon';
 import React, { useRef, useState } from 'react';
 import * as S from './QandAModal.styles';
+import axios from 'axios';
 
 export default function QandAModal({ isOpen, setIsOpen }) {
   const [title, setTitle] = useState('');
@@ -38,25 +39,25 @@ export default function QandAModal({ isOpen, setIsOpen }) {
     setContent('');
     setIsOpen(false);
 
-    // const formData = new FormData();
-    // formData.append('productIdx', 123);
-    // formData.append('consumerIdx', 12345);
-    // formData.append('title', title);
-    // formData.append('content', content);
-    // formData.append('imageUrl', file);
-    // const response = await axios
-    //   .post('http://52.79.168.48:8080/api/v1/questions', formData, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log('Success:', response);
-    //     setIsOpen(false);
-    //   })
-    //   .catch((error) => {
-    //     console.log('Error:', error);
-    //   });
+    const formData = new FormData();
+    formData.append('productIdx', 123);
+    formData.append('consumerIdx', 12345);
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('imageUrl', file);
+    const response = await axios
+      .post('http://52.79.168.48:8080/api/v1/questions', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((response) => {
+        console.log('Success:', response);
+        setIsOpen(false);
+      })
+      .catch((error) => {
+        console.log('Error:', error);
+      });
   };
 
   const titleInValid = !titleIsValid && titleIsTouched;
