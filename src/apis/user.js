@@ -9,3 +9,8 @@ export const getUserPayMoney = async () => {
   const response = await client.get('/user/recharge');
   return response.data;
 };
+
+export const join = async (payload) => {
+  const response = await client.post('/user/signup', payload);
+  return response.data;
+};
