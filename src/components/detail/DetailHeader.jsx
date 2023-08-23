@@ -6,27 +6,30 @@ import CartModal from '../common/CartModal/CartModal';
 
 const contentData = [
   {
-    id: 1,
+    title: '상품명',
+    value: '할리갈리',
+  },
+  {
+    title: '제조사',
+    value: 'AMIGO',
+  },
+  {
     title: '판매가',
     value: 19000,
   },
   {
-    id: 2,
     title: '게임 인원',
     value: '2~6명',
   },
   {
-    id: 3,
     title: '난이도',
     value: '초급',
   },
   {
-    id: 4,
     title: '게임 시간',
     value: '10~20분',
   },
   {
-    id: 5,
     title: '재고 수량',
     value: 7,
   },
@@ -36,8 +39,8 @@ const formatPrice = (price) => {
   return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
-const dataTitle = contentData.slice(1).map((t) => <div key={t.id}>{t.title}</div>);
-const dataValue = contentData.slice(1).map((v) => <div key={v.id}>{v.value}</div>);
+const dataTitle = contentData.slice(3).map((t) => <div key={t.id}>{t.title}</div>);
+const dataValue = contentData.slice(3).map((v) => <div key={v.id}>{v.value}</div>);
 
 const DetailHeaders = () => {
   const [image, setImage] = useState('EmptyHeart');
@@ -62,23 +65,23 @@ const DetailHeaders = () => {
       </S.ImageContainer>
       <S.Content>
         <S.Title>
-          <S.GameName>할리갈리</S.GameName>
+          <S.GameName>{contentData[0].value}</S.GameName>
           <S.Company>
-            <S.CompanyTitle>제조사</S.CompanyTitle>
-            <S.CompanyName>AMIGO</S.CompanyName>
+            <S.CompanyTitle>{contentData[1].title}</S.CompanyTitle>
+            <S.CompanyName>{contentData[1].value}</S.CompanyName>
           </S.Company>
         </S.Title>
         <S.ContentWrapper>
           <S.ContentTitle>
-            <div>{contentData[0].title}</div>
+            <S.SaleTitle>{contentData[2].title}</S.SaleTitle>
             <div>{dataTitle}</div>
           </S.ContentTitle>
           <S.ContentValue>
-            <div>{formatPrice(contentData[0].value)}원</div>
+            <div>{formatPrice(contentData[2].value)}원</div>
             <div>{dataValue}</div>
           </S.ContentValue>
         </S.ContentWrapper>
-        <CounterBox productPrice={contentData[0].value} productStock={contentData[4].value} />
+        <CounterBox productPrice={contentData[2].value} productStock={contentData[6].value} />
         <S.ButtonWrapper>
           <S.PlusCartButton onClick={modalIsOpen}>장바구니</S.PlusCartButton>
           <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />

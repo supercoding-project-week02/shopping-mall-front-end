@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 import { Icon } from '@/components/common/Icon/Icon.jsx';
+import { localstorageKey } from '@/constant/index.js';
 import { itemListState } from '@/recoil/atoms/itemListState.js';
-import { customerState, loginState } from '@/recoil/atoms/userState.js';
+import { customerState, loginState, userState } from '@/recoil/atoms/userState.js';
+import { removeItem } from '@/utils/localstorage.js';
 import * as S from './Header.Styles.jsx';
 
 const HeaderRightBox = () => {
   // recoil의 상태 정보 불러오기
   // const getUser = useRecoilValue(userState);
+  const resetUser = useResetRecoilState(userState);
   const [isLogin, setIsLogin] = useRecoilState(loginState);
   const [isCustomer, setIsCustomer] = useRecoilState(customerState);
 
@@ -29,6 +32,12 @@ const HeaderRightBox = () => {
       }));
       setIsSearchBar(false);
     }
+  };
+
+  const handleLogout = () => {
+    removeItem(localstorageKey.auth);
+    resetUser();
+    alert('로그아웃 되었습니다.');
   };
 
   return (
@@ -61,6 +70,7 @@ const HeaderRightBox = () => {
             </S.ProductAddBtnBox>
           </Link>
         )}
+        {isLogin && <S.LogoutBtn onClick={handleLogout}>logout</S.LogoutBtn>}
       </S.HeaderBtnsBox>
     </S.HeaderRightBox>
   );
