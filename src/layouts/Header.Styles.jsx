@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import { theme } from '@/styles/theme';
+
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -77,4 +79,11 @@ export const SearchBar = styled.input`
   border: none;
   background-color: #fafafa;
   border-bottom: 1px solid grey;
+`;
+
+export const LogoutBtn = styled.button`
+  border: none;
+  background-color: inherit;
+  color: ${theme.color.red};
+  cursor: pointer;
 `;
