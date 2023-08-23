@@ -9,7 +9,7 @@ export const HeaderContainer = styled.div`
 
 export const ImageContainer = styled.div``;
 
-export const Image = styled.div`
+export const Image = styled.img`
   width: 500px;
   height: 550px;
   margin-right: 20px;
