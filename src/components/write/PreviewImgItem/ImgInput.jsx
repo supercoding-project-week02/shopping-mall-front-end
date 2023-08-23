@@ -8,7 +8,7 @@ import {
   StyledImgLabel,
 } from './ImgInput.styles';
 
-const ImgInput = ({ name, value, ...rest }) => {
+const ImgInput = ({ name, value, label = '이미지 추가', setImgValue, ...rest }) => {
   // TODO: 현재 예시 이미지를 img 안에 넣어놨습니다. 추후 수정예정
   // const { value: inputValue, onChange } = useInput('');
   const [imgFile, setImgFile] = useState(value);
@@ -21,15 +21,15 @@ const ImgInput = ({ name, value, ...rest }) => {
     reader.onloadend = () => {
       setImgFile(reader.result);
     };
+    setImgValue(inputRef.current.files[0]);
   };
 
-  console.log(imgFile);
   return (
     <InputContainer>
       <StyledImgBox>
         {imgFile === '' ? <EmptyBox>+</EmptyBox> : <img src={imgFile} alt="" />}
       </StyledImgBox>
-      <StyledImgLabel htmlFor={name}>이미지 추가</StyledImgLabel>
+      <StyledImgLabel htmlFor={name}>{label}</StyledImgLabel>
       <StyledImgInput
         type="file"
         accept="image/*"
