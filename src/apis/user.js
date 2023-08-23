@@ -10,7 +10,17 @@ export const getUserPayMoney = async () => {
   return response.data;
 };
 
-export const join = async (payload) => {
-  const response = await client.post('/user/signup', payload);
+export const getUserInfo = async () => {
+  const response = await client.get('/user/info');
+  return response.data;
+};
+
+export const chargePayMoney = async (payload) => {
+  const response = await client.post('/user/recharge', payload);
+  return response.data;
+};
+
+export const changeAddress = async (payload) => {
+  const response = await client.post('/user/address', payload);
   return response.data;
 };
