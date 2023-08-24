@@ -27,7 +27,7 @@ const QuestionSellerTable = () => {
     <S.Table //
       columns={questionSellerColumns}
       dataSource={questions}
-      pagination={false}
+      pagination={true}
     />
   );
 };

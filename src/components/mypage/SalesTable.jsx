@@ -82,7 +82,7 @@ const SalesTable = () => {
     <S.Table //
       columns={salesColumns}
       dataSource={history}
-      pagination={false}
+      pagination={true}
       onRow={(record) => {
         return {
           onClick: () => navigate(`/product/${record.id}`),
