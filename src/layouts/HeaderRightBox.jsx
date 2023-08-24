@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 
 import { localstorageKey } from '@/constant/index.js';
@@ -13,11 +13,13 @@ const HeaderRightBox = () => {
   const resetUser = useResetRecoilState(userState);
   const [isLogin, setIsLogin] = useRecoilState(loginState);
   const [isCustomer, setIsCustomer] = useRecoilState(customerState);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     removeItem(localstorageKey.auth);
     resetUser();
     alert('로그아웃 되었습니다.');
+    navigate('/');
   };
 
   return (

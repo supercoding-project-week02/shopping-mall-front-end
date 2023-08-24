@@ -1,22 +1,27 @@
 import { useRecoilValue } from 'recoil';
 import { useModal } from '@ebay/nice-modal-react';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { getUserInfo } from '@/apis/user.js';
+import { getUserInfo, updateUserInfo } from '@/apis/user.js';
 import IconProfile from '@/assets/iconProfile.svg';
 import TextField from '@/components/common/TextField/TextField.jsx';
 import ChargePayMoneyModal from '@/components/modals/ChargePayMoenyModal/ChargePayMoenyModal.jsx';
 // import ShippingAddressModal from '@/components/modals/ShippingAddressModal/ShippingAddressModal.jsx';
 import AddressChangeButton from '@/components/UserProfile/AddressChangeButton.jsx';
-import { useUserInfo } from '@/contexts/UserInfo.jsx';
+import { QUERY_KEYS } from '@/queries/queryKeys.js';
 import { customerState } from '@/recoil/atoms/userState.js';
 import * as S from './UserProfile.styles.jsx';
 
+const PHONE_NUMBER_REG = new RegExp('010-\\d{4}-\\d{4}', 'g');
+
 const UserProfile = () => {
-  const { onChangeUser } = useUserInfo();
+  // const { onChangeUser } = useUserInfo();
+  const queryClient = useQueryClient();
   const isCustomer = useRecoilValue(customerState);
 
   const { data, isError } = useQuery(['profile'], getUserInfo);
+  const { mutate: updateUserInfoMutate } = useMutation((payload) => updateUserInfo(payload));
+
   const chargePayMoneyModal = useModal(ChargePayMoneyModal);
   // const shippingAddressModal = useModal(ShippingAddressModal);
 
@@ -25,13 +30,37 @@ const UserProfile = () => {
     <AddressChangeButton address={data ? data.data.address : {}}>배송지 변경</AddressChangeButton>
   );
 
-  // const AddressButton = <S.Button onClick={shippingAddressModal.show}>배송지 변경</S.Button>;
+  const handleChangeUserInfo = (name, value) => {
+    const payload = {
+      [name]: value,
+    };
 
-  if (!data) {
-    // 데이터가 올바르게 오지 않는 경우 처리 필요
-    return null;
-  }
+    updateUserInfoMutate(payload, {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries([QUERY_KEYS.profile]);
+      },
+    });
+  };
 
+  const handleValidatePhoneNumber = (value) => {
+    if (!PHONE_NUMBER_REG.test(value)) {
+      alert('비밀번호 형식이 아닙니다. 010-0000-0000');
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleChangePhoneNumber = (event) => {
+    const value = event.target.value;
+    if (value.length >= 13) return value.slice(0, 13);
+    return value
+      .replace(/[^0-9]/g, '')
+      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
+      .replace(/(-{1,2})$/g, '');
+  };
+
+  if (!data) return null;
   if (isError) return <div>에러가 발생했습니다.</div>;
   const user = data.data;
 
@@ -51,14 +80,24 @@ const UserProfile = () => {
         {/*  onSubmit={onChangeUser}*/}
         {/*/>*/}
         {/*<S.Line />*/}
-        <TextField label="이름" name="name" value={user.name} editable onSubmit={onChangeUser} />
+        <TextField
+          label="이름"
+          name="name"
+          value={user.name}
+          editable
+          onSubmit={handleChangeUserInfo}
+          maxLength={13}
+        />
         <S.Line />
         <TextField
+          inputType="text"
           label="전화번호"
           name="phone"
           value={user.phone}
           editable
-          onSubmit={onChangeUser}
+          onChangeInput={handleChangePhoneNumber}
+          onSubmit={handleChangeUserInfo}
+          validate={handleValidatePhoneNumber}
         />
         <S.Line />
         {isCustomer && (

@@ -65,7 +65,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
     return () => {
       clearTimeout(valid);
     };
-  }, [name, value, password]);
+  }, [name, value]);
 
   return (
     <Container>
@@ -81,7 +81,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
         ) : null
       ) : null}
       {/* password부분 */}
-      {/* {name === 'password' ? (
+      {name === 'password' ? (
         !isEmpty ? (
           isValid.isPassword ? (
             <IsTrue>유효한 비밀번호입니다.</IsTrue>
@@ -89,7 +89,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
             <IsFalse>유효하지 않은 비밀번호입니다.</IsFalse>
           )
         ) : null
-      ) : null} */}
+      ) : null}
       {/* password 비교 부분 */}
       {name === 'checkPassword' ? (
         !isEmpty ? (

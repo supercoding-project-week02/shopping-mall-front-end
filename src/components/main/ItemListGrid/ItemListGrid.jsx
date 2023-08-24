@@ -3,6 +3,7 @@ import qs from 'qs';
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
+import { client } from '@/apis/index.js';
 import { itemListState } from '@/recoil/atoms/itemListState.js';
 import GridCard from './GridCard.jsx';
 import * as S from './ItemListGrid.Styles.jsx';
@@ -24,7 +25,7 @@ const ItemListGrid = () => {
     const FetchData = async () => {
       try {
         setLoading(true);
-        const res = await axios.get('http://52.79.168.48:8080/api/v1/product/', {
+        const res = await client.get('/product/', {
           params: request,
           paramsSerializer: (params) => {
             return qs.stringify(params, { arrayFormat: 'comma' });
