@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
 
 import imageLoading from '@/assets/genre/imageLoading.png';
 import * as S from './ItemListGrid.Styles.jsx';
