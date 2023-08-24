@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Cart.Styles';
 import { Icon } from '@/components/common/Icon/Icon';
-import { useRecoilValue } from 'recoil';
-import { cartAtom, TotalPriceSelector, TotalQuantitySelector } from '@/recoil/atoms/cartAtom';
 import { deleteShopoingCart, getShoppingCart, modifyShoppingCart } from '@/apis/cart';
 import { client } from '@/apis';
 import { useNavigate } from 'react-router-dom';
@@ -179,15 +177,7 @@ const Cart = () => {
           개
         </S.CounterTitleDiv>
         <S.CounterMain>
-          {/* <S.Price>
-            <div>
-              <S.Number>{datas[0].product.price}</S.Number>
-              <S.Exp>상품금액</S.Exp>
-            </div>
-          </S.Price> */}
-          <S.DeliveryOuter>{/* <S.Plus>+</S.Plus> */}</S.DeliveryOuter>
           <S.TotalPrice>
-            {/* <S.Equal>=</S.Equal> */}
             <div>
               <S.NumberSum>{Number(sumTotalPrice(datas)).toLocaleString('ko-KR')}</S.NumberSum>
               <S.Exp>총 주문금액</S.Exp>
@@ -232,7 +222,6 @@ function getTotalQuantity(datas) {
 export default Cart;
 
 // 총합 : 개수*아이템 별 + 더하기 함수 만들어서 적용!
-
 function sumTotalPrice(datas) {
   let sum = 0;
   for (let i = 0; i < datas.length; i++) {
