@@ -3,14 +3,9 @@ import { useQuery } from '@tanstack/react-query';
 
 import { getSalesHistory } from '@/apis/index.js';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
-import { mockColumns } from '@/mocks/mockData.js';
 import { theme } from '@/styles/theme.js';
 import * as S from './Mypage.styles.jsx';
 import Button from '../common/Button/Button.jsx';
-
-// const salesColumns = mockColumns['판매목록'];
-// GYU-TODO: 삭제 예정
-// const data = mockDatas['판매목록'] || [];
 
 const SalesTable = () => {
   const navigate = useNavigate();
