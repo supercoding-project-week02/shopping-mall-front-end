@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 
+import { Icon } from '@/components/common/Icon/Icon.jsx';
 import size from '@/styles/Media';
 import { theme } from '@/styles/theme';
 
@@ -112,4 +113,10 @@ export const LogoutBtn = styled.button`
   background-color: inherit;
   color: ${theme.color.red};
   cursor: pointer;
+`;
+
+export const ResponsiveIcon = styled(Icon)`
+  ${size.small} {
+    width: 15px;
+  }
 `;
