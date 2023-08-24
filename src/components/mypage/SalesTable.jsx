@@ -38,10 +38,7 @@ const SalesTable = () => {
       />
     ),
     판매마감날짜: product.soldAt.split('T')[0],
-<<<<<<< HEAD
-=======
     수정하기: <button onClick={() => alert('수정하기')}>수정하기</button>,
->>>>>>> fb9bce8c78cf7c4684f557be38b2a2ccfe1e19e2
     삭제: <Icon name="IconX" size={10} onClick={() => alert('삭제')} />,
   }));
 

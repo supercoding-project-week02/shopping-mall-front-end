@@ -15,7 +15,7 @@ const ItemListGrid = () => {
   const [totalLength, setTotalLength] = useState(null);
   const [isItem, setIsItem] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [stop, setStop] = useState(false);
+  const [stop, setStop] = useState(true);
   const observerRef = useRef(null);
 
   //HTTP 요청
@@ -62,11 +62,7 @@ const ItemListGrid = () => {
 
   // INFINITE SCROLL
   const observerCallback = (entries) => {
-<<<<<<< HEAD
-    if (!isItem) return;
-=======
     if (stop) return;
->>>>>>> fb9bce8c78cf7c4684f557be38b2a2ccfe1e19e2
     if (entries[0].isIntersecting) {
       setRequest((prevItemList) => ({
         ...prevItemList,
@@ -93,11 +89,7 @@ const ItemListGrid = () => {
         observerRef.current.disconnect();
       }
     };
-<<<<<<< HEAD
-  }, []);
-=======
   }, [stop]);
->>>>>>> fb9bce8c78cf7c4684f557be38b2a2ccfe1e19e2
 
   const observerTriggerRef = useRef();
 
