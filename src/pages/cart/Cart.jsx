@@ -3,7 +3,6 @@ import * as S from './Cart.Styles';
 import { Icon } from '@/components/common/Icon/Icon';
 import { useRecoilValue } from 'recoil';
 import { cartAtom, TotalPriceSelector, TotalQuantitySelector } from '@/recoil/atoms/cartAtom';
-import CartItem from './CartItem';
 import { getShoppingCart } from '@/apis/cart';
 import { client } from '@/apis';
 import { useNavigate } from 'react-router-dom';
