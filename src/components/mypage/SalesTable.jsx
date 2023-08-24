@@ -1,19 +1,27 @@
+import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
 import { getSalesHistory } from '@/apis/index.js';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { mockColumns } from '@/mocks/mockData.js';
+import { theme } from '@/styles/theme.js';
 import * as S from './Mypage.styles.jsx';
+import Button from '../common/Button/Button.jsx';
 
-const salesColumns = mockColumns['판매목록'];
+// const salesColumns = mockColumns['판매목록'];
 // GYU-TODO: 삭제 예정
 // const data = mockDatas['판매목록'] || [];
 
 const SalesTable = () => {
+  const navigate = useNavigate();
   const { data, isError } = useQuery(['sales'], getSalesHistory);
 
   if (!data) return null;
   if (isError) return <div>에러가 발생했습니다.</div>;
+
+  const handleEditButton = (id) => {
+    navigate(`/write/${id}`);
+  };
 
   const history = data.data.map((product, index) => ({
     key: index,
@@ -38,6 +46,19 @@ const SalesTable = () => {
       />
     ),
     판매마감날짜: product.soldAt.split('T')[0],
+    수정하기: (
+      <Button
+        bgColor={theme.color.black}
+        fontColor="white"
+        text="수정"
+        borderRadius="10px"
+        width="80%"
+        height="25px"
+        onClick={() => {
+          handleEditButton(product.product.id);
+        }}
+      />
+    ),
     삭제: <Icon name="IconX" size={10} onClick={() => alert('삭제')} />,
   }));
 
@@ -49,5 +70,38 @@ const SalesTable = () => {
     />
   );
 };
+
+const salesColumns = [
+  {
+    title: 'id',
+    dataIndex: 'id',
+    key: 'id',
+  },
+  {
+    title: '상품정보',
+    dataIndex: '상품정보',
+    key: '상품정보',
+  },
+  {
+    title: '재고수',
+    dataIndex: '재고수',
+    key: '재고수',
+  },
+  {
+    title: '판매 마감 날짜',
+    dataIndex: '판매마감날짜',
+    key: '판매마감날짜',
+  },
+  {
+    title: '수정하기',
+    dataIndex: '수정하기',
+    key: '수정하기',
+  },
+  {
+    title: '',
+    dataIndex: '삭제',
+    key: '삭제',
+  },
+];
 
 export default SalesTable;

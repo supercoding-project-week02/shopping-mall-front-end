@@ -1,20 +1,27 @@
+import { Link } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+
 import imageLoading from '@/assets/genre/imageLoading.png';
+import { productId } from '@/recoil/atoms/productId.js';
 import * as S from './ItemListGrid.Styles.jsx';
 import StarRating from './StarRating.jsx';
 const GridCard = (props) => {
   const item = props.item;
+  const [productIdx, setProductIdx] = useRecoilState(productId);
 
-  const onClickHandler = (event) => {
-    console.log(event.target.id);
+  const onClickHandler = () => {
+    setProductIdx(item.id);
   };
   return (
     <S.GridCard>
       <S.GridImgBox>
-        <S.GridImg
-          src={item.mainImageUrl && item.mainImageUrl !== '' ? item.mainImageUrl : imageLoading}
-          id={item.productIdx}
-          onClick={onClickHandler}
-        />
+        <Link to={`/detail/${item.productId}`}>
+          <S.GridImg
+            src={item.mainImageUrl && item.mainImageUrl !== '' ? item.mainImageUrl : imageLoading}
+            id={item.productId}
+            onClick={onClickHandler}
+          />
+        </Link>
       </S.GridImgBox>
       <S.GridTextBox>
         <S.GridNameBox>{item.companyName}</S.GridNameBox>
