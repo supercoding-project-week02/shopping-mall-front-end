@@ -24,3 +24,8 @@ export const changeAddress = async (payload) => {
   const response = await client.post('/user/address', payload);
   return response.data;
 };
+
+export const kakaoLogin = async (payload) => {
+  const response = await client.post('/user/kakao', payload);
+  return response.data;
+};
