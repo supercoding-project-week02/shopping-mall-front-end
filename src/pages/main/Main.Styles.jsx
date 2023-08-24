@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const MainPageWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -9,4 +10,18 @@ export const MainPageWrapper = styled.div`
 
 export const MainContainer = styled.div`
   width: 80%;
+`;
+
+export const ToTopBtn = styled.button`
+  position: fixed;
+  top: 80%;
+  left: 90%;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  z-index: 3;
+  border: none;
+  background-color: #ffebc0;
+  color: grey;
+  cursor: pointer;
 `;

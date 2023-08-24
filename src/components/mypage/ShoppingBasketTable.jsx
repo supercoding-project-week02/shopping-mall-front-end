@@ -1,20 +1,27 @@
+import { useQuery } from '@tanstack/react-query';
+
+import { getShoppingCart } from '@/apis/cart.js';
 import * as S from './Mypage.styles.jsx';
 
 const ShoppingBasketTable = () => {
-  const shoppingBaskets = data.map((product, index) => ({
+  const { data, isLoading, isError } = useQuery(['shoppingCart'], getShoppingCart);
+  if (!data) return null;
+  if (isError) return <div>에러가 발생했습니다.</div>;
+
+  const shoppingBaskets = data.data?.map((basket, index) => ({
     key: index,
-    id: product.tradeId,
+    id: basket.product.id,
     상품정보: (
       <S.ProductInfoWrapper>
-        <img src={product.product.mainImageUrl} alt="" width={50} height={50} />
+        <img src={basket.product.mainImageUrl} alt="" width={50} height={50} />
         <div>
-          <div>{product.product.title}</div>
-          <span>{product.product.price?.toLocaleString('ko-KR')}원</span>
+          <div>{basket.product.title}</div>
+          <span>{basket.product.price?.toLocaleString('ko-KR')}원</span>
         </div>
       </S.ProductInfoWrapper>
     ),
-    수량: product.quantity,
-    주문금액: <>{(product.product.price * product.quantity).toLocaleString('ko-kr')}원</>,
+    수량: basket.quantity,
+    주문금액: <>{(basket.product.price * basket.quantity).toLocaleString('ko-kr')}원</>,
   }));
 
   return (
@@ -23,6 +30,11 @@ const ShoppingBasketTable = () => {
 };
 
 const shoppingBasketColumns = [
+  {
+    title: 'id',
+    dataIndex: 'id',
+    key: 'id',
+  },
   {
     title: '상품정보',
     dataIndex: '상품정보',

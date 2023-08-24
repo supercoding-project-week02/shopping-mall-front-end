@@ -1,9 +1,10 @@
 import styled from '@emotion/styled';
 
+import { theme } from '@/styles/theme';
+
 export const HeaderWrapper = styled.div`
   display: flex;
   justify-content: center;
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -45,6 +46,7 @@ export const SearchBarBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1rem;
 `;
 
 export const HeaderBtnsBox = styled.div`
@@ -71,5 +73,28 @@ export const MyInfoBtnBox = styled.div`
 
 export const SearchBtnBox = styled.div`
   margin-right: 0.7rem;
+  cursor: pointer;
+`;
+
+export const SearchBar = styled.input`
+  width: 10rem;
+  border: none;
+  background-color: #fafafa;
+  border-bottom: 1px solid grey;
+  font-size: 0.7rem;
+  color: grey;
+  ::placeholder {
+    color: grey;
+    font-size: 0.7rem;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const LogoutBtn = styled.button`
+  border: none;
+  background-color: inherit;
+  color: ${theme.color.red};
   cursor: pointer;
 `;

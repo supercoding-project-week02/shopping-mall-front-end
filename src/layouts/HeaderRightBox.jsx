@@ -1,30 +1,30 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 import { Icon } from '@/components/common/Icon/Icon.jsx';
+import { localstorageKey } from '@/constant/index.js';
+import { customerState, loginState, userState } from '@/recoil/atoms/userState.js';
+import { removeItem } from '@/utils/localstorage.js';
 import * as S from './Header.Styles.jsx';
+import SearchBar from './SearchBar.jsx';
 
 const HeaderRightBox = () => {
-  let isCustomer = false;
-  let isLogin = true;
+  // recoil의 상태 정보 불러오기
+  // const getUser = useRecoilValue(userState);
+  const resetUser = useResetRecoilState(userState);
+  const [isLogin, setIsLogin] = useRecoilState(loginState);
+  const [isCustomer, setIsCustomer] = useRecoilState(customerState);
 
-  const [isSearchBar, setIsSearchBar] = useState(false);
-
-  const searchBarHandler = () => {
-    if (!isSearchBar) setIsSearchBar(true);
-    else setIsSearchBar(false);
+  const handleLogout = () => {
+    removeItem(localstorageKey.auth);
+    resetUser();
+    alert('로그아웃 되었습니다.');
   };
+
   return (
     <S.HeaderRightBox>
-      {isSearchBar && (
-        <S.SearchBarBox>
-          <input type="text"></input>
-        </S.SearchBarBox>
-      )}
       <S.HeaderBtnsBox>
-        <S.SearchBtnBox onClick={searchBarHandler}>
-          <Icon name="IconSearch" width="20px" />
-        </S.SearchBtnBox>
+        <SearchBar />
         <Link to={isLogin ? '/mypage' : '/login'}>
           <S.MyInfoBtnBox>
             <Icon name="IconUser" width="25px" />
@@ -44,6 +44,7 @@ const HeaderRightBox = () => {
             </S.ProductAddBtnBox>
           </Link>
         )}
+        {isLogin && <S.LogoutBtn onClick={handleLogout}>logout</S.LogoutBtn>}
       </S.HeaderBtnsBox>
     </S.HeaderRightBox>
   );

@@ -1,17 +1,12 @@
-import cookierun from '@/assets/mainDummy/cookierun.png';
-import disco from '@/assets/mainDummy/disco.png';
-import hali from '@/assets/mainDummy/haligali.png';
-import mono from '@/assets/mainDummy/monopoly.png';
-import rolling from '@/assets/mainDummy/rolling.png';
-import rummi from '@/assets/mainDummy/rummikub.png';
+import imageLoading from '@/assets/genre/imageLoading.png';
 
 export const writeData = {
   productIdx: 1,
-  mainImageUrl: hali,
+  mainImageUrl: imageLoading,
   closingAt: '2023.08.15',
   title: '개꿀잼 할리갈리',
   companyName: '김희진팩토리',
-  price: '12000원',
+  price: 12000,
   avgRating: 4.8,
   playerCount: '5인 이상',
   difficultyLevel: '초급',
@@ -19,11 +14,11 @@ export const writeData = {
   genre: 'SF',
   amount: 4,
   imgUrls: [
-    { imgIdx: 1, imgUrl: cookierun },
-    { imgIdx: 2, imgUrl: disco },
-    { imgIdx: 3, imgUrl: mono },
-    { imgIdx: 4, imgUrl: rolling },
-    { imgIdx: 5, imgUrl: rummi },
+    { imgIdx: 1, imgUrl: imageLoading },
+    { imgIdx: 2, imgUrl: imageLoading },
+    { imgIdx: 3, imgUrl: imageLoading },
+    { imgIdx: 4, imgUrl: imageLoading },
+    { imgIdx: 5, imgUrl: imageLoading },
   ],
 };
 

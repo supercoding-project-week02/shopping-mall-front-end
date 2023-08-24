@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const ListNameAndSelectBox = styled.div`
   width: 100%;
+  height: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,5 +28,5 @@ export const SelectFilterBox = styled.div`
 export const SelectFilter = styled.select`
   background-color: #fafafa;
   border: none;
-  max-width: 4rem;
+  width: 6rem;
 `;
