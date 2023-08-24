@@ -53,7 +53,7 @@ const Join = () => {
 
   const disabledTrue =
     isValid.isEmail &&
-    // isValid.isPassword &&
+    isValid.isPassword &&
     isValid.isPasswordConfirm &&
     isValid.isNickName &&
     isValid.isPhoneNumber;
