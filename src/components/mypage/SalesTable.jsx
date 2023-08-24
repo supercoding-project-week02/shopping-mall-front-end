@@ -1,15 +1,18 @@
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { getSalesHistory } from '@/apis/index.js';
+import { deleteProduct, getSalesHistory } from '@/apis/index.js';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
+import { QUERY_KEYS } from '@/queries/queryKeys.js';
 import { theme } from '@/styles/theme.js';
 import * as S from './Mypage.styles.jsx';
 import Button from '../common/Button/Button.jsx';
 
 const SalesTable = () => {
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { data, isError } = useQuery(['sales'], getSalesHistory);
+  const { mutate: deleteProductMutate } = useMutation((productId) => deleteProduct(productId));
 
   if (!data) return null;
   if (isError) return <div>에러가 발생했습니다.</div>;
@@ -20,7 +23,13 @@ const SalesTable = () => {
 
   const handleDeleteProduct = (event, productId) => {
     event.stopPropagation();
-    alert(`${productId} 삭제`);
+    alert(`삭제 product: ${productId}`);
+    // GYU-TODO: 삭제 부분 잘 동작하지 않음, 싱크 맞출때 다시 작업하기
+    // deleteProductMutate(productId, {
+    //   onSuccess: async () => {
+    //     await queryClient.invalidateQueries([QUERY_KEYS.profile]);
+    //   },
+    // });
   };
 
   const history = data.data.map((product, index) => ({
