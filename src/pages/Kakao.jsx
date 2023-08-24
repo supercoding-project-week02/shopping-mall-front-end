@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 import styled from '@emotion/styled';
 
@@ -9,7 +9,6 @@ import { userState } from '@/recoil/atoms/userState';
 import { saveItem } from '@/utils/localstorage';
 
 const Kakao = () => {
-  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const setUser = useSetRecoilState(userState);
   const code = searchParams.get('code');
@@ -26,8 +25,7 @@ const Kakao = () => {
       });
       saveItem(localstorageKey.auth, result.data.token);
 
-      alert('카카오로 로그인 되었습니다.');
-      navigate('/');
+      location.href = '/';
     }
   });
   return (

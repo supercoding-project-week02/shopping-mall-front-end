@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import { login } from '@/apis/user.js';
@@ -12,7 +12,6 @@ import { saveItem } from '@/utils/localstorage.js';
 import * as S from './Login.styles';
 
 const Login = () => {
-  const navigate = useNavigate();
   // recoil 선언
   const setUser = useSetRecoilState(userState);
 
@@ -50,8 +49,7 @@ const Login = () => {
         // user 전역 상태 관리 추가로 주석처리했습니다. 확인 후 삭제 예정 -> 동영
         // saveItem(localstorageKey.user, result.data);
 
-        alert('로그인 되었습니다.');
-        navigate('/');
+        location.href = '/';
       }
     });
   };
