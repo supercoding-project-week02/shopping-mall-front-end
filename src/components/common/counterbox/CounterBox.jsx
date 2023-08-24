@@ -1,5 +1,6 @@
-import * as S from './CounterBox.styles';
 import { useState } from 'react';
+
+import * as S from './CounterBox.styles';
 
 export default function CounterBox(props) {
   const { productPrice } = props;
