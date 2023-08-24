@@ -3,35 +3,15 @@ import * as S from './Cart.Styles';
 import { Icon } from '@/components/common/Icon/Icon';
 import { useRecoilValue } from 'recoil';
 import { cartAtom, TotalPriceSelector, TotalQuantitySelector } from '@/recoil/atoms/cartAtom';
-import { getShoppingCart } from '@/apis/cart';
+import { deleteShopoingCart, getShoppingCart, modifyShoppingCart } from '@/apis/cart';
 import { client } from '@/apis';
 import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const navigate = useNavigate();
 
-  // 전역 상태 관리소의 값을 불러오기
-  const cartItem = useRecoilValue(cartAtom);
-
-  //? 파생 데이터인 셀렉터를 이용하기
-
-  // 총 수량
-  const TotalQuantity = useRecoilValue(TotalQuantitySelector);
-
-  // 총액
-  const TotalPrice = useRecoilValue(TotalPriceSelector);
-
   const [datas, setDatas] = useState(null);
   const [user, setUser] = useState(null);
-
-  const [count, setCount] = useState(0);
-
-  const onIncrease = () => {
-    setCount((prevCount) => prevCount + 1);
-  };
-  const onDecrease = () => {
-    setCount((prevCount) => prevCount - 1);
-  };
 
   useEffect(() => {
     getShoppingCart().then((result) => {
@@ -48,7 +28,12 @@ const Cart = () => {
       const response = result.data;
       console.log('response', response);
       if (response.status === 200) {
-        setUser(response.data);
+        if (Array.isArray(response.data) && response.data.length === 0) {
+          setUser(null);
+        } else {
+          setUser(response.data);
+        }
+
         // console.log('정상 수신 data', response.data);
       }
     });
@@ -56,17 +41,57 @@ const Cart = () => {
 
   console.log('datas', datas);
 
-  const handleDeleteCart = () => {
-    client
-      .delete('/shoppingcart')
-      .then((result) => {
-        const response = result.data;
-        const data = response.data;
-        console.log('response', response, 'data', data);
-      })
-      .catch((error) => console.error(error));
+  const handleDeleteCart = (cartId) => {
+    deleteShopoingCart({
+      shoppingCartIdSet: [cartId],
+    }).then((result) => {
+      if (result.status === 200) {
+        const deletedDatas = datas.filter((item) => item.id !== cartId);
+        setDatas(deletedDatas);
+        // 리렌더링 되면서 새로고침되는 느낌처럼 구현? (새로고침은 아님) 넵
+      }
+    });
+  };
 
-    client.alert('삭제 완료');
+  const handlePlusButton = (index, amount, productId) => {
+    if (amount >= datas[index].product.leftQuantity) return;
+
+    modifyShoppingCart({
+      amount: amount + 1,
+      productId: productId,
+    }).then((result) => {
+      if (result.status === 200) {
+        let plusData = datas.map((item) => {
+          if (item.product.id === productId) {
+            item.quantity += 1;
+            return item;
+          }
+          return item;
+        });
+        setDatas(plusData);
+      }
+    });
+  };
+
+  const handleMinusButton = (index, amount, productId) => {
+    if (amount <= 1) return;
+
+    modifyShoppingCart({
+      amount: amount - 1,
+      productId: productId,
+    }).then((result) => {
+      console.log(result);
+      if (result.status === 200) {
+        let plusData = datas.map((item) => {
+          if (item.product.id === productId) {
+            item.quantity -= 1;
+            return item;
+          }
+          return item;
+        });
+        setDatas(plusData);
+      }
+    });
   };
 
   const handlePay = () => {
@@ -103,31 +128,46 @@ const Cart = () => {
           <S.Td2>수량</S.Td2>
           <S.Td3>주문금액</S.Td3>
         </S.Thead>
-        {datas.map((data) => (
-          <S.Tr>
-            <S.ProductDiv>
-              <S.Img alt="sample_img" src={data.product.mainImageUrl} />
-              <S.ProductNameDiv>{data.product.title}</S.ProductNameDiv>
-              <S.DeleteIcon>
-                <Icon name="IconX" size={12} onClick={handleDeleteCart} />
-              </S.DeleteIcon>
-            </S.ProductDiv>
-            <S.Td2>
-              <S.CounterOuterDiv>
-                <S.CountDiv>
-                  <S.MinusButton onClick={onDecrease}>
-                    <S.Span>-</S.Span>
-                  </S.MinusButton>
-                  <S.CountInput type="text" title="number" value={data.quantity} />
-                  <S.PlusButton onClick={onIncrease}>
-                    <S.Span>+</S.Span>
-                  </S.PlusButton>
-                </S.CountDiv>
-              </S.CounterOuterDiv>
-            </S.Td2>
-            <S.Td3>{data.product.price * data.quantity}</S.Td3>
-          </S.Tr>
-        ))}
+        {datas &&
+          datas.map((data, index) => (
+            <S.Tr key={index}>
+              <S.ProductDiv>
+                <S.Img alt="sample_img" src={data.product.mainImageUrl} />
+                <S.ProductNameDiv>{data.product.title}</S.ProductNameDiv>
+                <S.DeleteIcon>
+                  <Icon
+                    name="IconX"
+                    size={12}
+                    onClick={() => {
+                      handleDeleteCart(data.id);
+                    }}
+                  />
+                </S.DeleteIcon>
+              </S.ProductDiv>
+              <S.Td2>
+                <S.CounterOuterDiv>
+                  <S.CountDiv>
+                    <S.MinusButton
+                      onClick={() => {
+                        handleMinusButton(index, data.quantity, data.product.id);
+                      }}
+                    >
+                      <S.Span>-</S.Span>
+                    </S.MinusButton>
+                    <S.CountInput type="text" title="number" value={data.quantity} />
+                    <S.PlusButton
+                      onClick={() => {
+                        handlePlusButton(index, data.quantity, data.product.id);
+                      }}
+                    >
+                      <S.Span>+</S.Span>
+                    </S.PlusButton>
+                  </S.CountDiv>
+                </S.CounterOuterDiv>
+              </S.Td2>
+              <S.Td3>{data.product.price * data.quantity}</S.Td3>
+            </S.Tr>
+          ))}
       </S.ItemTable>
       <S.CounterTable>
         <S.CounterTitleDiv>
