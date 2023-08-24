@@ -20,6 +20,7 @@ const Join = () => {
     phoneNumber: '',
     type: 'CONSUMER',
   });
+  const targetPassword = joinForm.password;
 
   const [imgValue, setImgValue] = useState(null);
 
@@ -52,7 +53,7 @@ const Join = () => {
 
   const disabledTrue =
     isValid.isEmail &&
-    // isValid.isPassword &&
+    isValid.isPassword &&
     isValid.isPasswordConfirm &&
     isValid.isNickName &&
     isValid.isPhoneNumber;
@@ -120,7 +121,7 @@ const Join = () => {
           value={joinForm.checkPassword}
           validTest={validTest}
           isValid={isValid}
-          password={joinForm.password}
+          password={targetPassword}
         />
         <S.Label>이름(필수)</S.Label>
         <UserInput

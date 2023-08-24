@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
@@ -21,6 +22,20 @@ const Login = () => {
     email: '',
     password: '',
   });
+  // 지우
+  const [isValid, setIsValid] = useState({
+    isEmail: false,
+    isPassword: false,
+  });
+
+  const validTest = useCallback(
+    (name, value) => {
+      setIsValid({ ...isValid, [name]: value });
+    },
+    [isValid],
+  );
+
+  const disabledTrue = isValid.isEmail && isValid.isPassword;
 
   const linkToKakaoLogin = (e) => {
     e.preventDefault();
@@ -49,7 +64,7 @@ const Login = () => {
         // user 전역 상태 관리 추가로 주석처리했습니다. 확인 후 삭제 예정 -> 동영
         // saveItem(localstorageKey.user, result.data);
 
-        location.href = '/';
+        navigator('/');
       }
     });
   };
@@ -65,6 +80,8 @@ const Login = () => {
           name="email"
           value={loginForm.email}
           onChange={onChange}
+          validTest={validTest}
+          isValid={isValid}
         />
         <UserInput
           type="password"
@@ -73,12 +90,15 @@ const Login = () => {
           name="password"
           value={loginForm.password}
           onChange={onChange}
+          validTest={validTest}
+          isValid={isValid}
         />
         <S.LoginButton
           bgColor={theme.color.black}
           fontColor="white"
           borderRadius="10px"
           text="로그인"
+          disabled={!disabledTrue}
         />
         <S.BorderDiv>
           <div></div>
