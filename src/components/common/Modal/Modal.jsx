@@ -15,16 +15,26 @@ import * as S from './Modal.styles.jsx';
 function Modal({ children, visible, onClose }) {
   const className = '';
   const modalRef = useRef(null);
-  useOutsideClick({ ref: modalRef, handler: onClose });
 
+  // GYU-TODO: useOutsideClick 은 성능 이슈 있음, 그래서 overlay 에 onClick 으로 처리
+  // useOutsideClick({ ref: modalRef, handler: onClose });
+
+  // GYU-TODO: 스크롤 이벤트 방지하기
   return (
     <Portal selector="#modal-root">
-      <S.ModalOverlay visible={visible} />
-      <S.ModalWrapper className={className} tabIndex={-1} visible={visible}>
+      <S.ModalOverlay
+        className={className}
+        tabIndex={-1}
+        visible={visible}
+        onClick={() => {
+          console.log('click2');
+          onClose();
+        }}
+      >
         <S.ModalContainer ref={modalRef} tabIndex={0}>
           {children}
         </S.ModalContainer>
-      </S.ModalWrapper>
+      </S.ModalOverlay>
     </Portal>
   );
 }
