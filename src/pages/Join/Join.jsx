@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { client } from '@/apis/index.js';
 import Button from '@/components/common/Button/Button';
 import UserInput from '@/components/common/UserInput/UserInput';
 import RadioInput from '@/components/RadioInput/RadioInput';
@@ -61,8 +62,8 @@ const Join = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        'http://52.79.168.48:8080/api/v1/user/signup',
+      const response = await client.post(
+        '/user/signup',
         {
           email: joinForm.email,
           password: joinForm.password,
