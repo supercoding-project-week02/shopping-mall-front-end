@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@/styles/theme';
 
 // Payment.jsx
 export const PageTitle = styled.div`
@@ -38,7 +39,7 @@ export const PersonInfoBox = styled.div`
 
 export const ShipInfoBox = styled.div`
   position: relative;
-  boxing-size: border-box;
+  box-sizing: border-box;
   background-color: rgb(194, 188, 191, 0.25);
   width: 55%;
   height: auto;
@@ -46,7 +47,7 @@ export const ShipInfoBox = styled.div`
 
 export const FixedDiv = styled.div`
   position: fixed;
-  boxsing-size: border-box;
+  box-sizing: border-box;
   width: 45%;
   height: 120%;
   margin-left: 620px;
@@ -69,7 +70,7 @@ export const SuperPayBox = styled.div`
 `;
 
 export const AgreeBox = styled.div`
-  boxing-size: border-box;
+  box-sizing: border-box;
   background-color: rgb(194, 188, 191, 0.25);
   width: 40%;
   height: 10%;
@@ -370,7 +371,7 @@ export const SubAgreeDiv = styled.div`
   font-size: 15px;
   width: 240px;
   text-align: left;
-  boxing-size: border-box;
+  box-sizing: border-box;
 `;
 
 export const PaySubmitBox = styled.div`
@@ -386,26 +387,30 @@ export const PaySubmitTextDiv = styled.div`
 `;
 
 export const PaySubmitButton = styled.button`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 16px 0;
-    font-size: 18px;
-    font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 16px 0;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  background-color: black;
+  &:disabled {
+    background-color: ${theme.color.gray};
+  }
+  &:hover {
+    background-color: #ffb002;
     border: none;
-    cursor: pointer;
-    &:hover {
-       background-color: #ffb002;
-       color: white;
-       border: none;
-       height: 60px;
-       margin: 0;
-       padding: 0;
-       color: black;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    color: black;
+  }
 `;
 
 export const EditButton = styled.button`
@@ -416,7 +421,6 @@ export const EditButton = styled.button`
   width: 60px;
   height: 40px;
   opacity: 1;
-  z-index: 999;
   text-align: center;
   cursor: pointer;
   font-size: 16px;
@@ -427,12 +431,13 @@ export const EditButton = styled.button`
     background-color: #ffb002;
     color: white;
     border: none;
+  }
 `;
 
 // PaymentShipChgClick.jsx
 export const NamePhoneOuterDiv = styled.div`
   display: flex;
-  boxing-size: border-box;
+  box-sizing: border-box;
   width: 90%;
   margin: 0 25px;
   padding: 0;
@@ -479,7 +484,7 @@ export const AdrsFindButton = styled.button`
 `;
 
 export const AdrsInput = styled.input`
-  boxing-size: border-box;
+  box-sizing: border-box;
   width: 86%;
   margin: 10px 25px;
   height: 35px;
@@ -488,7 +493,7 @@ export const AdrsInput = styled.input`
 `;
 
 export const DetailAdrsInput = styled.input`
-  boxing-size: border-box;
+  box-sizing: border-box;
   width: 86%;
   margin: 10px 25px 0px;
   height: 35px;

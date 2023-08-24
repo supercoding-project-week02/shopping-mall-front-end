@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import { theme } from '@/styles/theme';
 
 export const ModalBackground = styled.div`
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
   background-color: ${({ isOpen }) => (isOpen ? ' rgba(0, 0, 0, 0.8)' : 'none')};
   z-index: ${({ isOpen }) => (isOpen ? '999' : '-1')};
   position: fixed;
@@ -42,13 +41,23 @@ export const ModalBtn = styled.span`
   height: 50px;
 `;
 
-export const MoveToMainBtn = styled.div`
+export const KeepShoppingBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  width: 100%;
+  width: 150px;
   font-size: 12px;
   font-weight: bold;
   border-right: 1px solid ${theme.color.gray};
+`;
+
+export const GoCartBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 150px;
+  font-size: 12px;
+  font-weight: bold;
 `;

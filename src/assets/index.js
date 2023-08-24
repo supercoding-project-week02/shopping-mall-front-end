@@ -16,3 +16,4 @@ export { ReactComponent as mainLogo } from './superBoardingLogo.svg';
 export { ReactComponent as EmptyHeart } from './emptyHeart.svg';
 export { ReactComponent as FullHeart } from './fullHeart.svg';
 export { ReactComponent as IconChat } from './iconChat.svg';
+export { ReactComponent as IconImage } from './iconImage.svg';

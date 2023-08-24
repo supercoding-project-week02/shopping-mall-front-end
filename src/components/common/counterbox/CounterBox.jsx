@@ -5,7 +5,7 @@ import * as S from './CounterBox.styles';
 export default function CounterBox(props) {
   const { productPrice } = props;
   const { productStock } = props;
-  const [quantity, setQuanity] = useState(1);
+  const { quantity, setQuanity } = props;
   const [price, setPrice] = useState(productPrice);
   // const [stock, setStock] = useState(productStock);
 
@@ -36,7 +36,7 @@ export default function CounterBox(props) {
   };
 
   const formatPrice = (price) => {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return price.toLocaleString('ko-KR');
   };
 
   return (
@@ -51,7 +51,7 @@ export default function CounterBox(props) {
                 type="number"
                 value={quantity}
                 onChange={typingQuantityChange}
-                style={{ width: '50px', textAlign: 'center' }}
+                style={{ width: '30px', textAlign: 'center' }}
                 min="1"
                 max={productStock}
               />

@@ -35,13 +35,18 @@ export const QandABar = styled(DetailInfomationBar)``;
 export const DetailInfoPage = styled.div``;
 
 export const ImgContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   overflow: hidden;
   margin-top: 20px;
   width: 800px;
-  height: ${(props) => (props.showAll ? 'auto' : '500px')};
+  height: ${(props) => (props.showAll ? 'auto' : '400px')};
 `;
 
-export const Img = styled.img``;
+export const Img = styled.img`
+  width: 800px;
+`;
 
 export const ButtonContainer = styled.div`
   display: flex;
@@ -96,40 +101,4 @@ export const ReviewBoard = styled.div`
   width: 1160px;
   border-top: 1px solid ${theme.color.black};
   margin-bottom: 20px;
-`;
-
-export const QandAPage = styled.div`
-  margin-top: 50px;
-  margin-bottom: 200px;
-`;
-
-export const QandAHeader = styled.div`
-  width: 1160px;
-  border-bottom: 1px solid ${theme.color.black};
-
-  h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  p {
-    font-size: 13px;
-    margin-bottom: 15px;
-    color: #878687;
-  }
-`;
-
-export const QandABtn = styled(ReviewBtn)``;
-
-export const QandAContent = styled.div`
-  width: 1160px;
-`;
-
-export const QandABoardTitle = styled.span`
-  width: 1160px;
-  height: 40px;
-  display: flex;
-  border-top: 1px solid ${theme.color.black};
-  border-bottom: 1px solid ${theme.color.gray};
-  font-size: 12px;
-  padding: 3px 0 3px 0;
 `;

@@ -57,6 +57,7 @@ Icon.propTypes = {
     'IconX',
     'mainLogo',
     'IconChat',
+    'IconImage',
   ]).isRequired,
   size: PropTypes.number,
   width: PropTypes.string,
