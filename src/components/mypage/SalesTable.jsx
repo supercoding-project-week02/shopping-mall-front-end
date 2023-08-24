@@ -64,18 +64,19 @@ const SalesTable = () => {
         borderRadius="10px"
         width="80%"
         height="25px"
-        onClick={() => {
+        onClick={(event) => {
+          event.stopPropagation();
           handleEditButton(product.product.id);
         }}
       />
     ),
-    삭제: (
-      <Icon
-        name="IconX"
-        size={10}
-        onClick={(event) => handleDeleteProduct(event, product.product.id)}
-      />
-    ),
+    // 삭제: (
+    //   <Icon
+    //     name="IconX"
+    //     size={10}
+    //     onClick={(event) => handleDeleteProduct(event, product.product.id)}
+    //   />
+    // ),
   }));
 
   return (
@@ -118,11 +119,11 @@ const salesColumns = [
     dataIndex: '수정하기',
     key: '수정하기',
   },
-  {
-    title: '',
-    dataIndex: '삭제',
-    key: '삭제',
-  },
+  // {
+  //   title: '',
+  //   dataIndex: '삭제',
+  //   key: '삭제',
+  // },
 ];
 
 export default SalesTable;
