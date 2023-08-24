@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import * as S from '@/pages/payment/Payment.Styles';
-import PaymentShipMove from './PaymentShipMove';
 import HasPaidModal from './HasPaidModal';
 import { sumTotalPrice } from '../cart/Cart';
 import { getShoppingCart } from '@/apis/cart';
 import { getUserInfo, getUserPayMoney } from '@/apis/user';
 import { purchaseProducts } from '@/apis';
+import { useNavigate } from 'react-router-dom';
 
 const Payment = () => {
+  const navigate = useNavigate();
+
   const [checked, setChecked] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [datas, setDatas] = useState([]);
@@ -35,7 +37,6 @@ const Payment = () => {
         // 여기서 result에 있는 data를 datas 상태값에 적용하는 과정
         setDatas(result.data);
       }
-
       // 예외처리 작성
     });
 
@@ -51,26 +52,8 @@ const Payment = () => {
         console.log('payMoney', result.data);
       }
     });
-
-    // '/user/info' 데이터를 console.log 로 찍어주세요!
-    // client.get('user/info').then((result) => {
-    //   const response = result.data;
-    //   console.log('userResponse', response);
-    //   if (response.status === 200) {
-    //     setUser(response.data);
-    //     // console.log('정상 수신 data', response.data);
-    //   }
-    // });
-
-    // '/user/recharge' 데이터 끌어오기
-    // client.get('user/recharge').then((result) => {
-    //   const response = result.data;
-    //   console.log('response', response);
-    //   if (response.status === 200) {
-    //     setCharge(response.data);
-    //   }
-    // });
   }, []);
+
   const handleSuperPay = () => {
     // 1. 결제 api 호출
     purchaseProducts({
@@ -105,7 +88,7 @@ const Payment = () => {
                 <S.ProductNameDiv>{data.product.title}</S.ProductNameDiv>
                 <S.ProductCountDiv>{data.quantity}개</S.ProductCountDiv>
                 <S.ProductPriceDiv>
-                  {Number(data.product.price).toLocaleString('ko-KR')}원
+                  {Number(data.quantity * data.product.price).toLocaleString('ko-KR')}원
                 </S.ProductPriceDiv>
               </S.OrderTextDiv>
             </S.OrderDetailDiv>
@@ -126,21 +109,18 @@ const Payment = () => {
           <S.Address1>{user.address ? user.address.address : ''}</S.Address1>
           <S.Address2>{user.address ? user.address.addressDetail : ''}</S.Address2>
           <S.ZipCode>{user.address ? user.address.zipCode : ''}</S.ZipCode>
-          <PaymentShipMove />
+          <S.EditButton
+            onClick={() => {
+              navigate('/mypage');
+            }}
+          >
+            수정
+          </S.EditButton>
         </S.ShipInfoBox>
 
         <S.FixedDiv>
           <S.OrderPriceBox>
             <S.OrderPrice>주문 요약</S.OrderPrice>
-            {/* <S.OrderPriceContentDiv> */}
-            {/* <S.OrderPriceTextDiv>
-                <S.Text1>상품가격</S.Text1>
-              </S.OrderPriceTextDiv> */}
-            {/* <S.OrderPriceNumberDiv>
-                <S.OrderPrice1>원</S.OrderPrice1>
-              </S.OrderPriceNumberDiv>
-            </S.OrderPriceContentDiv>
-            <S.OrderPriceHr /> */}
             <S.OrderPriceTotalDiv>
               <S.OrderPriceTotalTextDiv>
                 <S.Text3>총 주문금액</S.Text3>
@@ -154,7 +134,13 @@ const Payment = () => {
           <S.SuperPayBox>
             <S.SuperPayTitleDiv>
               <S.SuperPay>슈퍼 페이</S.SuperPay>
-              <S.ChargeButton>충전하기</S.ChargeButton>
+              <S.ChargeButton
+                onClick={() => {
+                  navigate('/mypage');
+                }}
+              >
+                충전하기
+              </S.ChargeButton>
             </S.SuperPayTitleDiv>
             <S.OrderPriceContentDiv>
               <S.SuperPayTextDiv>
@@ -180,15 +166,7 @@ const Payment = () => {
           </S.SuperPayBox>
 
           <S.AgreeBox>
-            {/* <S.AllAgree>
-              <S.AllAgreeInput type="checkbox"></S.AllAgreeInput>
-              <S.AllAgreeDiv>전체 동의</S.AllAgreeDiv>
-            </S.AllAgree> */}
-
             <S.SubAgree>
-              {/* <S.SubIndicateDiv>
-                <S.BoxLineDiv></S.BoxLineDiv>
-              </S.SubIndicateDiv> */}
               <S.SubAgreeInput
                 type="checkbox"
                 checked={checked}

@@ -25,6 +25,7 @@ export const OrderInfoBox = styled.div`
   background-color: rgb(194, 188, 191, 0.25);
   width: 55%;
   height: auto;
+  padding-bottom: 30px;
 `;
 
 export const PersonInfoBox = styled.div`
@@ -32,6 +33,7 @@ export const PersonInfoBox = styled.div`
   background-color: rgb(194, 188, 191, 0.25);
   width: 55%;
   height: 11%;
+  padding-bottom: 10px;
 `;
 
 export const ShipInfoBox = styled.div`
@@ -39,7 +41,7 @@ export const ShipInfoBox = styled.div`
   boxing-size: border-box;
   background-color: rgb(194, 188, 191, 0.25);
   width: 55%;
-  height: 25%;
+  height: auto;
 `;
 
 export const FixedDiv = styled.div`
@@ -82,11 +84,12 @@ export const OrderInfo = styled.div`
 
 export const OrderDetailDiv = styled.div`
   max-width: 550px;
-  width: 100%;
-  margin: 0 auto;
+  width: 95%;
+  margin: 3px auto;
   display: flex;
   box-sizing: border-box;
   border: 1px solid gray;
+  /* border-bottom: none; */
 `;
 
 export const Img = styled.img`
@@ -163,7 +166,6 @@ export const Address2 = styled.div`
 
 export const ZipCode = styled.div`
   margin: 0 25px;
-  padding-bottom: 30px;
   color: black; /* #c2bcbf; */
 `;
 
@@ -401,18 +403,18 @@ export const PaySubmitA = styled.button`
        color: black;
 `;
 
-// PaymentShipMove.jsx
-export const Button = styled.a`
+export const EditButton = styled.button`
   position: relative;
   border: 1px solid black;
-  left: 450px;
-  top: 90px;
-  width: 40px;
-  height: 20px;
+  left: 460px;
+  bottom: 125px;
+  width: 60px;
+  height: 40px;
   opacity: 1;
   z-index: 999;
   text-align: center;
-  padding: 10px 15px 8px 15px;
+  cursor: pointer;
+  font-size: 16px;
   font-weight: bold;
   border-radius: 5px;
   transition: 0.3s;
