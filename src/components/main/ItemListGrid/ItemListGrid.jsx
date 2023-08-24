@@ -15,7 +15,7 @@ const ItemListGrid = () => {
   const [totalLength, setTotalLength] = useState(null);
   const [isItem, setIsItem] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [stop, setStop] = useState(false);
+  const [stop, setStop] = useState(true);
   const observerRef = useRef(null);
 
   //HTTP 요청
@@ -62,7 +62,7 @@ const ItemListGrid = () => {
 
   // INFINITE SCROLL
   const observerCallback = (entries) => {
-    if (!isItem) return;
+    if (stop) return;
     if (entries[0].isIntersecting) {
       setRequest((prevItemList) => ({
         ...prevItemList,
@@ -74,8 +74,8 @@ const ItemListGrid = () => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: '0px',
-      threshold: 1.0,
+      rootMargin: '2px',
+      threshold: 0.7,
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, options);
@@ -89,7 +89,7 @@ const ItemListGrid = () => {
         observerRef.current.disconnect();
       }
     };
-  }, []);
+  }, [stop]);
 
   const observerTriggerRef = useRef();
 
