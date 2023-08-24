@@ -24,7 +24,7 @@ export const WrapperDiv = styled.div`
 export const OrderInfoBox = styled.div`
   background-color: rgb(194, 188, 191, 0.25);
   width: 55%;
-  height: 18%;
+  height: auto;
 `;
 
 export const PersonInfoBox = styled.div`
@@ -381,7 +381,7 @@ export const PaySubmitTextDiv = styled.div`
   background-color: black;
 `;
 
-export const PaySubmitA = styled.a`
+export const PaySubmitA = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
