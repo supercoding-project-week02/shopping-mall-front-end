@@ -34,8 +34,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
       // 현재 vaalidTest가 제대로 작동하지 않는 버그 있음
       // TODO: 로직 수정 후 return 부분 주석처리 해제
       if (name === 'password') {
-        const passwordRegex =
-          /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/;
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
         // 입력한 password가 정규식에 만족하는지 확인
         passwordRegex.test(value) ? validTest('isPassword', true) : validTest('isPassword', false);
         return;
@@ -66,7 +65,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
     return () => {
       clearTimeout(valid);
     };
-  }, [name, value, password]);
+  }, [name, value]);
 
   return (
     <Container>
@@ -82,7 +81,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
         ) : null
       ) : null}
       {/* password부분 */}
-      {/* {name === 'password' ? (
+      {name === 'password' ? (
         !isEmpty ? (
           isValid.isPassword ? (
             <IsTrue>유효한 비밀번호입니다.</IsTrue>
@@ -90,7 +89,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
             <IsFalse>유효하지 않은 비밀번호입니다.</IsFalse>
           )
         ) : null
-      ) : null} */}
+      ) : null}
       {/* password 비교 부분 */}
       {name === 'checkPassword' ? (
         !isEmpty ? (

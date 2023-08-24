@@ -1,9 +1,9 @@
-import * as S from './DetailHeader.styles';
 import CounterBox from '@/components/common/CounterBox/CounterBox.jsx';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { useState } from 'react';
 import CartModal from '@/components/detailModal/CartModal/CartModal';
 import { client } from '@/apis';
+import * as S from './DetailHeader.styles';
 
 const formatPrice = (price) => {
   return price.toLocaleString('ko-KR');
@@ -21,19 +21,10 @@ const DetailHeaders = ({ product }) => {
     // 1. 장바구니를 등록한다!
     // notion
     client
-      .post(
-        '/shoppingcart',
-        {
-          productId: product.productIdx,
-          amount: quantity,
-        },
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            // Authorization: 'Bearer sjfdklasjfklsdajflkj',
-          },
-        },
-      )
+      .post('/shoppingcart', {
+        productId: product.productIdx,
+        amount: quantity,
+      })
       .then((res) => {
         const response = res.data;
         console.log('response', response);

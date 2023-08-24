@@ -5,6 +5,31 @@ export const getProducts = () => {
   return client.get('/products');
 };
 
-export const getProduct = (productId) => {
-  return client.get(`/products/${productId}`);
+export const addProduct = async (payload) => {
+  const response = await client.post('/product/', payload, {
+    headers: {
+      Accept: `*/*`,
+      'Content-Type': `multipart/form-data`,
+    },
+  });
+  return response.data;
+};
+
+export const getProduct = async (id) => {
+  const response = await client.get(`/product/${id}`);
+  return response.data;
+};
+
+export const editProduct = async (id, payload) => {
+  const response = await client.patch(`/product/${id}`, payload, {
+    headers: {
+      'Content-Type': `multipart/form-data`,
+    },
+  });
+  return response.data;
+};
+
+export const deleteProduct = async (productId) => {
+  const response = await client.delete(`/product/${productId}`);
+  return response.data;
 };

@@ -20,6 +20,7 @@ const FilterToggleBtn = (props) => {
     } else {
       setCategoryFilter((prevCategory) => ({
         ...prevCategory,
+        page: 0,
         category: [...prevCategory.category, props.text],
       }));
       setIsOn(true);

@@ -6,7 +6,7 @@ export const writeData = {
   closingAt: '2023.08.15',
   title: '개꿀잼 할리갈리',
   companyName: '김희진팩토리',
-  price: '12000원',
+  price: 12000,
   avgRating: 4.8,
   playerCount: '5인 이상',
   difficultyLevel: '초급',

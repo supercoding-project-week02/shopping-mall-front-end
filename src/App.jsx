@@ -5,6 +5,7 @@ import MainHeader from './layouts/MainHeader';
 import Cart from './pages/cart/Cart';
 import Detail from './pages/Detail/Detail';
 import Join from './pages/Join/Join';
+import Kakao from './pages/Kakao';
 import Login from './pages/Login/Login';
 import Main from './pages/main/Main';
 import Payment from './pages/payment/Payment';
@@ -53,6 +54,10 @@ function App() {
         {
           path: 'login',
           element: <Login />,
+        },
+        {
+          path: 'auth/kakao',
+          element: <Kakao />,
         },
       ],
     },
