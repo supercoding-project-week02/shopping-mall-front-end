@@ -20,11 +20,6 @@ const MyPage = () => {
   const menus = isCustomer ? customerMenus : sellerMenus;
   const [activeMenu, setActiveMenu] = useState(menus[0]);
 
-  useEffect(() => {
-    isCustomer && getQuestions().then((data) => console.log('data', data));
-    !isCustomer && getQuestionAnswers().then((data) => console.log('data', data));
-  }, []);
-
   return (
     <S.MyPageWrapper>
       <S.MenusWrapper>
