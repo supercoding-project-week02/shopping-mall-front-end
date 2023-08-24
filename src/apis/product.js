@@ -28,3 +28,8 @@ export const editProduct = async (id, payload) => {
   });
   return response.data;
 };
+
+export const deleteProduct = async (productId) => {
+  const response = await client.delete(`/product/${productId}`);
+  return response.data;
+};
