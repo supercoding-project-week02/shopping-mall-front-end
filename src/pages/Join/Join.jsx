@@ -32,14 +32,13 @@ const Join = () => {
     isPhoneNumber: false,
   });
 
+  const emailCheck = (e) => {
+    e.preventDefault();
+    console.log('ok');
+  };
+
   const checkBtn = (
-    <S.CheckBtn
-      disabled={!isValid.isEmail}
-      onClick={(e) => {
-        e.preventDefault();
-        console.log('click');
-      }}
-    >
+    <S.CheckBtn disabled={!isValid.isEmail} onClick={emailCheck}>
       중복확인
     </S.CheckBtn>
   );
@@ -67,7 +66,7 @@ const Join = () => {
         {
           email: joinForm.email,
           password: joinForm.password,
-          nickname: joinForm.nickName,
+          name: joinForm.nickName,
           phoneNumber: joinForm.phoneNumber,
           type: joinForm.type,
           profileImage: imgValue,
@@ -85,6 +84,8 @@ const Join = () => {
         alert('회원가입이 완료되었습니다.');
         navigate('/login');
       }
+
+      console.log(response);
     } catch (error) {
       console.log(error);
     }

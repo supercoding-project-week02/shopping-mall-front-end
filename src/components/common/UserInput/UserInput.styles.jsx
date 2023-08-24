@@ -17,7 +17,7 @@ export const InputDiv = styled.div`
     flex: 1;
     border: none;
   }
-  > button {
+  /* > button {
     width: 70px;
     height: 20px;
     border: none;
@@ -25,5 +25,5 @@ export const InputDiv = styled.div`
     border-radius: 10px;
     font-size: 12px;
     color: #878585;
-  }
+  } */
 `;
