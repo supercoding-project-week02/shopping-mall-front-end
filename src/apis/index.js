@@ -7,7 +7,8 @@ import { localstorageKey } from '@/constant/index.js';
 import { getItem } from '@/utils/localstorage.js';
 
 // TODO: .env 로 빼야하나?
-const BASE_URL = 'http://52.79.168.48:8080/api/v1';
+// 다른 분들 개발 환경을 위해, dev 용 서버 주소 하드코딩
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://52.79.168.48:8080/api/v1';
 
 export const client = axios.create({
   baseURL: BASE_URL,

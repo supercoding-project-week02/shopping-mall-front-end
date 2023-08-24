@@ -222,7 +222,8 @@ function getTotalQuantity(datas) {
 export default Cart;
 
 // 총합 : 개수*아이템 별 + 더하기 함수 만들어서 적용!
-function sumTotalPrice(datas) {
+
+export function sumTotalPrice(datas) {
   let sum = 0;
   for (let i = 0; i < datas.length; i++) {
     sum += datas[i].quantity * datas[i].product.price;
