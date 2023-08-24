@@ -46,6 +46,7 @@ export const SearchBarBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 1rem;
 `;
 
 export const HeaderBtnsBox = styled.div`
@@ -76,9 +77,19 @@ export const SearchBtnBox = styled.div`
 `;
 
 export const SearchBar = styled.input`
+  width: 10rem;
   border: none;
   background-color: #fafafa;
   border-bottom: 1px solid grey;
+  font-size: 0.7rem;
+  color: grey;
+  ::placeholder {
+    color: grey;
+    font-size: 0.7rem;
+  }
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const LogoutBtn = styled.button`
