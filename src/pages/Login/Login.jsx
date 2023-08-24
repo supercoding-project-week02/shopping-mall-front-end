@@ -94,7 +94,7 @@ const Login = () => {
           isValid={isValid}
         />
         <S.LoginButton
-          bgColor={theme.color.black}
+          bgColor={disabledTrue ? `${theme.color.black}` : `${theme.color.gray}`}
           fontColor="white"
           borderRadius="10px"
           text="로그인"

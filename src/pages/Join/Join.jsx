@@ -1,9 +1,12 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { client } from '@/apis/index.js';
-import { postEmailCheck } from '@/apis/user';
+import { postEmailCheck, smsAuthCheck, smsCheck } from '@/apis/user';
 import Button from '@/components/common/Button/Button';
+import Modal from '@/components/common/Modal/Modal';
+import ModalContent from '@/components/common/Modal/ModalContent';
+import ModalHeader from '@/components/common/Modal/ModalHeader';
 import UserInput from '@/components/common/UserInput/UserInput';
 import RadioInput from '@/components/RadioInput/RadioInput';
 import ImgInput from '@/components/write/PreviewImgItem/ImgInput';
@@ -12,7 +15,9 @@ import { theme } from '@/styles/theme';
 import * as S from './Join.styles';
 
 const Join = () => {
+  const inputRef = useRef();
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { value: joinForm, onChange } = useInputs({
     email: '',
     password: '',
@@ -31,6 +36,7 @@ const Join = () => {
     isNickName: false,
     isPhoneNumber: false,
     isEmailChecked: false,
+    isPhoneChecked: false,
   });
 
   const emailCheck = (e) => {
@@ -41,10 +47,6 @@ const Join = () => {
       console.log(result);
       if (result.status === 409) {
         alert('이메일이 중복되었습니다.');
-        // setIsValid({
-        //   ...isValid,
-        //   isEmailChecked: false,
-        // });
       }
 
       if (result.status === 200) {
@@ -52,6 +54,18 @@ const Join = () => {
           ...isValid,
           isEmailChecked: true,
         });
+      }
+    });
+  };
+
+  const phoneCheck = (e) => {
+    e.preventDefault();
+    smsCheck({
+      phone: joinForm.phoneNumber,
+    }).then((result) => {
+      if (result.status === 200) {
+        setIsModalOpen(true);
+        console.log(result.data);
       }
     });
   };
@@ -66,6 +80,33 @@ const Join = () => {
     </S.CheckBtn>
   );
 
+  const phoneCheckBtn = (
+    <S.CheckBtn
+      disabled={!isValid.isPhoneNumber}
+      onClick={phoneCheck}
+      checkSuccess={isValid.isPhoneChecked}
+    >
+      {isValid.isPhoneChecked ? 'v' : '본인인증'}
+    </S.CheckBtn>
+  );
+
+  const authPhoneCheck = () => {
+    const code = inputRef.current.value;
+    console.log(code);
+    smsAuthCheck({
+      authCode: code,
+      phone: joinForm.phoneNumber,
+    }).then((result) => {
+      if (result.status === 200) {
+        setIsValid({
+          ...isValid,
+          isPhoneChecked: true,
+        });
+        setIsModalOpen(false);
+      }
+    });
+  };
+
   const validTest = useCallback(
     (name, value) => {
       setIsValid({ ...isValid, [name]: value });
@@ -79,7 +120,8 @@ const Join = () => {
     isValid.isPasswordConfirm &&
     isValid.isNickName &&
     isValid.isPhoneNumber &&
-    isValid.isEmailChecked;
+    isValid.isEmailChecked &&
+    isValid.isPhoneChecked;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -117,6 +159,19 @@ const Join = () => {
 
   return (
     <S.Container>
+      <Modal
+        visible={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+        }}
+      >
+        <ModalHeader />
+        <ModalContent>
+          <p>휴대폰 인증</p>
+          <input type="number" ref={inputRef} />
+          <button onClick={authPhoneCheck}>인증하기</button>
+        </ModalContent>
+      </Modal>
       <S.Form onSubmit={handleSubmit}>
         <ImgInput label="프로필 사진 추가" name="profileImage" value="" setImgValue={setImgValue} />
         <UserInput
@@ -158,8 +213,9 @@ const Join = () => {
           validTest={validTest}
           isValid={isValid}
         />
-        <S.Label>연락처</S.Label>
+        <S.Label>연락처(필수)</S.Label>
         <UserInput
+          button={phoneCheckBtn}
           placeholder="연락처"
           type="text"
           onChange={onChange}
@@ -187,7 +243,7 @@ const Join = () => {
           />
         </S.RadioBox>
         <Button
-          bgColor={theme.color.black}
+          bgColor={disabledTrue ? `${theme.color.black}` : `${theme.color.gray}`}
           fontColor="white"
           borderRadius="10px"
           text="가입하기"
