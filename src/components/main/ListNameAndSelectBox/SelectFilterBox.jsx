@@ -10,6 +10,7 @@ const SelectFilterBox = () => {
     const clickedSort = event.target.value;
     setSortFilter((prevItemList) => ({
       ...prevItemList,
+      page: 0,
       sort: clickedSort,
     }));
   };

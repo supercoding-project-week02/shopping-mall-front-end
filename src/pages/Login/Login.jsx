@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSetRecoilState } from 'recoil';
 
 import { login } from '@/apis/user.js';
@@ -12,7 +12,6 @@ import { saveItem } from '@/utils/localstorage.js';
 import * as S from './Login.styles';
 
 const Login = () => {
-  const navigate = useNavigate();
   // recoil 선언
   const setUser = useSetRecoilState(userState);
 
@@ -25,7 +24,7 @@ const Login = () => {
 
   const linkToKakaoLogin = (e) => {
     e.preventDefault();
-    console.log('kakao로그인');
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=39e024cd16a47a29d9162ee86e85b69a&redirect_uri=http://localhost:5173/auth/kakao&response_type=code`;
   };
 
   const handleLogin = (e) => {
@@ -50,7 +49,7 @@ const Login = () => {
         // user 전역 상태 관리 추가로 주석처리했습니다. 확인 후 삭제 예정 -> 동영
         // saveItem(localstorageKey.user, result.data);
 
-        navigate('/');
+        location.href = '/';
       }
     });
   };

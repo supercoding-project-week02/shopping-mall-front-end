@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import size from '@/styles/Media.js';
+
 export const MainPageWrapper = styled.div`
   position: relative;
   display: flex;
@@ -24,4 +26,11 @@ export const ToTopBtn = styled.button`
   background-color: #ffebc0;
   color: grey;
   cursor: pointer;
+
+  ${size.medium} {
+    left: 80%;
+  }
+  ${size.small} {
+    left: 70%;
+  }
 `;
