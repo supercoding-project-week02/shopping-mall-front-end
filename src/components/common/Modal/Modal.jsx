@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 
 import Portal from '@/components/common/Portal.jsx';
 import { useOutsideClick } from '@/hooks/useOutsideClick.js';
@@ -20,18 +20,16 @@ function Modal({ children, visible, onClose }) {
   // useOutsideClick({ ref: modalRef, handler: onClose });
 
   // GYU-TODO: 스크롤 이벤트 방지하기
+
+  // 이벤트 전파로 인해, 컨테츠 영역 클릭해도 close 되어 추가 수정
+  const handleStopPropagation = useCallback((event) => {
+    event.stopPropagation();
+  }, []);
+
   return (
     <Portal selector="#modal-root">
-      <S.ModalOverlay
-        className={className}
-        tabIndex={-1}
-        visible={visible}
-        onClick={() => {
-          console.log('click2');
-          onClose();
-        }}
-      >
-        <S.ModalContainer ref={modalRef} tabIndex={0}>
+      <S.ModalOverlay className={className} tabIndex={-1} visible={visible} onClick={onClose}>
+        <S.ModalContainer ref={modalRef} tabIndex={0} onClick={handleStopPropagation}>
           {children}
         </S.ModalContainer>
       </S.ModalOverlay>
