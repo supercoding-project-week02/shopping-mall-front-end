@@ -1,7 +1,8 @@
-import { Icon } from '@/components/common/Icon/Icon';
 import React, { useEffect, useRef, useState } from 'react';
-import * as S from './QandAModal.styles';
+
 import { client } from '@/apis';
+import { Icon } from '@/components/common/Icon/Icon';
+import * as S from './QandAModal.styles';
 
 export default function QandAModal({
   isOpen,
@@ -89,11 +90,13 @@ export default function QandAModal({
     formData.append('productIdx', productId);
     formData.append('title', title);
     formData.append('content', content);
-    formData.append('imageUrl', file);
+    formData.append('imageFile', file);
 
     // updatedData 가 없으면 새로 추가,
     // updatedData 가 수정
     // Object.keys(empty).length === 0
+
+    // 임시
     const 추가기능 = !!Object.keys(updateData ?? {}).length == 0;
     if (추가기능) {
       // 추가한다.
@@ -106,6 +109,7 @@ export default function QandAModal({
         .then((response) => {
           syncQuestion();
           setIsOpen(false);
+          setFile(null);
         })
         .catch((error) => {
           console.log('Error:', error);

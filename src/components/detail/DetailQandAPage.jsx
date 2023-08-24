@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
+import { useRecoilValue } from 'recoil';
+
+import { client } from '@/apis';
+import { customerState } from '@/recoil/atoms/userState';
 import * as S from './DetailQandAPage.styles';
 import { Icon } from '../common/Icon/Icon';
 import QandAModal from '../detailModal/QAModal/QandAModal';
-import { useRecoilValue } from 'recoil';
-import { customerState } from '@/recoil/atoms/userState';
-import { client } from '@/apis';
 
 export default function DetailQandAPage({ product }) {
   const isCustomer = useRecoilValue(customerState);
@@ -75,6 +76,7 @@ export default function DetailQandAPage({ product }) {
   };
 
   const handleUpdateAnswer = (selectedQuestion) => {
+    setTimeout(() => (answerRef.current.value = selectedQuestion.answer.content), 0);
     clickInputVisibilityHandler();
   };
 
@@ -111,44 +113,21 @@ export default function DetailQandAPage({ product }) {
     // const addAnswer = !!Object.keys(answer.content ?? {}).length == 0;
 
     // const addAnswer = answer ? answer?.content?.length == 0 : true;
-    let addAnswer = true;
-    if (answer) {
-      if (answer.content.length >= 1) {
-        // 수정모드
-        addAnswer = false;
-      }
-    }
-    console.log('answerClickSubmitHanlder answer', answer, addAnswer);
+    const addAnswer = !answer;
     if (addAnswer) {
       client
-        .post(
-          '/questions/answers',
-          {
-            questionIdx: selectedId,
-            content: answer,
-          },
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          },
-        )
+        .post(`/questions/answers/${selectedQuestion.questionId}`, {
+          content: answerRef.current.value,
+        })
         .then((res) => {
           syncQuestion();
         });
 
       setInputVisible(false);
     } else {
-      console.log(
-        'selectedQuestion',
-        selectedQuestion,
-        'selectedQuestion.answer.answerId',
-        selectedQuestion.answer.answerId,
-      );
       client
-        .post(`/questions/answers/${selectedQuestion.answer.answerId}`, {
-          answerIdx: selectedQuestion.answer.answerId,
-          content: answer,
+        .put(`/questions/answers/${selectedQuestion.answer.answerId}`, {
+          content: answerRef.current.value,
         })
         .then((res) => {
           syncQuestion();
@@ -159,7 +138,7 @@ export default function DetailQandAPage({ product }) {
   // console.log('answerId', question.answer.answerId);
 
   const answerDeleteClickHandler = () => {
-    console.log('call delete');
+    console.log('call delete', selectedQuestion);
     client.delete(`/questions/answers/${selectedQuestion.answer.answerId}`).then((res) => {
       syncQuestion();
     });
@@ -182,8 +161,8 @@ export default function DetailQandAPage({ product }) {
       </S.QandAHeader>
       {question &&
         question.map((Q, idx) => (
-          <S.QandAContent>
-            <S.QContainer key={idx}>
+          <S.QandAContent key={idx}>
+            <S.QContainer>
               <S.QTitleHeader onClick={() => titleClickContentVisible(Q.questionId, Q)}>
                 <S.QUserName>{Q.consumerName}</S.QUserName>
                 <S.QTitle>{Q.title}</S.QTitle>
@@ -196,7 +175,7 @@ export default function DetailQandAPage({ product }) {
                     <S.QContent>
                       <h2>Q</h2>
                       <S.Q>{Q.content}</S.Q>
-                      {Q.imageUrl && <S.QImage>{Q.imageUrl}</S.QImage>}
+                      {Q.imageUrl && <S.QImage src={Q.imageUrl} alr={'image'} />}
                     </S.QContent>
                     <S.ButtonWrapper>
                       {!isCustomer && (
@@ -230,9 +209,9 @@ export default function DetailQandAPage({ product }) {
                         <input
                           type="text"
                           placeholder="답변 내용"
-                          value={answer}
                           ref={answerRef}
-                          onChange={(e) => setAnswer(e.target.value)}
+                          // value={answer}
+                          // onChange={(e) => setAnswer(e.target.value)}
                         />
                         <S.AnswerSubmitBtn onClick={answerClickSubmitHanlder}>
                           작성

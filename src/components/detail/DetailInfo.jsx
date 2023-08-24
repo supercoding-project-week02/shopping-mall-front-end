@@ -1,7 +1,8 @@
 import { useState } from 'react';
+
 import * as S from './DetailInfo.styles';
-import DetailReviewPage from './DetailReviewPage';
 import DetailQandAPage from './DetailQandAPage';
+import DetailReviewPage from './DetailReviewPage';
 
 export default function DetailInfo({ product }) {
   const [showAll, setShowAll] = useState(false);
