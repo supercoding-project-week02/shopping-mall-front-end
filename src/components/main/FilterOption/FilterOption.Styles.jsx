@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import size from '@/styles/Media';
+
 export const FilterOptionWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -37,6 +39,22 @@ export const ToggleBtn = styled.button`
     font-weight: bold;
   }
   cursor: pointer;
+  ${size.large} {
+    width: 12rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+
+  ${size.medium} {
+    width: 5rem;
+    height: 1.5rem;
+    font-size: 0.5rem;
+  }
+  ${size.small} {
+    width: 4rem;
+    height: 1.2rem;
+    font-size: 0.2rem;
+  }
 `;
 
 export const ToggleBtnChecked = styled.button`
@@ -51,4 +69,21 @@ export const ToggleBtnChecked = styled.button`
   font-size: 0.7rem;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
   font-weight: bold;
+  cursor: pointer;
+  ${size.large} {
+    width: 12rem;
+    height: 3rem;
+    font-size: 1.2rem;
+  }
+
+  ${size.medium} {
+    width: 5rem;
+    height: 1.5rem;
+    font-size: 0.5rem;
+  }
+  ${size.small} {
+    width: 4rem;
+    height: 1.2rem;
+    font-size: 0.2rem;
+  }
 `;
