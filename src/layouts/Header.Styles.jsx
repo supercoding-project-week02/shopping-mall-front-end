@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import { Icon } from '@/components/common/Icon/Icon.jsx';
+import size from '@/styles/Media';
 import { theme } from '@/styles/theme';
 
 export const HeaderWrapper = styled.div`
@@ -13,6 +15,7 @@ export const HeaderWrapper = styled.div`
   background-color: #faf9f6;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.05);
   margin-bottom: 1rem;
+  cursor: pointer;
 `;
 
 export const HeaderContainer = styled.div`
@@ -31,6 +34,19 @@ export const HeaderLogoBox = styled.div`
   height: 3rem;
   margin: 1rem;
   cursor: pointer;
+  ${size.large} {
+    width: 20rem;
+    height: 6rem;
+  }
+
+  ${size.medium} {
+    width: 8rem;
+    height: 2rem;
+  }
+  ${size.small} {
+    width: 6rem;
+    height: 1rem;
+  }
 `;
 
 export const mainLogo = styled.img`
@@ -97,4 +113,10 @@ export const LogoutBtn = styled.button`
   background-color: inherit;
   color: ${theme.color.red};
   cursor: pointer;
+`;
+
+export const ResponsiveIcon = styled(Icon)`
+  ${size.small} {
+    width: 15px;
+  }
 `;
