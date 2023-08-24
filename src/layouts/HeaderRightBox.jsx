@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useRecoilState, useResetRecoilState } from 'recoil';
 
-import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { localstorageKey } from '@/constant/index.js';
 import { customerState, loginState, userState } from '@/recoil/atoms/userState.js';
 import { removeItem } from '@/utils/localstorage.js';
@@ -27,20 +26,20 @@ const HeaderRightBox = () => {
         <SearchBar />
         <Link to={isLogin ? '/mypage' : '/login'}>
           <S.MyInfoBtnBox>
-            <Icon name="IconUser" width="25px" />
+            <S.ResponsiveIcon name="IconUser" width="25px" />
           </S.MyInfoBtnBox>
         </Link>
         {isLogin && (
           <Link to="/cart">
             <S.CartBtnBox>
-              <Icon name="IconBasket" width="25px" />
+              <S.ResponsiveIcon name="IconBasket" width="25px" />
             </S.CartBtnBox>
           </Link>
         )}
         {!isCustomer && isLogin && (
           <Link to="/write">
             <S.ProductAddBtnBox>
-              <Icon name="IconWrite" width="25px" />
+              <S.ResponsiveIcon name="IconWrite" width="25px" />
             </S.ProductAddBtnBox>
           </Link>
         )}

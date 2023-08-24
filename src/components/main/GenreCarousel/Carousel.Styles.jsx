@@ -1,6 +1,8 @@
 import Slider from 'react-slick';
 import styled from '@emotion/styled';
 
+import size from '@/styles/Media';
+
 export const GenreCarouselWrapper = styled.div`
   margin-top: 1rem;
   display: flex;
@@ -66,6 +68,16 @@ export const CardImgDiv = styled.div`
 export const CardImg = styled.img`
   z-index: 2;
   width: 4rem;
+  ${size.large} {
+    width: 7rem;
+  }
+
+  ${size.medium} {
+    width: 3rem;
+  }
+  ${size.small} {
+    width: 2rem;
+  }
 `;
 
 export const CardText = styled.div`
@@ -74,4 +86,7 @@ export const CardText = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 0.25rem;
+  ${size.large} {
+    font-size: 1rem;
+  }
 `;

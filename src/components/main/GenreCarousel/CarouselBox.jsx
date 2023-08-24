@@ -14,9 +14,24 @@ const CarouselBox = () => {
     slidesToScroll: 1,
   };
 
+  const responsiveSettings = [
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 4,
+      },
+    },
+    {
+      breakpoint: 534,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+  ];
+
   return (
     <S.GenreCarouselWrapper>
-      <S.StyledSlider {...settings}>
+      <S.StyledSlider {...settings} responsive={responsiveSettings}>
         {Images.map((obj, index) => (
           <CarouselCard key={index} text={obj.text} image={obj.image} />
         ))}

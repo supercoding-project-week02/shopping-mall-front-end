@@ -53,6 +53,7 @@ Icon.propTypes = {
     'IconWrite',
     'IconPencil',
     'IconCheck',
+    'IconTest',
     'IconX',
     'mainLogo',
     'IconChat',
