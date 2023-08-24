@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
-import { Icon } from '@/components/common/Icon/Icon.jsx';
 import { itemListState } from '@/recoil/atoms/itemListState.js';
 import * as S from './Header.Styles.jsx';
 
@@ -47,7 +46,7 @@ const SearchBar = () => {
         </S.SearchBarBox>
       )}
       <S.SearchBtnBox onClick={searchBarHandler}>
-        <Icon name="IconSearch" width="20px" />
+        <S.ResponsiveIcon name="IconSearch" width="20px" />
       </S.SearchBtnBox>
     </>
   );

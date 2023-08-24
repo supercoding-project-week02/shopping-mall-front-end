@@ -7,5 +7,6 @@ export function useInput(initValue = '') {
     value,
     onChange: (event) => setValue(event.target.value),
     onReset: () => setValue(initValue),
+    onChangeValue: (value) => setValue(value),
   };
 }

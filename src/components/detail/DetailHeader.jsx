@@ -1,7 +1,8 @@
-import * as S from './DetailHeader.styles';
+import { useState } from 'react';
+
 import CounterBox from '@/components/common/CounterBox/CounterBox.jsx';
 import { Icon } from '@/components/common/Icon/Icon.jsx';
-import { useState } from 'react';
+import * as S from './DetailHeader.styles';
 import CartModal from '../common/CartModal/CartModal';
 
 const contentData = [
