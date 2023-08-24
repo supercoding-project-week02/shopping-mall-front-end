@@ -32,12 +32,6 @@ const ItemListGrid = () => {
         const newData = res.data.data.contents;
         setTotalLength(res.data.data.totalElements);
         if (res.data.status === 200) {
-<<<<<<< HEAD
-          setItemList(newData);
-          if (newData.length === 0) setIsItem(false);
-          else setIsItem(true);
-        } else window.alert(res.data.message);
-=======
           if (!res.data.data.hasNext) {
             setStop(true);
             console.log(stop);
@@ -55,7 +49,6 @@ const ItemListGrid = () => {
           setIsItem(false);
           window.alert(res.data.message);
         }
->>>>>>> 8388f28747bf6b11ae14b520db7d4defac29468f
       } catch (error) {
         console.log(error);
       } finally {
