@@ -46,7 +46,7 @@ const Cart = () => {
       if (result.status === 200) {
         const deletedDatas = datas.filter((item) => item.id !== cartId);
         setDatas(deletedDatas);
-        // 리렌더링 되면서 새로고침되는 느낌처럼 구현? (새로고침은 아님) 넵
+        // 리렌더링 되면서 새로고침되는 느낌처럼 구현? (새로고침은 아님)
       }
     });
   };
@@ -163,7 +163,7 @@ const Cart = () => {
                   </S.CountDiv>
                 </S.CounterOuterDiv>
               </S.Td2>
-              <S.Td3>{Number(data.product.price * data.quantity).toLocaleString('ko-KR')}</S.Td3>
+              <S.Td3>{Number(data.product.price * data.quantity).toLocaleString('ko-KR')}원</S.Td3>
             </S.Tr>
           ))}
       </S.ItemTable>
@@ -179,7 +179,7 @@ const Cart = () => {
         <S.CounterMain>
           <S.TotalPrice>
             <div>
-              <S.NumberSum>{Number(sumTotalPrice(datas)).toLocaleString('ko-KR')}</S.NumberSum>
+              <S.NumberSum>{Number(sumTotalPrice(datas)).toLocaleString('ko-KR')}원</S.NumberSum>
               <S.Exp>총 주문금액</S.Exp>
             </div>
           </S.TotalPrice>
