@@ -9,13 +9,7 @@ import Select from '@/components/write/Select/Select';
 import WriteInput from '@/components/write/WriteInput/WriteInput';
 import { theme } from '@/styles/theme';
 import * as S from './Write.styles';
-import {
-  difficultyLevelType,
-  genreType,
-  playerCountType,
-  playTimeType,
-  writeData,
-} from './writeData';
+import { difficultyLevelType, genreType, playerCountType, playTimeType } from './writeData';
 
 const Write = () => {
   const location = useLocation().pathname;
