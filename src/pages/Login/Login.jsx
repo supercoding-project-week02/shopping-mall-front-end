@@ -64,7 +64,7 @@ const Login = () => {
         // user 전역 상태 관리 추가로 주석처리했습니다. 확인 후 삭제 예정 -> 동영
         // saveItem(localstorageKey.user, result.data);
 
-        navigator('/');
+        location.href = '/';
       }
     });
   };
