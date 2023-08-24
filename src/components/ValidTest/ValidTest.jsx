@@ -34,8 +34,12 @@ export default function ValidTest({ name, value, password, validTest, isValid })
       // 현재 vaalidTest가 제대로 작동하지 않는 버그 있음
       // TODO: 로직 수정 후 return 부분 주석처리 해제
       if (name === 'password') {
+<<<<<<< HEAD
         const passwordRegex =
           /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/;
+=======
+        const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,20}$/;
+>>>>>>> fb9bce8c78cf7c4684f557be38b2a2ccfe1e19e2
         // 입력한 password가 정규식에 만족하는지 확인
         passwordRegex.test(value) ? validTest('isPassword', true) : validTest('isPassword', false);
         return;

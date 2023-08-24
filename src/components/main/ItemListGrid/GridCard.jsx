@@ -9,13 +9,22 @@ const GridCard = (props) => {
   const item = props.item;
   const [productIdx, setProductIdx] = useRecoilState(productId);
 
+<<<<<<< HEAD
   const onClickHandler = (event) => {
     setProductIdx(event.target.id);
+=======
+  const onClickHandler = () => {
+    setProductIdx(item.id);
+>>>>>>> fb9bce8c78cf7c4684f557be38b2a2ccfe1e19e2
   };
   return (
     <S.GridCard>
       <S.GridImgBox>
+<<<<<<< HEAD
         <Link to={`/detail/${productIdx}`}>
+=======
+        <Link to={`/detail/${item.productId}`}>
+>>>>>>> fb9bce8c78cf7c4684f557be38b2a2ccfe1e19e2
           <S.GridImg
             src={item.mainImageUrl && item.mainImageUrl !== '' ? item.mainImageUrl : imageLoading}
             id={item.productId}
