@@ -4,3 +4,7 @@ import { client } from './index.js';
 export const getProducts = () => {
   return client.get('/products');
 };
+
+export const getProduct = (productId) => {
+  return client.get(`/products/${productId}`);
+};

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as S from './DetailInfo.styles';
 import DetailReviewPage from './DetailReviewPage';
-// import DetailQandAPage from './DetailQandAPage';
+import DetailQandAPage from './DetailQandAPage';
 
 export default function DetailInfo({ product }) {
   const [showAll, setShowAll] = useState(false);
@@ -21,7 +21,7 @@ export default function DetailInfo({ product }) {
         <S.ImgContainer showAll={showAll}>
           <div>
             {product.imgUrls.map((img, idx) => (
-              <S.Img key={idx} src={img} />
+              <S.Img key={idx} src={img.imgUrl} />
             ))}
           </div>
         </S.ImgContainer>
@@ -38,7 +38,7 @@ export default function DetailInfo({ product }) {
         </S.ReviewHeader>
         <DetailReviewPage />
       </S.ReviewPage>
-      {/* <DetailQandAPage product={product} /> */}
+      <DetailQandAPage product={product} />
     </S.InfoContainer>
   );
 }

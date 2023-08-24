@@ -46,8 +46,6 @@ export const ImgContainer = styled.div`
 
 export const Img = styled.img`
   width: 800px;
-  height: 800px;
-  margin-bottom: 20px;
 `;
 
 export const ButtonContainer = styled.div`

@@ -21,7 +21,7 @@ function App() {
           element: <Main />,
         },
         {
-          path: 'detail',
+          path: '/product/:productId',
           element: <Detail />,
         },
         {

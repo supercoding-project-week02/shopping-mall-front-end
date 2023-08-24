@@ -1,11 +1,18 @@
 import { Icon } from '@/components/common/Icon/Icon';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './QandAModal.styles';
-import axios from 'axios';
+import { client } from '@/apis';
 
-export default function QandAModal({ isOpen, setIsOpen }) {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+export default function QandAModal({
+  isOpen,
+  setIsOpen,
+  updateQnA,
+  updateData,
+  productId,
+  syncQuestion,
+}) {
+  const [title, setTitle] = useState(updateData ? updateData.title : '');
+  const [content, setContent] = useState(updateData ? updateData.content : '');
   const [file, setFile] = useState(null);
   const [titleIsValid, setTitleIsValid] = useState(true);
   const [titleIsTouched, setTitleIsTouched] = useState(true);
@@ -15,12 +22,51 @@ export default function QandAModal({ isOpen, setIsOpen }) {
   const contentRef = useRef();
   const fileInputRef = useRef(null);
 
+  // console.log('updateQnA=>', updateQnA);
+
+  useEffect(() => {
+    setTitle(updateData ? updateData.title : '');
+    setContent(updateData ? updateData.content : '');
+  }, [updateData?.title, updateData?.content]);
+
+  // evnet, 상품문의? 수정버튼?
   const formSubmitHandler = async (event) => {
     event.preventDefault();
     console.log('title', title);
     console.log('content', content);
     setTitleIsTouched(true);
     setContentIsTouched(true);
+
+    const currentDate = new Date();
+
+    const formatdDate =
+      currentDate.getFullYear() +
+      '.' +
+      String(currentDate.getMonth() + 1).padStart(2, '0') +
+      '.' +
+      String(currentDate.getDate()).padStart(2, '0');
+
+    // // updateData
+    // const isAddMode = !updateData;
+    // // id, updated
+
+    // if (isAddMode === !updateData) {
+    //   onAddQnA({
+    //     productIdx: productId,
+    //     title: title,
+    //     content: content,
+    //     file: file,
+    //     // date: formatdDate,
+    //   });
+    // }
+
+    // onUpdateQnA(updateData.questionId, {
+    //   ...updateData,
+    //   title: title,
+    //   content: content,
+    //   // file: file,
+    //   date: formatdDate,
+    // });
 
     const isTitleValid = title.trim() !== '';
     const isContentValid = content.trim() !== '';
@@ -40,29 +86,64 @@ export default function QandAModal({ isOpen, setIsOpen }) {
     setIsOpen(false);
 
     const formData = new FormData();
-    formData.append('productIdx', 123);
-    formData.append('consumerIdx', 12345);
+    formData.append('productIdx', productId);
     formData.append('title', title);
     formData.append('content', content);
     formData.append('imageUrl', file);
-    const response = await axios
-      .post('http://52.79.168.48:8080/api/v1/questions', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then((response) => {
-        console.log('Success:', response);
-        setIsOpen(false);
-      })
-      .catch((error) => {
-        console.log('Error:', error);
-      });
+
+    // updatedData 가 없으면 새로 추가,
+    // updatedData 가 수정
+    // Object.keys(empty).length === 0
+    const 추가기능 = !!Object.keys(updateData ?? {}).length == 0;
+    if (추가기능) {
+      // 추가한다.
+      client
+        .post('/questions/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        .then((response) => {
+          syncQuestion();
+          setIsOpen(false);
+        })
+        .catch((error) => {
+          console.log('Error:', error);
+        });
+    } else {
+      // 수정모드
+      // 수정 기능 - 수정 버튼을 눌렀을 때
+      client
+        .post(
+          `/questions/${updateData.questionId}`,
+          {
+            questionId: updateData.qusetionId,
+            content: content,
+            title: title,
+          },
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          },
+        )
+        .then((response) => {
+          syncQuestion();
+        });
+    }
   };
 
-  const titleInValid = !titleIsValid && titleIsTouched;
+  // console.log('updateData', updateData);
 
-  const contentInValid = !contentIsValid && contentIsTouched;
+  useEffect(() => {
+    if (updateQnA) {
+      setTitle(updateQnA.title);
+      setContent(updateQnA.content);
+    } else {
+      setTitle('');
+      setContent('');
+    }
+  }, [updateQnA]);
 
   const titleBlurHandler = (e) => {
     setTitleIsTouched(true);
@@ -92,6 +173,8 @@ export default function QandAModal({ isOpen, setIsOpen }) {
     setFile(event.target.files[0]);
   };
 
+  const titleInValid = !titleIsValid && titleIsTouched;
+  const contentInValid = !contentIsValid && contentIsTouched;
   return (
     <S.QandAModalBackground isOpen={isOpen}>
       <S.QandAModal isOpen={isOpen}>
@@ -105,7 +188,7 @@ export default function QandAModal({ isOpen, setIsOpen }) {
                 type="text"
                 placeholder="제목"
                 value={title}
-                ref={titleRef}
+                // ref={titleRef}
                 onChange={(e) => setTitle(e.target.value)}
                 onBlur={titleBlurHandler}
               />
@@ -127,12 +210,10 @@ export default function QandAModal({ isOpen, setIsOpen }) {
           </S.QandAModalContent>
           <S.QandAFooter>
             <S.IconWrapper>
-              <Icon name="IconImage" size={30} onClick={iconClickHandle} />
               <input
                 ref={fileInputRef}
                 type="file"
                 accept="image/jpg, image/png, image/jpeg"
-                style={{ display: 'none' }}
                 onChange={fileInputChange}
               />
             </S.IconWrapper>

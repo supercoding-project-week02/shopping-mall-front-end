@@ -16,12 +16,10 @@ const DetailHeaders = ({ product }) => {
 
   // TODO: api 요청 후 성공 처리
   // FIXME:
-  // EST:
   const handleAddCart = () => {
     // TODO:
     // 1. 장바구니를 등록한다!
     // notion
-    client.delete();
     client
       .post(
         '/shoppingcart',
@@ -58,10 +56,10 @@ const DetailHeaders = ({ product }) => {
       })
       .catch((error) => {
         // console.error(error);
-      })
-      .finally(() => {
-        // 무조건적인 로직!
       });
+    // .finally(() => {
+    //   // 무조건적인 로직!
+    // });
   };
 
   const changeHeartHandler = () => {
