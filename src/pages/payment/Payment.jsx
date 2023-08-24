@@ -178,9 +178,9 @@ const Payment = () => {
             </S.SubAgree>
 
             <S.PaySubmitTextDiv>
-              <S.PaySubmitA disabled={!checked || !user.address} onClick={handleSuperPay}>
+              <S.PaySubmitButton disabled={!checked || !user.address} onClick={handleSuperPay}>
                 결제하기
-              </S.PaySubmitA>
+              </S.PaySubmitButton>
               <HasPaidModal isOpen={isOpen} setIsOpen={setIsOpen} />
             </S.PaySubmitTextDiv>
           </S.AgreeBox>

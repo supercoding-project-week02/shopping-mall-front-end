@@ -54,22 +54,24 @@ export const FixedDiv = styled.div`
 
 export const OrderPriceBox = styled.div`
   background-color: rgb(194, 188, 191, 0.25);
-  width: 50%;
-  height: 18%;
+  width: 40%;
+  height: auto;
+  padding-bottom: 20px;
   margin-bottom: 20px;
 `;
 
 export const SuperPayBox = styled.div`
   background-color: rgb(194, 188, 191, 0.25);
-  width: 50%;
-  height: 20%;
+  width: 40%;
+  height: auto;
+  padding-bottom: 20px;
   margin-bottom: 20px;
 `;
 
 export const AgreeBox = styled.div`
   boxing-size: border-box;
   background-color: rgb(194, 188, 191, 0.25);
-  width: 50%;
+  width: 40%;
   height: 10%;
   margin-bottom: 20px;
 `;
@@ -181,7 +183,7 @@ export const SuperPay = styled.div`
   text-align: left;
   font-size: 18px;
   font-weight: bold;
-  margin: 0 25px;
+  margin: 0 15px 0 25px;
   padding: 25px 0 0;
 `;
 
@@ -244,7 +246,7 @@ export const OrderPrice2 = styled.p`
 `;
 
 export const OrderPriceHr = styled.hr`
-  width: 90%;
+  width: 85%;
   margin: 20px auto;
   color: gray;
 `;
@@ -254,7 +256,7 @@ export const OrderPriceTotalDiv = styled.div`
 `;
 
 export const OrderPriceTotalTextDiv = styled.div`
-  margin-left: 25px;
+  margin-left: 30px;
   margin-right: 85px;
   text-align: left;
 `;
@@ -277,13 +279,13 @@ export const Price3 = styled.p`
 `;
 
 export const SuperPayTextDiv = styled.div`
-  margin-left: 25px;
-  margin-right: 50px;
+  margin-left: 30px;
+  margin-right: 60px;
   text-align: left;
 `;
 
 export const SuperPayNumberDiv = styled.div`
-  margin-right: 25px;
+  margin-right: 20px;
   text-align: right;
 `;
 
@@ -299,8 +301,8 @@ export const Price2 = styled.div`
 `;
 
 export const SuperPayTotalTextDiv = styled.div`
-  margin-left: 25px;
-  margin-right: 100px;
+  margin-left: 30px;
+  margin-right: 90px;
   text-align: left;
 `;
 
@@ -356,14 +358,14 @@ export const BoxLineDiv = styled.div`
 export const SubAgreeInput = styled.input`
   width: 20px;
   height: 20px;
-  margin: 25px 5px 10px 10px;
+  margin: 30px 5px 10px 25px;
 `;
 
 export const SubAgreeDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 5px;
+  margin: 14px 5px;
   height: 50px;
   font-size: 15px;
   width: 240px;
@@ -383,13 +385,16 @@ export const PaySubmitTextDiv = styled.div`
   background-color: black;
 `;
 
-export const PaySubmitA = styled.button`
+export const PaySubmitButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    width: 100%;
+    height: 100%;
     margin: 0;
-    padding: 20px 0;
+    padding: 16px 0;
+    font-size: 18px;
     font-weight: bold;
     border: none;
     cursor: pointer;
@@ -517,10 +522,10 @@ export const SuperPayTitleDiv = styled.div`
 `;
 
 export const ChargeButton = styled.button`
-  margin: 18px 0 0 55px;
-  width: 80px;
-  height: 35px;
-  font-size: 16px;
+  margin: 18px 0 0 0px;
+  width: 70px;
+  height: 30px;
+  font-size: 13px;
   border: none;
   border-radius: 3px;
   background-color: gray;
