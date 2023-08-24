@@ -14,3 +14,17 @@ export const addProduct = async (payload) => {
   });
   return response.data;
 };
+
+export const getProduct = async (id) => {
+  const response = await client.get(`/product/${id}`);
+  return response.data;
+};
+
+export const editProduct = async (id, payload) => {
+  const response = await client.patch(`/product/${id}`, payload, {
+    headers: {
+      'Content-Type': `multipart/form-data`,
+    },
+  });
+  return response.data;
+};
