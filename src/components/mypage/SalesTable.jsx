@@ -18,6 +18,11 @@ const SalesTable = () => {
     navigate(`/write/${id}`);
   };
 
+  const handleDeleteProduct = (event, productId) => {
+    event.stopPropagation();
+    alert(`${productId} 삭제`);
+  };
+
   const history = data.data.map((product, index) => ({
     key: index,
     id: product.product.id,
@@ -31,7 +36,7 @@ const SalesTable = () => {
       </S.ProductInfoWrapper>
     ),
 
-    재고수: (
+    판매수: (
       // <S.InputText //
       //   inputType="number"
       //   name="number"
@@ -55,7 +60,13 @@ const SalesTable = () => {
         }}
       />
     ),
-    삭제: <Icon name="IconX" size={10} onClick={() => alert('삭제')} />,
+    삭제: (
+      <Icon
+        name="IconX"
+        size={10}
+        onClick={(event) => handleDeleteProduct(event, product.product.id)}
+      />
+    ),
   }));
 
   return (
@@ -63,6 +74,11 @@ const SalesTable = () => {
       columns={salesColumns}
       dataSource={history}
       pagination={false}
+      onRow={(record) => {
+        return {
+          onClick: () => navigate(`/product/${record.id}`),
+        };
+      }}
     />
   );
 };
@@ -79,9 +95,9 @@ const salesColumns = [
     key: '상품정보',
   },
   {
-    title: '재고수',
-    dataIndex: '재고수',
-    key: '재고수',
+    title: '판매수',
+    dataIndex: '판매수',
+    key: '판매수',
   },
   {
     title: '판매 마감 날짜',
