@@ -41,14 +41,15 @@ export const MainImgBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  > div {
+  /* > div {
     width: 60%;
-  }
+  } */
 `;
 
 export const ImgInputBox = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  gap: 20px;
 `;

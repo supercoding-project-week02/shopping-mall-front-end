@@ -6,7 +6,7 @@ import TextField from '@/components/common/TextField/TextField.jsx';
 export const ProductInfoWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
-  width: 300px;
+  max-width: 300px;
 `;
 
 export const Table = styled(_Table)`

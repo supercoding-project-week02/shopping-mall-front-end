@@ -21,6 +21,7 @@ const ImgInput = ({
   // const { value: inputValue, onChange } = useInput('');
   const [imgFile, setImgFile] = useState(value);
   const inputRef = useRef();
+  console.log(name, value, imgFile);
 
   const saveImgFile = () => {
     const file = inputRef.current.files[0];

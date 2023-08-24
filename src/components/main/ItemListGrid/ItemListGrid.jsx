@@ -7,6 +7,7 @@ import { itemListState } from '@/recoil/atoms/itemListState.js';
 import GridCard from './GridCard.jsx';
 import * as S from './ItemListGrid.Styles.jsx';
 import ListNameAndSelectBox from '../ListNameAndSelectBox/ListNameAndSelectBox.jsx';
+import SkeletonComponent from '../SkeletonComponent/SkeletonComponent.jsx';
 
 const ItemListGrid = () => {
   const [request, setRequest] = useRecoilState(itemListState);
@@ -15,7 +16,7 @@ const ItemListGrid = () => {
   const [totalLength, setTotalLength] = useState(null);
   const [isItem, setIsItem] = useState(true);
   const [loading, setLoading] = useState(true);
-  const [stop, setStop] = useState(false);
+  const [stop, setStop] = useState(true);
   const observerRef = useRef(null);
 
   //HTTP 요청
@@ -34,7 +35,6 @@ const ItemListGrid = () => {
         if (res.data.status === 200) {
           if (!res.data.data.hasNext) {
             setStop(true);
-            console.log(stop);
           } else setStop(false);
           if (newData.length === 0) setIsItem(false);
           else {
@@ -46,7 +46,6 @@ const ItemListGrid = () => {
             }
           }
         } else {
-          setIsItem(false);
           window.alert(res.data.message);
         }
       } catch (error) {
@@ -57,7 +56,6 @@ const ItemListGrid = () => {
     };
 
     FetchData();
-    console.log(request);
   }, [request]);
 
   // INFINITE SCROLL
@@ -72,10 +70,11 @@ const ItemListGrid = () => {
   };
 
   useEffect(() => {
+    if (!isItem) return;
     const options = {
       root: null,
-      rootMargin: '0px',
-      threshold: 1.0,
+      rootMargin: '2px',
+      threshold: 0.7,
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, options);
@@ -104,6 +103,8 @@ const ItemListGrid = () => {
                 <GridCard key={index} item={item} />
               ))}
               <div ref={observerTriggerRef}></div>
+              {loading &&
+                Array.from({ length: 10 }).map((_, index) => <SkeletonComponent key={index} />)}
             </S.GridContainer>
           ) : (
             <S.NoItemGrid>아이템이 없습니다.</S.NoItemGrid>
