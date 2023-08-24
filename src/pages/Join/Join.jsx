@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { client } from '@/apis/index.js';
+import { postEmailCheck } from '@/apis/user';
 import Button from '@/components/common/Button/Button';
 import UserInput from '@/components/common/UserInput/UserInput';
 import RadioInput from '@/components/RadioInput/RadioInput';
@@ -30,16 +30,39 @@ const Join = () => {
     isPasswordConfirm: false,
     isNickName: false,
     isPhoneNumber: false,
+    isEmailChecked: false,
   });
 
   const emailCheck = (e) => {
     e.preventDefault();
-    console.log('ok');
+    postEmailCheck({
+      email: joinForm.email,
+    }).then((result) => {
+      console.log(result);
+      if (result.status === 409) {
+        alert('이메일이 중복되었습니다.');
+        // setIsValid({
+        //   ...isValid,
+        //   isEmailChecked: false,
+        // });
+      }
+
+      if (result.status === 200) {
+        setIsValid({
+          ...isValid,
+          isEmailChecked: true,
+        });
+      }
+    });
   };
 
   const checkBtn = (
-    <S.CheckBtn disabled={!isValid.isEmail} onClick={emailCheck}>
-      중복확인
+    <S.CheckBtn
+      disabled={!isValid.isEmail}
+      onClick={emailCheck}
+      checkSuccess={isValid.isEmailChecked}
+    >
+      {isValid.isEmailChecked ? 'v' : '중복확인'}
     </S.CheckBtn>
   );
 
@@ -55,7 +78,8 @@ const Join = () => {
     isValid.isPassword &&
     isValid.isPasswordConfirm &&
     isValid.isNickName &&
-    isValid.isPhoneNumber;
+    isValid.isPhoneNumber &&
+    isValid.isEmailChecked;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -67,7 +91,7 @@ const Join = () => {
           email: joinForm.email,
           password: joinForm.password,
           name: joinForm.nickName,
-          phoneNumber: joinForm.phoneNumber,
+          phone: joinForm.phoneNumber,
           type: joinForm.type,
           profileImage: imgValue,
         },

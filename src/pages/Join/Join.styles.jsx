@@ -34,7 +34,8 @@ export const CheckBtn = styled.button`
   width: 70px;
   height: 20px;
   border-radius: 10px;
-  background-color: ${theme.color.black};
+  background-color: ${(props) =>
+    props.checkSuccess ? `${theme.color.blue}` : `${theme.color.black}`};
   color: white;
   border: none;
   font-size: 12px;
