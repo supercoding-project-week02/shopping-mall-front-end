@@ -34,8 +34,16 @@ export const CheckBtn = styled.button`
   width: 70px;
   height: 20px;
   border-radius: 10px;
-  background-color: ${theme.color.gray};
+  background-color: ${(props) =>
+    props.checkSuccess ? `${theme.color.blue}` : `${theme.color.black}`};
+  color: white;
+  border: none;
   font-size: 12px;
+  cursor: pointer;
+  &:disabled {
+    background-color: ${theme.color.gray};
+    color: ${theme.color.black};
+  }
 `;
 
 export const RadioBox = styled.div`
