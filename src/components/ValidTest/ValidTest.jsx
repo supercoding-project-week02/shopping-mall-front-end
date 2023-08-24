@@ -5,8 +5,6 @@ import { Container, IsFalse, IsTrue } from './ValidTest.styles';
 export default function ValidTest({ name, value, password, validTest, isValid }) {
   const [isEmpty, setIsEmpty] = useState(true);
 
-  console.log(password);
-
   // input값이 비어있는지 아닌지를 판단
   useEffect(() => {
     const emptyDelay = setTimeout(() => {
