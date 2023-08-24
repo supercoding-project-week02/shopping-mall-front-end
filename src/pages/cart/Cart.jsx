@@ -165,7 +165,7 @@ const Cart = () => {
                   </S.CountDiv>
                 </S.CounterOuterDiv>
               </S.Td2>
-              <S.Td3>{data.product.price * data.quantity}</S.Td3>
+              <S.Td3>{Number(data.product.price * data.quantity).toLocaleString('ko-KR')}</S.Td3>
             </S.Tr>
           ))}
       </S.ItemTable>
@@ -189,7 +189,7 @@ const Cart = () => {
           <S.TotalPrice>
             {/* <S.Equal>=</S.Equal> */}
             <div>
-              <S.NumberSum>{sumTotalPrice(datas)}</S.NumberSum>
+              <S.NumberSum>{Number(sumTotalPrice(datas)).toLocaleString('ko-KR')}</S.NumberSum>
               <S.Exp>총 주문금액</S.Exp>
             </div>
           </S.TotalPrice>
