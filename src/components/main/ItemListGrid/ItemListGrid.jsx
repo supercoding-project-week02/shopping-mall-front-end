@@ -74,8 +74,8 @@ const ItemListGrid = () => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: '0px',
-      threshold: 1.0,
+      rootMargin: '2px',
+      threshold: 0.7,
     };
 
     observerRef.current = new IntersectionObserver(observerCallback, options);
