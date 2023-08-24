@@ -29,10 +29,8 @@ export const ToTopBtn = styled.button`
 
   ${size.medium} {
     left: 80%;
-    background-color: green;
   }
   ${size.small} {
     left: 70%;
-    background-color: red;
   }
 `;
