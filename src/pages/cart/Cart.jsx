@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './Cart.Styles';
 import { Icon } from '@/components/common/Icon/Icon';
-import { useRecoilValue } from 'recoil';
-import { cartAtom, TotalPriceSelector, TotalQuantitySelector } from '@/recoil/atoms/cartAtom';
 import { deleteShopoingCart, getShoppingCart, modifyShoppingCart } from '@/apis/cart';
 import { client } from '@/apis';
 import { useNavigate } from 'react-router-dom';
@@ -48,7 +46,7 @@ const Cart = () => {
       if (result.status === 200) {
         const deletedDatas = datas.filter((item) => item.id !== cartId);
         setDatas(deletedDatas);
-        // 리렌더링 되면서 새로고침되는 느낌처럼 구현? (새로고침은 아님) 넵
+        // 리렌더링 되면서 새로고침되는 느낌처럼 구현? (새로고침은 아님)
       }
     });
   };
@@ -165,7 +163,7 @@ const Cart = () => {
                   </S.CountDiv>
                 </S.CounterOuterDiv>
               </S.Td2>
-              <S.Td3>{data.product.price * data.quantity}</S.Td3>
+              <S.Td3>{Number(data.product.price * data.quantity).toLocaleString('ko-KR')}원</S.Td3>
             </S.Tr>
           ))}
       </S.ItemTable>
@@ -179,17 +177,9 @@ const Cart = () => {
           개
         </S.CounterTitleDiv>
         <S.CounterMain>
-          {/* <S.Price>
-            <div>
-              <S.Number>{datas[0].product.price}</S.Number>
-              <S.Exp>상품금액</S.Exp>
-            </div>
-          </S.Price> */}
-          <S.DeliveryOuter>{/* <S.Plus>+</S.Plus> */}</S.DeliveryOuter>
           <S.TotalPrice>
-            {/* <S.Equal>=</S.Equal> */}
             <div>
-              <S.NumberSum>{sumTotalPrice(datas)}</S.NumberSum>
+              <S.NumberSum>{Number(sumTotalPrice(datas)).toLocaleString('ko-KR')}원</S.NumberSum>
               <S.Exp>총 주문금액</S.Exp>
             </div>
           </S.TotalPrice>
