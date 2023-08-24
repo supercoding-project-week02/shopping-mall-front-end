@@ -9,7 +9,7 @@ const QuestionSellerTable = () => {
   if (!data) return null;
   if (isError) return <div>에러가 발생했습니다.</div>;
 
-  const questions = data.data.map((question, index) => ({
+  const questions = data.data?.map((question, index) => ({
     key: index,
     id: question.productId,
     상품정보: (

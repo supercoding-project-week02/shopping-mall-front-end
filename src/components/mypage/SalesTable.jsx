@@ -32,7 +32,7 @@ const SalesTable = () => {
     // });
   };
 
-  const history = data.data.map((product, index) => ({
+  const history = data.data?.map((product, index) => ({
     key: index,
     id: product.product.id,
     상품정보: (
