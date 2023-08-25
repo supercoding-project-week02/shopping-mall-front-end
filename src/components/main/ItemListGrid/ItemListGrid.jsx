@@ -1,7 +1,7 @@
 import axios from 'axios';
 import qs from 'qs';
 import { useEffect, useRef, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useResetRecoilState } from 'recoil';
 
 import { client } from '@/apis/index.js';
 import { itemListState } from '@/recoil/atoms/itemListState.js';
@@ -12,6 +12,7 @@ import SkeletonComponent from '../SkeletonComponent/SkeletonComponent.jsx';
 
 const ItemListGrid = () => {
   const [request, setRequest] = useRecoilState(itemListState);
+  const setResetRequest = useResetRecoilState(itemListState);
 
   const [itemList, setItemList] = useState([]);
   const [totalLength, setTotalLength] = useState(null);
@@ -90,6 +91,12 @@ const ItemListGrid = () => {
       }
     };
   }, [stop]);
+
+  useEffect(() => {
+    return () => {
+      setResetRequest();
+    };
+  }, []);
 
   const observerTriggerRef = useRef();
 
