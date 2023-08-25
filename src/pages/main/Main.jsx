@@ -1,3 +1,4 @@
+import { ScrollToTop } from '@/components/common/ScrollToTop.jsx';
 import FilterOption from '@/components/main/FilterOption/FilterOption';
 import CarouselBox from '@/components/main/GenreCarousel/CarouselBox';
 import ItemListGrid from '@/components/main/ItemListGrid/ItemListGrid';
@@ -9,14 +10,16 @@ const Main = () => {
   };
 
   return (
-    <S.MainPageWrapper>
-      <S.ToTopBtn onClick={scrollToTop}>TOP</S.ToTopBtn>
-      <S.MainContainer>
-        <CarouselBox />
-        <FilterOption />
-        <ItemListGrid />
-      </S.MainContainer>
-    </S.MainPageWrapper>
+    <ScrollToTop>
+      <S.MainPageWrapper>
+        <S.ToTopBtn onClick={scrollToTop}>TOP</S.ToTopBtn>
+        <S.MainContainer>
+          <CarouselBox />
+          <FilterOption />
+          <ItemListGrid />
+        </S.MainContainer>
+      </S.MainPageWrapper>
+    </ScrollToTop>
   );
 };
 
