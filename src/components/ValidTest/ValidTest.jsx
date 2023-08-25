@@ -71,7 +71,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
     <Container>
       {/* 삼항연산자를 사용했는데 다른 방법이 있는지 찾와봐야할듯 */}
       {/* email 부분 */}
-      {name === 'email' ? (
+      {location.pathname === '/join' && name === 'email' ? (
         !isEmpty ? (
           isValid.isEmail ? (
             <IsTrue>유효한 이메일입니다.</IsTrue>
@@ -81,7 +81,7 @@ export default function ValidTest({ name, value, password, validTest, isValid })
         ) : null
       ) : null}
       {/* password부분 */}
-      {name === 'password' ? (
+      {location.pathname === '/join' && name === 'password' ? (
         !isEmpty ? (
           isValid.isPassword ? (
             <IsTrue>유효한 비밀번호입니다.</IsTrue>

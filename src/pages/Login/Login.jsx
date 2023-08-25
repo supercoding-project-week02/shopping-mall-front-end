@@ -39,7 +39,7 @@ const Login = () => {
 
   const linkToKakaoLogin = (e) => {
     e.preventDefault();
-    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=39e024cd16a47a29d9162ee86e85b69a&redirect_uri=http://localhost:5173/auth/kakao&response_type=code`;
+    window.location.href = `https://kauth.kakao.com/oauth/authorize?client_id=39e024cd16a47a29d9162ee86e85b69a&redirect_uri=https://super-boarding.netlify.app/auth/kakao&response_type=code`;
   };
 
   const handleLogin = (e) => {
@@ -94,7 +94,7 @@ const Login = () => {
           isValid={isValid}
         />
         <S.LoginButton
-          bgColor={theme.color.black}
+          bgColor={disabledTrue ? `${theme.color.black}` : `${theme.color.gray}`}
           fontColor="white"
           borderRadius="10px"
           text="로그인"

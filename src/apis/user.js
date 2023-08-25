@@ -34,3 +34,18 @@ export const kakaoLogin = async (payload) => {
   const response = await client.post('/user/kakao', payload);
   return response.data;
 };
+
+export const postEmailCheck = async (payload) => {
+  const response = await client.post('/user/email', payload);
+  return response.data;
+};
+
+export const smsCheck = async (payload) => {
+  const response = await client.post('/user/sms', payload);
+  return response.data;
+};
+
+export const smsAuthCheck = async (payload) => {
+  const response = await client.post('/user/sms/auth', payload);
+  return response.data;
+};

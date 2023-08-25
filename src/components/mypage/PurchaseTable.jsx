@@ -30,7 +30,7 @@ const PurchaseTable = () => {
     <S.Table //
       columns={purchaseColumns}
       dataSource={products}
-      pagination={false}
+      pagination={true}
     />
   );
 };

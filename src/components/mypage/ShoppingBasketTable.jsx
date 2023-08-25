@@ -24,9 +24,7 @@ const ShoppingBasketTable = () => {
     주문금액: <>{(basket.product.price * basket.quantity).toLocaleString('ko-kr')}원</>,
   }));
 
-  return (
-    <S.Table columns={shoppingBasketColumns} dataSource={shoppingBaskets} pagination={false} />
-  );
+  return <S.Table columns={shoppingBasketColumns} dataSource={shoppingBaskets} pagination={true} />;
 };
 
 const shoppingBasketColumns = [
