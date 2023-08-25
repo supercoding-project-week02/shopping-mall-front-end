@@ -172,11 +172,13 @@ export default function DetailQandAPage({ product }) {
               {selectedId === Q.questionId && (
                 <S.QandA>
                   <S.QContentWrapper>
-                    <S.QContent>
-                      <h2>Q</h2>
-                      <S.Q>{Q.content}</S.Q>
+                    <S.QContentContainer>
+                      <S.QContent>
+                        <h2>Q</h2>
+                        <S.Q>{Q.content}</S.Q>
+                      </S.QContent>
                       {Q.imageUrl && <S.QImage src={Q.imageUrl} alr={'image'} />}
-                    </S.QContent>
+                    </S.QContentContainer>
                     <S.ButtonWrapper>
                       {!isCustomer && (
                         <>

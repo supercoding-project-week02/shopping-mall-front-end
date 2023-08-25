@@ -2,10 +2,11 @@ import styled from '@emotion/styled';
 import { theme } from '@/styles/theme';
 
 export const InfoContainer = styled.div`
-  width: 1500px;
+  max-width: 2100px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 `;
 
 export const InfoBar = styled.span`
