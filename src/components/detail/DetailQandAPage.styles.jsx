@@ -102,11 +102,14 @@ export const QContentWrapper = styled.span`
   padding-right: 25px;
 `;
 
-export const QContent = styled.span`
+export const QContentContainer = styled.div`
   width: 1160px;
-  height: 60px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+`;
+
+export const QContent = styled.div`
+  display: flex;
   h2 {
     padding: 0 5px 5px 95px;
     font-size: 20px;
@@ -118,12 +121,14 @@ export const QContent = styled.span`
 export const Q = styled.div`
   display: flex;
   align-items: center;
-  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 export const QImage = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 180px;
+  height: 200px;
+  margin-left: 110px;
 `;
 
 export const ButtonWrapper = styled.span`

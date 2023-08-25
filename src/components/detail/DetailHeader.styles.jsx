@@ -1,10 +1,17 @@
 import styled from '@emotion/styled';
 import { theme } from '@/styles/theme';
 
+export const DetailWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const HeaderContainer = styled.div`
   margin: 0 250px 0 250px;
   height: 600px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const ImageContainer = styled.div``;

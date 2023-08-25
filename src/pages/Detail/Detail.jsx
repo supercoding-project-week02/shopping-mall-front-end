@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import DetailHeaders from '@/components/detail/DetailHeader';
-import DetailInfo from '@/components/detail/DetailInfo';
+import * as S from './Detail.styles';
 
 import { client } from '@/apis/index';
+// import DetailInfo from '@/components/detail/DetailInfo';
 
 const Detail = () => {
   const params = useParams();
@@ -24,10 +25,9 @@ const Detail = () => {
   }
 
   return (
-    <div>
+    <S.DetailPageWrapper>
       <DetailHeaders product={product} />
-      <DetailInfo product={product} />
-    </div>
+    </S.DetailPageWrapper>
   );
 };
 

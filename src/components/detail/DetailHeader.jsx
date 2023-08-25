@@ -4,6 +4,7 @@ import { useState } from 'react';
 import CartModal from '@/components/detailModal/CartModal/CartModal';
 import { client } from '@/apis';
 import * as S from './DetailHeader.styles';
+import DetailInfo from './DetailInfo';
 
 const formatPrice = (price) => {
   return price.toLocaleString('ko-KR');
@@ -58,50 +59,53 @@ const DetailHeaders = ({ product }) => {
   };
 
   return (
-    <S.HeaderContainer>
-      <S.ImageContainer>
-        <S.Image src={product.mainImageUrl} alt="main-image" />
-      </S.ImageContainer>
-      <S.Content>
-        <S.Title>
-          <S.GameName>{product.title}</S.GameName>
-          <S.Company>
-            <S.CompanyTitle>제조사</S.CompanyTitle>
-            <S.CompanyName>{product.companyName}</S.CompanyName>
-          </S.Company>
-        </S.Title>
-        <S.ContentWrapper>
-          <S.ContentTitle>
-            <div>판매가</div>
-            <div>게임 인원</div>
-            <div>난이도</div>
-            <div>게임 시간</div>
-            <div>재고 수량</div>
-          </S.ContentTitle>
-          <S.ContentValue>
-            <div>{formatPrice(product.price)}원</div>
-            <div>{product.playerCount}</div>
-            <div>{product.difficultyLevel}</div>
-            <div>{product.playTime}</div>
-            <div>{product.amount}</div>
-          </S.ContentValue>
-        </S.ContentWrapper>
-        <CounterBox
-          productPrice={product.price}
-          productStock={product.amount}
-          quantity={quantity}
-          setQuanity={setQuanity}
-        />
-        <S.ButtonWrapper>
-          <S.PlusCartButton onClick={handleAddCart}>장바구니</S.PlusCartButton>
-          <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />
-          <S.ClickHeartButton onClick={changeHeartHandler}>
-            찜하기
-            <Icon name={image} size={20} />
-          </S.ClickHeartButton>
-        </S.ButtonWrapper>
-      </S.Content>
-    </S.HeaderContainer>
+    <S.DetailWrapper>
+      <S.HeaderContainer>
+        <S.ImageContainer>
+          <S.Image src={product.mainImageUrl} alt="main-image" />
+        </S.ImageContainer>
+        <S.Content>
+          <S.Title>
+            <S.GameName>{product.title}</S.GameName>
+            <S.Company>
+              <S.CompanyTitle>제조사</S.CompanyTitle>
+              <S.CompanyName>{product.companyName}</S.CompanyName>
+            </S.Company>
+          </S.Title>
+          <S.ContentWrapper>
+            <S.ContentTitle>
+              <div>판매가</div>
+              <div>게임 인원</div>
+              <div>난이도</div>
+              <div>게임 시간</div>
+              <div>재고 수량</div>
+            </S.ContentTitle>
+            <S.ContentValue>
+              <div>{formatPrice(product.price)}원</div>
+              <div>{product.playerCount}</div>
+              <div>{product.difficultyLevel}</div>
+              <div>{product.playTime}</div>
+              <div>{product.amount}</div>
+            </S.ContentValue>
+          </S.ContentWrapper>
+          <CounterBox
+            productPrice={product.price}
+            productStock={product.amount}
+            quantity={quantity}
+            setQuanity={setQuanity}
+          />
+          <S.ButtonWrapper>
+            <S.PlusCartButton onClick={handleAddCart}>장바구니</S.PlusCartButton>
+            <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />
+            <S.ClickHeartButton onClick={changeHeartHandler}>
+              찜하기
+              <Icon name={image} size={20} />
+            </S.ClickHeartButton>
+          </S.ButtonWrapper>
+        </S.Content>
+      </S.HeaderContainer>
+      <DetailInfo product={product} />
+    </S.DetailWrapper>
   );
 };
 
